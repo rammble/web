@@ -1,3 +1,5 @@
+import 'src/ptr.css'
+
 import type { AppProps } from 'next/app'
 import {
   ChakraBaseProvider,
@@ -15,8 +17,10 @@ const theme = extendBaseTheme({
     body: 'var(--font-rubik)',
   },
   colors: {
+    brand: '#49A0EE',
     bg: '#121217',
     ui: '#FFFFFF',
+    'ui.40': '#FFFFFF66',
     'blurred-overlay': '#10101499',
   },
   styles: {
@@ -25,8 +29,10 @@ const theme = extendBaseTheme({
         bg: 'bg',
       },
       body: {
+        pt: '64px',
         bg: 'bg',
         color: 'ui',
+        fontFamily: 'body',
       },
     },
   },
