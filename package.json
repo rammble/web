@@ -17,7 +17,8 @@
     "next": "14.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-pull-to-refresh": "^2.0.1"
+    "react-pull-to-refresh": "^2.0.1",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",

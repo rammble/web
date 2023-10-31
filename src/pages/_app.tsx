@@ -21,10 +21,15 @@ const theme = extendBaseTheme({
     bg: '#121217',
     ui: '#FFFFFF',
     'ui.40': '#FFFFFF66',
+    'ui.60': '#FFFFFF99',
     'blurred-overlay': '#10101499',
   },
   styles: {
     global: {
+      '*': {
+        tapHighlightColor: 'transparent',
+        '-webkit-tap-highlight-color': 'transparent',
+      },
       html: {
         bg: 'bg',
       },

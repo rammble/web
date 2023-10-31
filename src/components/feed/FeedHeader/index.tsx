@@ -1,15 +1,13 @@
 import { Image } from '@chakra-ui/image'
 import { Heading, HStack } from '@chakra-ui/layout'
 import { useHideOnScroll } from 'src/hooks/useHideOnScroll'
+import { FC } from 'react'
 
-export const Header = () => {
+export const FeedHeader: FC = () => {
   const hideOnScroll = useHideOnScroll()
 
   return (
     <HStack
-      transition="top 0.82s cubic-bezier(0.04, 0.91, 0.6, 0.99)"
-      transitionDelay={hideOnScroll ? '0.2s' : '0s'}
-      top={hideOnScroll ? '-64px' : 0}
       py={2}
       pr={2}
       pl={4}
@@ -21,7 +19,10 @@ export const Header = () => {
       width="100%"
       bg="blurred-overlay"
       justify="space-between"
-      backdropFilter="blur(20px)"
+      backdropFilter="blur(12px)"
+      top={hideOnScroll ? '-64px' : 0}
+      transitionDelay={hideOnScroll ? '0.2s' : '0s'}
+      transition="top 0.82s cubic-bezier(0.04, 0.91, 0.6, 0.99)"
     >
       <Heading as="h1" fontSize={32} fontWeight="semibold" fontFamily="heading">
         rammble
