@@ -1,5 +1,6 @@
 import { useBoolean } from '@chakra-ui/hooks'
 import { useEffect, useState } from 'react'
+import { SPAPage, usePage } from 'src/store/page.store'
 
 export const useHideOnScroll = () => {
   const [previousScroll, setPreviousScroll] = useState(0)

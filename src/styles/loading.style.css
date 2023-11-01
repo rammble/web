@@ -1,0 +1,27 @@
+
+@keyframes loading_indicator_bounce {
+    0% {
+        r: 1.4;
+        opacity: 0.4;
+    }
+
+    20% {
+        r: 2.4;
+        opacity: 0.8;
+    }
+
+    50% {
+        r: 3;
+        opacity: 1;
+    }
+
+    80% {
+        r: 2.4;
+        opacity: 0.8;
+    }
+
+    100% {
+        r: 1.4;
+        opacity: 0.4;
+    }
+}

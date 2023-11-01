@@ -1,4 +1,4 @@
-import 'src/ptr.css'
+import 'src/styles/loading.style.css'
 
 import type { AppProps } from 'next/app'
 import {
@@ -20,21 +20,31 @@ const theme = extendBaseTheme({
     brand: '#49A0EE',
     bg: '#121217',
     ui: '#FFFFFF',
+    'ui.faded': '#515E6A',
+    'ui.3': '#FFFFFF0D',
+    'ui.5': '#FFFFFF1F',
+    'ui.10': '#FFFFFF33',
+    'ui.20': '#FFFFFF4D',
+    'ui.30': '#FFFFFF66',
     'ui.40': '#FFFFFF66',
+    'ui.50': '#FFFFFF80',
     'ui.60': '#FFFFFF99',
+    'ui.70': '#FFFFFFB3',
+    'ui.80': '#FFFFFFCC',
+    'ui.90': '#FFFFFFE6',
+    'ui.100': '#FFFFFFFF',
     'blurred-overlay': '#10101499',
   },
   styles: {
     global: {
       '*': {
         tapHighlightColor: 'transparent',
-        '-webkit-tap-highlight-color': 'transparent',
+        WebkitTapHighlightColor: 'transparent',
       },
       html: {
         bg: 'bg',
       },
       body: {
-        pt: '64px',
         bg: 'bg',
         color: 'ui',
         fontFamily: 'body',
