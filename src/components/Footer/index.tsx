@@ -1,6 +1,5 @@
 import { Button, IconButton } from '@chakra-ui/button'
 import { Image } from '@chakra-ui/image'
-import { Input } from '@chakra-ui/input'
 import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/layout'
 import { useHideOnScroll } from 'src/hooks/useHideOnScroll'
 import { FC, useEffect, useRef, useState } from 'react'
@@ -12,12 +11,7 @@ import { NotificationIcon } from 'src/icons/NotificationIcon'
 import { MessagingIcon } from 'src/icons/MessagingIcon'
 import { AttachmentIcon } from 'src/icons/AttachmentIcon'
 import { SPAPage, usePage } from 'src/store/page.store'
-import {
-  MotionBox,
-  MotionButton,
-  MotionStack,
-  transitions,
-} from 'src/components/motion'
+import { MotionBox, MotionStack, transitions } from 'src/components/motion'
 import { PlusIcon } from 'src/icons/PlusIcon'
 import { CloseIcon } from 'src/icons/CloseIcon'
 import { EmoteIcon } from 'src/icons/EmoteIcon'

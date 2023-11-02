@@ -11,8 +11,6 @@ export enum SPAPage {
   Inbox = 4,
 }
 
-export const SPA_PAGES_LENGTH = Object.keys(SPAPage).length / 2
-
 export const pageAtom = atomWithImmer(SPAPage.Feed)
 
 export const usePage = () => {
