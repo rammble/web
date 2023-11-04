@@ -18,17 +18,19 @@ import { EmoteIcon } from 'src/icons/EmoteIcon'
 import { GifIcon } from 'src/icons/GifIcon'
 import { SendIcon } from 'src/icons/SendIcon'
 import { Textarea } from '@chakra-ui/textarea'
+import { useRouter } from 'next/router'
 
 export interface FooterProps {}
 
 export const Footer: FC<FooterProps> = ({}) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const { current } = usePage()
+  const router = useRouter()
   const shouldHideOnScroll = useHideOnScroll()
 
   const [isPosting, setIsPosting] = useState(false)
 
-  const hasPostingInput = current === SPAPage.Feed
+  const hasPostingInput = current === SPAPage.Feed && router.asPath === '/'
 
   const hideOnScroll = !isPosting && shouldHideOnScroll
 
@@ -68,8 +70,9 @@ export const Footer: FC<FooterProps> = ({}) => {
       )}
       <MotionStack
         direction="column"
-        bg="blurred-overlay"
-        backdropFilter="blur(12px)"
+        bg="bg"
+        // bg="blurred-overlay"
+        // backdropFilter="blur(12px)"
         p={2}
         pos="fixed"
         left={0}

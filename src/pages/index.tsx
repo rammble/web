@@ -5,6 +5,7 @@ import { SPAPage, usePage } from 'src/store/page.store'
 import { lazy, Suspense } from 'react'
 import { LoadingIndicator } from 'src/components/LoadingIndicator'
 import { MotionCenter } from 'src/components/motion'
+import { NextPage } from 'next'
 
 const FeedPage = lazy(() => import('src/spa_pages/FeedPage'))
 const SearchPage = lazy(() => import('src/spa_pages/SearchPage'))
@@ -25,7 +26,7 @@ const LoaderPlaceholderPage = () => (
   </MotionCenter>
 )
 
-export default function IndexPage() {
+const IndexPage: NextPage = () => {
   const { current } = usePage()
 
   return (
@@ -63,3 +64,5 @@ export default function IndexPage() {
     </>
   )
 }
+
+export default IndexPage

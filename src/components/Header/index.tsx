@@ -14,8 +14,7 @@ export const Header: FC<HeaderProps> = ({}) => {
     <MotionStack
       direction="row"
       py={2}
-      pr={2}
-      pl={4}
+      px={2}
       h="64px"
       width="100%"
       justify="space-between"
@@ -24,8 +23,9 @@ export const Header: FC<HeaderProps> = ({}) => {
       right={0}
       zIndex={10}
       pos="fixed"
-      bg="blurred-overlay"
-      backdropFilter="blur(12px)"
+      bg="bg"
+      // bg="blurred-overlay"
+      // backdropFilter="blur(12px)"
       initial={{ y: 0 }}
       animate={{ y: hideOnScroll ? -64 : 0 }}
       transition={{
@@ -33,10 +33,10 @@ export const Header: FC<HeaderProps> = ({}) => {
         delay: hideOnScroll ? 0.2 : 0,
       }}
     >
-      <LogoIcon boxSize="48px" />
-      {/*<Heading as="h1" fontSize={32} fontWeight="semibold" fontFamily="heading">
+      <Image src="/logo.png" boxSize="48px" />
+      <Heading as="h1" fontSize={32} fontWeight="semibold" fontFamily="heading">
         rammble
-      </Heading>*/}
+      </Heading>
       <Image rounded="8px" src="https://picsum.photos/48" boxSize="48px" />
     </MotionStack>
   )

@@ -7,10 +7,13 @@ import { Image } from '@chakra-ui/image'
 import { FC } from 'react'
 import { LikeButton } from 'src/components/LikeButton'
 import { IconButton } from '@chakra-ui/button'
+import { Link } from '@chakra-ui/next-js'
 
 export const FeedPost: FC = () => (
   <HStack bg="#15151F" w="100%" p={2} spacing={3} align="start">
-    <Image rounded="12px" src="https://picsum.photos/48" boxSize="48px" />
+    <Link href="/@from-feed-username" flexShrink={0}>
+      <Image rounded="12px" src="https://picsum.photos/48" boxSize="48px" />
+    </Link>
     <VStack spacing={4} w="full" align="start">
       <VStack align="start" spacing={1}>
         <VStack align="start" spacing={1}>
