@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { Rubik, Urbanist } from 'next/font/google'
 import { rubik, theme, urbanist } from 'src/theme'
+import {Layout} from "../layouts/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </style>
       <ChakraBaseProvider theme={theme}>
+        <Layout>
         <Component {...pageProps} />
+        </Layout>
       </ChakraBaseProvider>
     </>
   )

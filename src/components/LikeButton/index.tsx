@@ -5,9 +5,11 @@ import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
 import { useBoolean } from '@chakra-ui/hooks'
 import { HStack, Text } from '@chakra-ui/layout'
 
-export interface LikeButtonProps {}
+export interface LikeButtonProps {
+  likes: Number
+}
 
-export const LikeButton: FC<LikeButtonProps> = ({}) => {
+export const LikeButton: FC<LikeButtonProps> = ({likes}) => {
   const [isLiked, setIsLiked] = useBoolean(false)
 
   return (
@@ -44,7 +46,7 @@ export const LikeButton: FC<LikeButtonProps> = ({}) => {
           color={isLiked ? 'brand' : 'ui'}
           transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1)"
         >
-          41
+          {likes.toLocaleString()}
         </Text>
       </HStack>
     </Button>

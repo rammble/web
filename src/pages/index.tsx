@@ -7,11 +7,11 @@ import { LoadingIndicator } from 'src/components/LoadingIndicator'
 import { MotionCenter } from 'src/components/motion'
 import { NextPage } from 'next'
 
-const FeedPage = lazy(() => import('src/spa_pages/FeedPage'))
-const SearchPage = lazy(() => import('src/spa_pages/SearchPage'))
-const FriendsPage = lazy(() => import('src/spa_pages/FriendsPage'))
-const NotificationsPage = lazy(() => import('src/spa_pages/NotificationsPage'))
-const InboxPage = lazy(() => import('src/spa_pages/InboxPage'))
+const FeedPage = lazy(() => import('src/pages/FeedPage'))
+const SearchPage = lazy(() => import('src/pages/explore'))
+const FriendsPage = lazy(() => import('src/pages/friends'))
+const NotificationsPage = lazy(() => import('src/pages/notifications'))
+const InboxPage = lazy(() => import('src/pages/messages'))
 
 const LoaderPlaceholderPage = () => (
   <MotionCenter
@@ -33,7 +33,6 @@ const IndexPage: NextPage = () => {
     <>
       <Meta />
       <VStack w="100%" spacing={0} pt="64px">
-        <Layout>
           {current === SPAPage.Feed && (
             <Suspense fallback={<LoaderPlaceholderPage />}>
               <FeedPage />
@@ -59,7 +58,6 @@ const IndexPage: NextPage = () => {
               <InboxPage />
             </Suspense>
           )}
-        </Layout>
       </VStack>
     </>
   )

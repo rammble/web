@@ -8,8 +8,9 @@ import { IconButton } from '@chakra-ui/button'
 import { ContentCategory } from 'src/components/ContentCategory'
 import { FeedPost } from 'src/components/FeedPost'
 import { AvatarCarousel } from 'src/components/AvatarCarousel'
+import {FakeFeedPosts} from "./FeedPage";
 
-const SearchPage: FC = () => {
+const Explore: FC = () => {
   const [query, setQuery] = useState<string>('')
 
   const isEmpty = query.length === 0
@@ -104,16 +105,13 @@ const SearchPage: FC = () => {
       </ContentCategory>
       <ContentCategory title="Posts">
         <VStack w="100%" spacing={1} overflow="hidden">
-          <FeedPost />
-          <FeedPost />
-          <FeedPost />
-          <FeedPost />
-          <FeedPost />
-          <FeedPost />
+          {FakeFeedPosts.map((d, i) => {
+            return <FeedPost key={i} data={d}/>
+          })}
         </VStack>
       </ContentCategory>
     </VStack>
   )
 }
 
-export default SearchPage
+export default Explore
