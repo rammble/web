@@ -14,6 +14,7 @@ import {PlusIcon} from "../../icons/PlusIcon";
 import {Box, Flex} from "@chakra-ui/layout";
 import {NavigationSubButtons} from "./NavigationSubButtons";
 import {CogIcon} from "../../icons/CogIcon";
+import {useRouter} from "next/router";
 
 export interface NavigationProps {
 }
@@ -64,6 +65,7 @@ const pages = [
 
 export const Navigation: FC<NavigationProps> = ({}) => {
   const hideOnScroll = useHideOnScroll()
+  const router = useRouter()
 
   return (
       <MotionStack
@@ -77,7 +79,7 @@ export const Navigation: FC<NavigationProps> = ({}) => {
           position={'fixed'}
       >
         <Box>
-          <Image src="/full-logo.png"  />
+          <Image src="/full-logo.png"  alt={'logo'} cursor={'pointer'} onClick={() => router.push('/')}/>
 
           <Box mt={3}>
             {pages.map((p, i) => {

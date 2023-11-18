@@ -9,7 +9,7 @@ export const FeedText: FC<FeedTextProps> = ({text}) => {
   const chunks = text.split(" ")
 
   const elements = chunks.map((t, i) => {
-    if (t.startsWith("#")) {
+    if (t.startsWith("#") || t.startsWith("@")) {
       return <Text cursor={'pointer'} key={i} color={'brand'}>
         {t}
       </Text>

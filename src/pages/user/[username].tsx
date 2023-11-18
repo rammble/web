@@ -7,7 +7,7 @@ import {ProfileHeroBanner} from 'src/components/ProfileHero/ProfileHeroBanner'
 import {ProfileHeroInfo} from 'src/components/ProfileHero/ProfileHeroInfo'
 import {ProfileHeroBioAndInfo} from 'src/components/ProfileHero/ProfileHeroBioAndInfo'
 import {ProfileFeedTabs} from 'src/components/ProfileFeedTabs'
-import {FakeFeedPosts} from "../FeedPage";
+import {FakeFeedPosts} from "../index";
 
 const ProfilePage: NextPage<{
   params: { username: string }
@@ -15,21 +15,19 @@ const ProfilePage: NextPage<{
     <>
       <Meta/>
       <VStack w="100%" spacing={0} pt="calc(64px + 8px)" px={2} pb={2}>
-        <Layout>
-          <VStack w="100%" spacing={0}>
-            <ProfileHeroBanner/>
-            <VStack w="100%" spacing={4}>
-              <ProfileHeroInfo username={params.username}/>
-              <ProfileHeroBioAndInfo/>
-              <VStack w="100%" spacing={1}>
-                <ProfileFeedTabs/>
-                {FakeFeedPosts.map((d, i) => {
-                  return <FeedPost key={i} data={d}/>
-                })}
-              </VStack>
+        <VStack w="100%" spacing={0}>
+          <ProfileHeroBanner/>
+          <VStack w="100%" spacing={4}>
+            <ProfileHeroInfo username={params.username}/>
+            <ProfileHeroBioAndInfo/>
+            <VStack w="100%" spacing={1}>
+              <ProfileFeedTabs/>
+              {FakeFeedPosts.map((d, i) => {
+                return <FeedPost key={i} data={d}/>
+              })}
             </VStack>
           </VStack>
-        </Layout>
+        </VStack>
       </VStack>
     </>
 )

@@ -5,9 +5,10 @@ import {Link} from '@chakra-ui/next-js'
 import {FeedButtons} from "./FeedButtons";
 import {FeedMenu} from "./FeedMenu";
 import {FeedText} from "./FeedText";
-import {FeedProps} from "../../pages/FeedPage";
+import {FeedProps} from "../../pages/index";
 import {useRouter} from "next/router";
-import {Avatar, SkeletonText} from "@chakra-ui/react";
+import {UserAvatar} from "../../UserAvatar/index";
+import {CreatePost} from "../CreatePost/index";
 
 export interface FeedPostProps {
   data: FeedProps
@@ -24,19 +25,17 @@ export const FeedPost: FC<FeedPostProps> = ({data}) => {
 
   return (
       <HStack alignItems={'flex-start'} w={'100%'} gap={4} m={1}>
-        <HStack>
-          <Link href="/@from-feed-username" flexShrink={0}>
-            <Avatar isLazy bg={'blurp.darker'} borderRadius="12px" aria-label={'avatar'} src={data.user.avatarURL} boxSize="48px"/>
-          </Link>
-        </HStack>
-        <HStack outline={isPinnedAndUserProfile ? '1.5px solid' : 'none'} outlineColor={isPinnedAndUserProfile ? 'brand' : 'none'} p={'12px 16px 16px 16px'} borderRadius={'8px'} bg="bg.lighter" w="100%" align="start">
-
+        <UserAvatar user={data.user}/>
+        <HStack outline={isPinnedAndUserProfile ? '1.5px solid' : 'none'}
+                outlineColor={isPinnedAndUserProfile ? 'brand' : 'none'} p={'12px 16px 16px 16px'} borderRadius={'8px'}
+                bg="bg.lighter" w="100%" align="start">
           <VStack spacing={3} w="full" align="start">
-            {isPinnedAndUserProfile && <Text color={'brand'} fontWeight={600} textTransform={'uppercase'} letterSpacing={1.92} fontSize={12}>
+            {isPinnedAndUserProfile &&
+            <Text color={'brand'} fontWeight={600} textTransform={'uppercase'} letterSpacing={1.92} fontSize={12}>
               Pinned Ramble
             </Text>}
             <HStack w={'100%'} fontSize={16} justifyContent={'space-between'}>
-              <HStack>
+              <HStack cursor={'pointer'} onClick={() => router.push(`/user/${data.user.username}`)}>
                 <Text fontWeight={500} isTruncated maxWidth={150}>{data.user.displayName}</Text>
                 <Text color={'ui.40'} isTruncated maxWidth={150}>{data.user.username}</Text>
                 <Text color="ui.40">·</Text>
@@ -47,7 +46,8 @@ export const FeedPost: FC<FeedPostProps> = ({data}) => {
             <VStack align="start" spacing={1}>
               <VStack align="start" spacing={1}>
                 <FeedText text={data.post.text}/>
-                {data.post.images[0] && <Image mt={2} objectFit={'cover'} w={'100%'} h={'315px'} rounded="12px" src={data.post.images[0].url}/>}
+                {data.post.images[0] &&
+                <Image mt={2} objectFit={'cover'} w={'100%'} h={'315px'} rounded="12px" src={data.post.images[0].url}/>}
               </VStack>
               <HStack spacing={3} color="ui.alt">
                 {data.post.tags.map((t, i) => {
