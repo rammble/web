@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import {useRouter} from "next/router";
 import {Avatar} from "@chakra-ui/react";
-import {UserProps} from "../pages/index";
+import {UserProps} from "../../pages/index";
 
 export interface UserAvatarProps {
   user: UserProps

@@ -2,7 +2,7 @@ import 'src/styles/loading.style.css'
 
 import type { AppProps } from 'next/app'
 import {
-  ChakraBaseProvider,
+  ChakraBaseProvider, extendTheme,
 } from '@chakra-ui/react'
 import { rubik, theme, urbanist } from 'src/theme'
 import {Layout} from "../layouts/Layout";
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-      <ChakraBaseProvider theme={theme}>
+      <ChakraBaseProvider theme={extendTheme(theme)}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

@@ -7,7 +7,7 @@ import {FeedMenu} from "./FeedMenu";
 import {FeedText} from "./FeedText";
 import {FeedProps} from "../../pages/index";
 import {useRouter} from "next/router";
-import {UserAvatar} from "../../UserAvatar/index";
+import {UserAvatar} from "../UserAvatar/index";
 import {CreatePost} from "../CreatePost/index";
 
 export interface FeedPostProps {

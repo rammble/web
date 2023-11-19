@@ -1,8 +1,8 @@
-import {FC, PropsWithChildren} from 'react'
+import {FC, PropsWithChildren, Suspense} from 'react'
 import {Header} from 'src/components/Header'
 import {Footer} from 'src/components/Footer'
 import {WebHeader} from "../components/WebHeader/index";
-import {Box, Flex, VStack} from "@chakra-ui/layout";
+import {Box, Flex, VStack, Text} from "@chakra-ui/layout";
 import {Navigation} from "../components/Navigation/index";
 import {useMediaQuery} from "@chakra-ui/react";
 import {Head} from "next/document";
@@ -20,7 +20,9 @@ export const Layout: FC<LayoutProps> = ({children}) => {
         <Flex w={isMobile ? '100%' : '800px'}>
           {isMobile && <Header/>}
           <Box w={'80%'}>
-            {children}
+            <Suspense fallback={<Text>LOADING</Text>}>
+              {children}
+            </Suspense>
           </Box>
           <Box>
             {isMobile ? <Footer/> : <Navigation/>}

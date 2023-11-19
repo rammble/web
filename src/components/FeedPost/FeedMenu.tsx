@@ -42,8 +42,9 @@ const options = [
 
 export const FeedMenu: FC = ({}) => {
   return (
-      <Menu isLazy>
+      <Menu  isLazy>
         <MenuButton
+            variant={'unstyled'}
             as={IconButton}
             aria-label="Menu"
             color="ui.40"
@@ -61,9 +62,12 @@ export const FeedMenu: FC = ({}) => {
           {options.map((d, i) => {
             return <Box key={i}>
               {d.isDangerous && <MenuDivider bg={'ui.5'} mb={1} mt={1}/>}
-              <MenuItem icon={<Icon boxSize={5} as={d.icon}/>}p={2} borderRadius={5}
-                        _hover={{bg: d?.isDangerous ? 'accent.red' : 'ui.3'}}
-                        _active={{bg: 'blurp.lighter'}}
+              <MenuItem
+                  bg={'none'}
+                  icon={<Icon boxSize={5} as={d.icon}/>}
+                  p={2} borderRadius={5}
+                  _hover={{bg: d?.isDangerous ? 'accent.red' : 'ui.3'}}
+                  _active={{bg: 'blurp.lighter'}}
               >{d.title}</MenuItem>
             </Box>
           })}

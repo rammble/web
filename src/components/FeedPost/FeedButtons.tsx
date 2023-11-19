@@ -15,6 +15,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({likes}) => {
         <LikeButton likes={likes} />
         <HStack spacing={4}>
           <IconButton
+              variant={'unstyled'}
               aria-label="Repost"
               color="ui.60"
               icon={
@@ -25,6 +26,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({likes}) => {
               }}
           />
           <IconButton
+              variant={'unstyled'}
               aria-label="Share"
               color="ui.60"
               icon={

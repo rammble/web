@@ -1,16 +1,13 @@
-import {Box, Flex, Heading, HStack, Text, VStack} from '@chakra-ui/layout'
-import {FC, useState} from 'react'
+import {Box, Flex, Heading, HStack, Text} from '@chakra-ui/layout'
+import { Portal } from '@chakra-ui/react'
+import {FC, useRef, useState} from 'react'
 import {FakeFeedPosts, FeedProps} from "../../pages/index";
-import {UserAvatar} from "../../UserAvatar/index";
-import {Textarea} from "@chakra-ui/textarea";
+import {UserAvatar} from "../UserAvatar/index";
 import {Button, IconButton} from "@chakra-ui/button";
-import {EmoteIcon} from "../../icons/EmoteIcon";
-import {GifIcon} from "../../icons/GifIcon";
 import {AttachmentIcon} from "../../icons/AttachmentIcon";
 import {SendIcon} from "../../icons/SendIcon";
 import {Input} from "@chakra-ui/input";
 import {MotionBox, transitions} from "../motion";
-import {SearchIcon} from "../../icons/SearchIcon";
 import {CloseIcon} from "../../icons/CloseIcon";
 import {useDisclosure} from "@chakra-ui/react";
 import {CreatePostModal} from "./CreatePostModal";
@@ -21,11 +18,16 @@ export interface FeedPostProps {
 
 export const CreatePost: FC<FeedPostProps> = ({}) => {
   const {isOpen, onOpen, onClose} = useDisclosure()
+  const inputField = useRef<HTMLTextAreaElement>()
+
+
   const InputField = () => {
     return (
         <>
           <Input
+              variant={'unstyled'}
               onClick={onOpen}
+
               display="flex"
               outline={'none'}
               type="text"
@@ -91,11 +93,11 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
   }
 
   return (
-      <Box display={'block'} w={'100%'} gap={4} m={1}>
-        <CreatePostModal isOpen={isOpen} onClose={onClose}/>
+      <Box ref={inputField} display={'block'} w={'100%'} gap={4} m={1} position={'relative'} zIndex={1401}>
+        <CreatePostModal width={inputField.current?.getBoundingClientRect().width} isOpen={isOpen} onClose={onClose}/>
         <HStack alignItems={'center'}>
           <UserAvatar user={FakeFeedPosts[0].user}/>
-          <Box rounded="8px" bg="#15151F" w="full" pos="relative">
+          <Box  rounded="8px" bg="#15151F" w="full" pos="relative">
             <Box p={4}>
               {!isOpen ? <InputField/> : <PlaceholderField/>}
             </Box>
