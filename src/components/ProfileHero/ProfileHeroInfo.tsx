@@ -6,6 +6,7 @@ import { EmoteIcon } from 'src/icons/EmoteIcon'
 import {Button, IconButton} from "@chakra-ui/button";
 import {MailIcon} from "../../icons/MailIcon";
 import {Avatar} from "@chakra-ui/react";
+import {FollowButton} from "../UserComponents/FollowButton";
 
 export interface ProfileHeroInfoProps {
   username: string
@@ -39,7 +40,7 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
           </HStack>
           <Text
             fontSize={16}
-            fontWeight={500}
+            fontWeight={400}
             color="ui.40"
             lineHeight="normal"
           >
@@ -50,26 +51,15 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
       <HStack w="100%" spacing={3} justify="end">
         <IconButton
             p={2}
-            rounded="99px"
+            rounded="12px"
             aria-label="Go Back"
-            bg="nui.60"
-            color="ui.80"
+            bg="gradient.ui.2-5"
+            color="ui.90"
             border="1px solid"
             borderColor="ui.20"
             icon={<MailIcon boxSize={6} />}
         />
-        <Button
-            bg="brand.darker"
-            px={8}
-            py={2}
-            color="ui.90"
-            fontSize={16}
-            rounded="99px"
-            fontWeight={500}
-            lineHeight="24px"
-        >
-          Follow
-        </Button>
+        <FollowButton/>
       </HStack>
     </HStack>
   )
