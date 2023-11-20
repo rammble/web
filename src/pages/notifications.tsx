@@ -6,7 +6,7 @@ import { ContentCategory } from 'src/components/ContentCategory'
 import { FeedPost } from 'src/components/FeedPost'
 import { NotificationItem } from 'src/components/NotificationItem'
 
-const NotificationsPage: FC = () => (
+const Notifications: FC = () => (
   <VStack px={4} pt={2} pb={4} w="100%" align="start" spacing={6}>
     <Heading as="h2" color="brand" fontSize={24} fontWeight={500}>
       Notifications
@@ -34,4 +34,4 @@ const NotificationsPage: FC = () => (
   </VStack>
 )
 
-export default NotificationsPage
+export default Notifications
