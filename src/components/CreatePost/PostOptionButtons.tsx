@@ -11,6 +11,7 @@ import { MicrophoneIcon } from '../../icons/MicrophoneIcon'
 import { EmojiModal } from '../Emojis/index'
 export interface PostOptionButtonsProps {}
 
+
 export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
   return (
     <HStack>

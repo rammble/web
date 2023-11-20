@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, RefObject, useEffect, useState } from 'react'
+import {FC, PropsWithChildren, RefObject, useEffect, useRef, useState} from 'react'
 import {
   Modal,
   ModalBody,
@@ -32,6 +32,7 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
 }) => {
   const [content, setContent] = useState('')
   const [count, setCount] = useState(0)
+  const inputFieldRef = useRef()
 
   console.log(content)
 
