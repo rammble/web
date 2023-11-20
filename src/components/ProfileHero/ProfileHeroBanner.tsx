@@ -28,30 +28,6 @@ export const ProfileHeroBanner: FC<ProfileHeroBannerProps> = () => {
           icon={<LeftArrowIcon boxSize={6} />}
         />
       </Flex>
-      <HStack w="100%" spacing={3} justify="end">
-        <IconButton
-          p={2}
-          rounded="99px"
-          aria-label="Go Back"
-          bg="nui.60"
-          color="ui.80"
-          border="1px solid"
-          borderColor="ui.20"
-          icon={<MailIcon boxSize={6} />}
-        />
-        <Button
-          bg="ui.100"
-          px={8}
-          py={2}
-          color="bg"
-          fontSize={16}
-          rounded="99px"
-          fontWeight={500}
-          lineHeight="24px"
-        >
-          Follow
-        </Button>
-      </HStack>
     </VStack>
   )
 }
