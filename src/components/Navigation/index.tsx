@@ -1,20 +1,19 @@
-import { FC } from 'react'
-import { useHideOnScroll } from '../../hooks/useHideOnScroll'
-import { FeedIcon } from '../../icons/FeedIcon'
-import { SearchIcon } from '../../icons/SearchIcon'
-import { PeopleIcon } from '../../icons/PeopleIcon'
-import { NotificationIcon } from '../../icons/NotificationIcon'
-import { MessagingIcon } from '../../icons/MessagingIcon'
-import { FilledHeartIcon } from '../../icons/FilledHeartIcon'
-import { NavigationButton } from './NavigationButton'
-import { MotionStack, transitions } from '../motion'
 import { Image } from '@chakra-ui/image'
-import { Icon, Text } from '@chakra-ui/react'
-import { PlusIcon } from '../../icons/PlusIcon'
 import { Box, Flex } from '@chakra-ui/layout'
-import { NavigationSubButtons } from './NavigationSubButtons'
-import { CogIcon } from '../../icons/CogIcon'
+import { Icon, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { FC } from 'react'
+import { CogIcon } from 'src/icons/CogIcon'
+import { FeedIcon } from 'src/icons/FeedIcon'
+import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
+import { MessagingIcon } from 'src/icons/MessagingIcon'
+import { NotificationIcon } from 'src/icons/NotificationIcon'
+import { PeopleIcon } from 'src/icons/PeopleIcon'
+import { PlusIcon } from 'src/icons/PlusIcon'
+import { SearchIcon } from 'src/icons/SearchIcon'
+import { MotionStack } from 'src/components/motion'
+import { NavigationButton } from 'src/components/Navigation/NavigationButton'
+import { NavigationSubButtons } from 'src/components/Navigation/NavigationSubButtons'
 
 export interface NavigationProps {}
 
@@ -63,7 +62,6 @@ const pages = [
 ]
 
 export const Navigation: FC<NavigationProps> = ({}) => {
-  const hideOnScroll = useHideOnScroll()
   const router = useRouter()
 
   return (

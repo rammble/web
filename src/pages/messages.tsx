@@ -1,8 +1,6 @@
-import { FC } from 'react'
-import { MotionStack } from 'src/components/motion'
 import { Heading, VStack } from '@chakra-ui/layout'
+import { FC } from 'react'
 import { ContentCategory } from 'src/components/ContentCategory'
-import { NotificationItem } from 'src/components/NotificationItem'
 import { InboxPreviewItem } from 'src/components/InboxPreviewItem'
 
 const Messages: FC = () => (

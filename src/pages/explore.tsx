@@ -8,7 +8,7 @@ import { IconButton } from '@chakra-ui/button'
 import { ContentCategory } from 'src/components/ContentCategory'
 import { FeedPost } from 'src/components/FeedPost'
 import { AvatarCarousel } from 'src/components/AvatarCarousel'
-import { FakeFeedPosts } from './index'
+import { FakeFeedPosts } from 'src/utils/placeholder.data'
 
 const Explore: FC = () => {
   const [query, setQuery] = useState<string>('')

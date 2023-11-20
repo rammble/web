@@ -1,3 +1,6 @@
 import { ChakraTheme } from '@chakra-ui/theme'
 
-export const sizes = {} satisfies Partial<ChakraTheme>['sizes']
+export const sizes = {
+  full: '100%',
+  half: '50%',
+} satisfies Partial<ChakraTheme>['sizes']

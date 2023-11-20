@@ -1,3 +1,4 @@
+import 'src/styles/emoji.style.css'
 import 'src/styles/loading.style.css'
 
 import type { FC } from 'react'

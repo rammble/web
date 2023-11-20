@@ -1,9 +1,6 @@
-import { FC } from 'react'
-import { MotionStack } from 'src/components/motion'
 import { Heading, VStack } from '@chakra-ui/layout'
-import { AvatarCarousel } from 'src/components/AvatarCarousel'
+import { FC } from 'react'
 import { ContentCategory } from 'src/components/ContentCategory'
-import { FeedPost } from 'src/components/FeedPost'
 import { NotificationItem } from 'src/components/NotificationItem'
 
 const Notifications: FC = () => (

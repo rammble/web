@@ -1,13 +1,12 @@
-import { GetServerSideProps, NextPage } from 'next'
-import { Meta } from 'src/components/meta'
 import { VStack } from '@chakra-ui/layout'
-import { Layout } from 'src/layouts/Layout'
+import { GetServerSideProps, NextPage } from 'next'
 import { FeedPost } from 'src/components/FeedPost'
-import { ProfileHeroBanner } from 'src/components/ProfileHero/ProfileHeroBanner'
-import { ProfileHeroInfo } from 'src/components/ProfileHero/ProfileHeroInfo'
-import { ProfileHeroBioAndInfo } from 'src/components/ProfileHero/ProfileHeroBioAndInfo'
+import { Meta } from 'src/components/meta'
 import { ProfileFeedTabs } from 'src/components/ProfileFeedTabs'
-import { FakeFeedPosts } from '../index'
+import { ProfileHeroBanner } from 'src/components/ProfileHero/ProfileHeroBanner'
+import { ProfileHeroBioAndInfo } from 'src/components/ProfileHero/ProfileHeroBioAndInfo'
+import { ProfileHeroInfo } from 'src/components/ProfileHero/ProfileHeroInfo'
+import { FakeFeedPosts } from 'src/utils/placeholder.data'
 
 const ProfilePage: NextPage<{
   params: { username: string }

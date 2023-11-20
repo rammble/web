@@ -1,14 +1,12 @@
-import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { Image } from '@chakra-ui/image'
-import { FC } from 'react'
-import { Link } from '@chakra-ui/next-js'
-import { FeedButtons } from './FeedButtons'
-import { FeedMenu } from './FeedMenu'
-import { FeedText } from './FeedText'
-import { FeedProps } from '../../pages/index'
+import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
-import { UserAvatar } from '../UserAvatar/index'
-import { CreatePost } from '../CreatePost/index'
+import { FC } from 'react'
+import { FeedProps } from 'src/pages'
+import { UserAvatar } from 'src/components/UserAvatar'
+import { FeedButtons } from 'src/components/FeedPost/FeedButtons'
+import { FeedMenu } from 'src/components/FeedPost/FeedMenu'
+import { FeedText } from 'src/components/FeedPost/FeedText'
 
 export interface FeedPostProps {
   data: FeedProps
