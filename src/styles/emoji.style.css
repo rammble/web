@@ -1,0 +1,9 @@
+.emoji {
+    display: inline-block;
+}
+
+.emoji__post {
+    width: 20px;
+    margin-bottom: -0.3em;
+    line-height: inherit;
+}

@@ -3,10 +3,10 @@ import { Image } from '@chakra-ui/image'
 import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
 import { EmptyHeartIcon } from 'src/icons/EmptyHeartIcon'
 import { EmoteIcon } from 'src/icons/EmoteIcon'
-import {Button, IconButton} from "@chakra-ui/button";
-import {MailIcon} from "../../icons/MailIcon";
-import {Avatar} from "@chakra-ui/react";
-import {FollowButton} from "../UserComponents/FollowButton";
+import { Button, IconButton } from '@chakra-ui/button'
+import { MailIcon } from '../../icons/MailIcon'
+import { Avatar } from '@chakra-ui/react'
+import { FollowButton } from '../UserComponents/FollowButton'
 
 export interface ProfileHeroInfoProps {
   username: string
@@ -14,9 +14,9 @@ export interface ProfileHeroInfoProps {
 
 export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
   return (
-    <HStack  alignItems={'center'} direction="row" w="100%" spacing={4}>
+    <HStack alignItems={'center'} direction="row" w="100%" spacing={4}>
       <Avatar
-          mt={-10}
+        mt={-10}
         borderRadius="20px"
         boxSize="96px"
         src="https://picsum.photos/96"
@@ -50,16 +50,16 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
       </VStack>
       <HStack w="100%" spacing={3} justify="end">
         <IconButton
-            p={2}
-            rounded="12px"
-            aria-label="Go Back"
-            bg="gradient.ui.2-5"
-            color="ui.90"
-            border="1px solid"
-            borderColor="ui.20"
-            icon={<MailIcon boxSize={6} />}
+          p={2}
+          rounded="12px"
+          aria-label="Go Back"
+          bg="gradient.ui.2-5"
+          color="ui.90"
+          border="1px solid"
+          borderColor="ui.20"
+          icon={<MailIcon boxSize={6} />}
         />
-        <FollowButton/>
+        <FollowButton />
       </HStack>
     </HStack>
   )

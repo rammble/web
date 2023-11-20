@@ -1,39 +1,38 @@
-import {GetServerSideProps, NextPage} from 'next'
-import {Meta} from 'src/components/meta'
-import {VStack} from '@chakra-ui/layout'
-import {Layout} from 'src/layouts/Layout'
-import {FeedPost} from 'src/components/FeedPost'
-import {ProfileHeroBanner} from 'src/components/ProfileHero/ProfileHeroBanner'
-import {ProfileHeroInfo} from 'src/components/ProfileHero/ProfileHeroInfo'
-import {ProfileHeroBioAndInfo} from 'src/components/ProfileHero/ProfileHeroBioAndInfo'
-import {ProfileFeedTabs} from 'src/components/ProfileFeedTabs'
-import {FakeFeedPosts} from "../index";
+import { VStack } from '@chakra-ui/layout'
+import { GetServerSideProps, NextPage } from 'next'
+import { FeedPost } from 'src/components/FeedPost'
+import { Meta } from 'src/components/meta'
+import { ProfileFeedTabs } from 'src/components/ProfileFeedTabs'
+import { ProfileHeroBanner } from 'src/components/ProfileHero/ProfileHeroBanner'
+import { ProfileHeroBioAndInfo } from 'src/components/ProfileHero/ProfileHeroBioAndInfo'
+import { ProfileHeroInfo } from 'src/components/ProfileHero/ProfileHeroInfo'
+import { FakeFeedPosts } from 'src/utils/placeholder.data'
 
 const ProfilePage: NextPage<{
   params: { username: string }
-}> = ({params}) => (
-    <>
-      <Meta/>
-      <VStack w="100%" spacing={0} pt="calc(64px + 8px)" px={2} pb={2}>
-        <VStack w="100%" spacing={0}>
-          <ProfileHeroBanner/>
-          <VStack w="100%" spacing={4}>
-            <ProfileHeroInfo username={params.username}/>
-            <ProfileHeroBioAndInfo/>
-            <VStack w="100%" spacing={1}>
-              <ProfileFeedTabs/>
-              {FakeFeedPosts.map((d, i) => {
-                return <FeedPost key={i} data={d}/>
-              })}
-            </VStack>
+}> = ({ params }) => (
+  <>
+    <Meta />
+    <VStack w="100%" spacing={0} pt="calc(64px + 8px)" px={2} pb={2}>
+      <VStack w="100%" spacing={0}>
+        <ProfileHeroBanner />
+        <VStack w="100%" spacing={4}>
+          <ProfileHeroInfo username={params.username} />
+          <ProfileHeroBioAndInfo />
+          <VStack w="100%" spacing={1}>
+            <ProfileFeedTabs />
+            {FakeFeedPosts.map((d, i) => {
+              return <FeedPost key={i} data={d} />
+            })}
           </VStack>
         </VStack>
       </VStack>
-    </>
+    </VStack>
+  </>
 )
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {params} = context
+  const { params } = context
 
   const username = params?.username
 

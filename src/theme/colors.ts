@@ -1,4 +1,4 @@
-import { ChakraTheme } from '@chakra-ui/react'
+import { ChakraTheme } from '@chakra-ui/theme'
 
 export const colors = {
   brand: '#49A0EE',
@@ -30,6 +30,7 @@ export const colors = {
   'ui.80': '#F6FAFFCC',
   'ui.90': '#F6FAFFE6',
   'ui.100': '#F6FAFFFF',
+  // NOTE: Stands for Negative UI
   nui: '#070707',
   'nui.5': '#0707071F',
   'nui.10': '#07070733',

@@ -14,6 +14,8 @@ import {
   PopoverTrigger,
 } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
+import { EditorRenderer } from 'src/components/EditorRenderer'
+import { transitions } from 'src/components/motion'
 import { PostOptionButtons } from './PostOptionButtons'
 import { Textarea } from '@chakra-ui/textarea'
 import { Flex, HStack, Text } from '@chakra-ui/layout'
@@ -28,42 +30,47 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
   onClose,
   children,
 }) => {
+  const [content, setContent] = useState('')
   const [count, setCount] = useState(0)
   const inputFieldRef = useRef()
+
+  console.log(content)
 
   return (
     <Popover
       onClose={onClose}
       isOpen={isOpen}
-      initialFocusRef={inputFieldRef}
-      size={'xl'}
       matchWidth
-      strategy="absolute"
+      strategy="fixed"
       gutter={36}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
-      <PopoverContent border={"none"} width="100%" borderRadius={16} bg={'blurp.darker'}>
+      <PopoverContent
+        motionProps={{
+          transition: transitions.fast,
+        }}
+        initial={{
+          y: -32,
+          opacity: 0,
+          scale: 1,
+        }}
+        variants={{
+          enter: {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            transition: transitions.fast,
+          },
+          exit: {
+            y: -32,
+            scale: 1,
+            opacity: 0,
+            transition: transitions.fast,
+          },
+        }}
+      >
         <PopoverBody p={3}>
-          <Textarea
-            ref={inputFieldRef}
-            w="100%"
-            h="100%"
-            bg="transparent"
-            maxLength={140}
-            overflowY={'hidden'}
-            fontSize={16}
-            fontWeight={400}
-            outline={'0.2px solid'}
-            outlineColor={'brand'}
-            borderRadius={9}
-            onChange={(e) => setCount(e.target.value.length)}
-            _placeholder={{
-              color: 'ui.40',
-              fontStyle: 'italic',
-            }}
-            placeholder="Ramble..."
-            resize="none"
-          />
+          <EditorRenderer editable content={content} onUpdate={setContent} />
           <HStack mt={2} justifyContent={'space-between'}>
             <HStack>
               <Text cursor={'pointer'} fontSize={12} color={'brand.darker'}>

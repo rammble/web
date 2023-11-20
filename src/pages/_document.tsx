@@ -1,13 +1,20 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-export default function Document() {
+import { FC } from 'react'
 
-  return (
-    <Html lang="en">
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
-}
+const Document: FC = () => (
+  <Html lang="en">
+    <Head>
+      <script
+        src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js"
+        crossOrigin="anonymous"
+      ></script>
+      <meta charSet="utf-8" />
+    </Head>
+    <body>
+      <Main />
+      <NextScript />
+    </body>
+  </Html>
+)
+
+export default Document

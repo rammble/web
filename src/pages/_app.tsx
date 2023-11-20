@@ -1,28 +1,17 @@
+import 'src/styles/emoji.style.css'
 import 'src/styles/loading.style.css'
 
+import type { FC } from 'react'
 import type { AppProps } from 'next/app'
-import {
-  ChakraBaseProvider, extendTheme,
-} from '@chakra-ui/react'
-import { rubik, theme, urbanist } from 'src/theme'
-import {Layout} from "../layouts/Layout";
+import { Layout } from 'src/layouts/Layout'
+import { AppProvider } from 'src/providers/AppProvider'
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <style jsx global>
-        {`
-          :root {
-            --font-rubik: ${rubik.style.fontFamily};
-            --font-urbanist: ${urbanist.style.fontFamily};
-          }
-        `}
-      </style>
-      <ChakraBaseProvider theme={extendTheme(theme)}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraBaseProvider>
-    </>
-  )
-}
+const App: FC<AppProps> = ({ Component, pageProps }) => (
+  <AppProvider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </AppProvider>
+)
+
+export default App
