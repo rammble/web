@@ -1,14 +1,14 @@
 import {FC} from "react";
 import {Box, HStack} from "@chakra-ui/layout";
 import {Button, IconButton} from "@chakra-ui/button";
-import {ThreeDotsIcon} from "../../icons/ThreeDotsIcon";
 import {Icon, Menu, MenuButton, MenuItem, MenuList, MenuDivider, IconProps} from "@chakra-ui/react";
-import {TrashIcon} from "../../icons/TrashIcon";
-import {ThumbsDownIcon} from "../../icons/ThumbsDownIcon";
-import {EmptyStarIcon} from "../../icons/EmptyStarIcon";
-import {FilledStarIcon} from "../../icons/FilledStarIcon";
-import {AddUserIcon} from "../../icons/AddUserIcon";
-import {WarningIcon} from "../../icons/WarningIcon";
+import {ThreeDotsIcon} from "src/icons/ThreeDotsIcon";
+import {TrashIcon} from "src/icons/TrashIcon";
+import {ThumbsDownIcon} from "src/icons/ThumbsDownIcon";
+import {EmptyStarIcon} from "src/icons/EmptyStarIcon";
+import {FilledStarIcon} from "src/icons/FilledStarIcon";
+import {AddUserIcon} from "src/icons/AddUserIcon";
+import {WarningIcon} from "src/icons/WarningIcon";
 
 const options = [
   {
@@ -42,7 +42,7 @@ const options = [
 
 export const FeedMenu: FC = ({}) => {
   return (
-      <Menu  isLazy>
+      <Menu isLazy>
         <MenuButton
             variant={'unstyled'}
             as={IconButton}
@@ -58,7 +58,7 @@ export const FeedMenu: FC = ({}) => {
               color: 'ui',
             }}
         />
-        <MenuList borderRadius={16} bg={'blurp.darker'} p={3} zIndex={100}>
+        <MenuList border={'none'}  borderRadius={16} bg={'blurp.darker'} p={3} zIndex={100}>
           {options.map((d, i) => {
             return <Box key={i}>
               {d.isDangerous && <MenuDivider bg={'ui.5'} mb={1} mt={1}/>}

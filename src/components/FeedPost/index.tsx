@@ -5,7 +5,7 @@ import {Link} from '@chakra-ui/next-js'
 import {FeedButtons} from "./FeedButtons";
 import {FeedMenu} from "./FeedMenu";
 import {FeedText} from "./FeedText";
-import {FeedProps} from "../../pages/index";
+import {FeedProps} from "src/pages/index";
 import {useRouter} from "next/router";
 import {UserAvatar} from "../UserAvatar/index";
 import {CreatePost} from "../CreatePost/index";

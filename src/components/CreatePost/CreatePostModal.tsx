@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, RefObject, useEffect, useState } from 'react'
+import {FC, PropsWithChildren, RefObject, useEffect, useRef, useState} from 'react'
 import {
   Modal,
   ModalBody,
@@ -29,20 +29,23 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
   children,
 }) => {
   const [count, setCount] = useState(0)
+  const inputFieldRef = useRef()
 
   return (
     <Popover
       onClose={onClose}
       isOpen={isOpen}
+      initialFocusRef={inputFieldRef}
       size={'xl'}
       matchWidth
       strategy="absolute"
       gutter={36}
     >
       <PopoverTrigger>{children}</PopoverTrigger>
-      <PopoverContent width="100%" borderRadius={16} bg={'blurp.darker'}>
+      <PopoverContent border={"none"} width="100%" borderRadius={16} bg={'blurp.darker'}>
         <PopoverBody p={3}>
           <Textarea
+            ref={inputFieldRef}
             w="100%"
             h="100%"
             bg="transparent"

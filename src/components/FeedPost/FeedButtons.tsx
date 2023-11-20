@@ -1,8 +1,8 @@
 import {FC} from "react";
 import {HStack} from "@chakra-ui/layout";
 import {IconButton} from "@chakra-ui/button";
-import {RepostIcon} from "../../icons/RepostIcon";
-import {ShareIcon} from "../../icons/ShareIcon";
+import {RepostIcon} from "src/icons/RepostIcon";
+import {ShareIcon} from "src/icons/ShareIcon";
 import {LikeButton} from "../LikeButton/index";
 
 export interface FeedButtonsProps {

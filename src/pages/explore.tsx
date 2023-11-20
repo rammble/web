@@ -10,7 +10,7 @@ import { FeedPost } from 'src/components/FeedPost'
 import { AvatarCarousel } from 'src/components/AvatarCarousel'
 import {FakeFeedPosts} from "./index";
 
-const Explore: FC = () => {
+const ExplorePage: FC = () => {
   const [query, setQuery] = useState<string>('')
 
   const isEmpty = query.length === 0
@@ -114,4 +114,4 @@ const Explore: FC = () => {
   )
 }
 
-export default Explore
+export default ExplorePage

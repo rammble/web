@@ -2,16 +2,16 @@ import {FC} from "react";
 import {CreatePostModalProps} from "./CreatePostModal";
 import {HStack} from "@chakra-ui/layout";
 import {IconButton} from "@chakra-ui/button";
-import {AttachmentIcon} from "../../icons/AttachmentIcon";
-import {GifIcon} from "../../icons/GifIcon";
-import {PollIcon} from "../../icons/PollIcon";
-import {EmoteIcon} from "../../icons/EmoteIcon";
-import {CalenderIcon} from "../../icons/CalenderIcon";
-import {MicrophoneIcon} from "../../icons/MicrophoneIcon";
-import {EmojiModal} from "../Emojis/index";
+import {AttachmentIcon} from "src/icons/AttachmentIcon";
+import {GifIcon} from "src/icons/GifIcon";
+import {EmoteIcon} from "src/icons/EmoteIcon";
+import {CalenderIcon} from "src/icons/CalenderIcon";
+import {MicrophoneIcon} from "src/icons/MicrophoneIcon";
+import {PollIcon} from "src/icons/PollIcon";
 export interface PostOptionButtonsProps {
 
 }
+
 
 export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
   return (
