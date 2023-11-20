@@ -9,9 +9,7 @@ export const urbanist = Urbanist({ subsets: ['latin'] })
 
 export const theme = extendBaseTheme({
   colors,
-  components: {
-
-  },
+  components: {},
   fonts: {
     heading: 'var(--font-urbanist)',
     body: 'var(--font-rubik)',
@@ -33,7 +31,7 @@ export const theme = extendBaseTheme({
         fontFamily: 'body',
       },
     },
-  }
+  },
 } satisfies Partial<ChakraTheme>)
 
 export default theme

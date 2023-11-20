@@ -8,7 +8,7 @@ import { CloseIcon } from 'src/icons/CloseIcon'
 import { ContentCategory } from 'src/components/ContentCategory'
 import { AvatarCarousel } from 'src/components/AvatarCarousel'
 import { FeedPost } from 'src/components/FeedPost'
-import {FakeFeedPosts} from "./index";
+import { FakeFeedPosts } from './index'
 
 const Friends: FC = () => (
   <VStack px={4} pt={2} pb={4} w="100%" align="start" spacing={6}>
@@ -22,7 +22,7 @@ const Friends: FC = () => (
     <ContentCategory title="Recent Activity">
       <VStack w="100%" spacing={1} overflow="hidden">
         {FakeFeedPosts.map((d, i) => {
-          return <FeedPost key={i} data={d}/>
+          return <FeedPost key={i} data={d} />
         })}
       </VStack>
     </ContentCategory>
