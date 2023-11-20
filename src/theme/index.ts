@@ -1,6 +1,8 @@
 import { Rubik, Urbanist } from 'next/font/google'
 import { ChakraTheme, extendBaseTheme } from '@chakra-ui/react'
 import { colors } from 'src/theme/colors'
+import { sizes } from 'src/theme/sizes'
+import { spacing } from 'src/theme/spacing'
 
 export const rubik = Rubik({ subsets: ['latin'] })
 export const urbanist = Urbanist({ subsets: ['latin'] })
@@ -11,6 +13,8 @@ export const theme = extendBaseTheme({
     heading: 'var(--font-urbanist)',
     body: 'var(--font-rubik)',
   },
+  space: spacing,
+  sizes: { ...spacing, ...sizes },
   styles: {
     global: {
       '*': {
