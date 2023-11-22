@@ -1,10 +1,4 @@
 import {
-  emojis,
-  emojiToShortcode,
-  shortcodeToEmoji,
-} from '@tiptap-pro/extension-emoji'
-import { PluginKey } from '@tiptap/pm/state'
-import {
   mergeAttributes,
   Node,
   nodeInputRule,
@@ -59,7 +53,9 @@ export const TwemojiExtension = Node.create({
         type: this.type,
         getAttributes: (match) => {
           const name = match[2]
-          const emoji = shortcodeToEmoji(name, emojis)
+          // const emoji = shortcodeToEmoji(name, emojis)
+          // TODO: MAKE AN EMOJI MAPPING OR FIND A PUBLICLY AVAILABLE ONE
+          const emoji = { emoji: null }
           return {
             name,
             emoji: emoji?.emoji ?? 'unknown',
