@@ -1560,21 +1560,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap-pro/extension-emoji@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@tiptap-pro/extension-emoji@npm:2.4.0"
-  dependencies:
-    emoji-regex: "npm:^10.0.0"
-    emojibase-data: "npm:^7.0.1"
-    is-emoji-supported: "npm:^0.0.5"
-  peerDependencies:
-    "@tiptap/core": ^2.0.0
-    "@tiptap/pm": ^2.0.0
-    "@tiptap/suggestion": ^2.0.0
-  checksum: a105ed7f07c95ae23d2cee7d21c0fb9ebdc9d2b49bfa9774af8a42d1b7357a17345af5437956bd5dc92579e0bdb8432d1b76b139fd7764d8ca8494f34219a556
-  languageName: node
-  linkType: hard
-
 "@tiptap/core@npm:^2.1.12":
   version: 2.1.12
   resolution: "@tiptap/core@npm:2.1.12"
@@ -2159,22 +2144,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emoji-regex@npm:^10.0.0":
-  version: 10.3.0
-  resolution: "emoji-regex@npm:10.3.0"
-  checksum: b4838e8dcdceb44cf47f59abe352c25ff4fe7857acaf5fb51097c427f6f75b44d052eb907a7a3b86f86bc4eae3a93f5c2b7460abe79c407307e6212d65c91163
-  languageName: node
-  linkType: hard
-
-"emojibase-data@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "emojibase-data@npm:7.0.1"
-  peerDependencies:
-    emojibase: "*"
-  checksum: 1fd3e00e621f07f45925c86913e9b9311cd28e0bfe0e2df55ea3910a2232e0cd1bfe4514210872ed4cd5075ea656cc18ec9b3affdd75ca5bdae32b3ce4e54258
-  languageName: node
-  linkType: hard
-
 "entities@npm:~3.0.1":
   version: 3.0.1
   resolution: "entities@npm:3.0.1"
@@ -2375,13 +2344,6 @@ __metadata:
   dependencies:
     hasown: "npm:^2.0.0"
   checksum: 2cba9903aaa52718f11c4896dabc189bab980870aae86a62dc0d5cedb546896770ee946fb14c84b7adf0735f5eaea4277243f1b95f5cefa90054f92fbcac2518
-  languageName: node
-  linkType: hard
-
-"is-emoji-supported@npm:^0.0.5":
-  version: 0.0.5
-  resolution: "is-emoji-supported@npm:0.0.5"
-  checksum: e1f0c018c279941327487fd2664e74281eef141f1c09c6cda691fcb6c1739bf1638b87d2afcf455f45079eae0842b03e17d8f3866f57577653a51e8123aa9a97
   languageName: node
   linkType: hard
 
@@ -2916,7 +2878,6 @@ __metadata:
     "@chakra-ui/react": "npm:^2.8.1"
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
-    "@tiptap-pro/extension-emoji": "npm:^2.4.0"
     "@tiptap/pm": "npm:^2.1.12"
     "@tiptap/react": "npm:^2.1.12"
     "@tiptap/starter-kit": "npm:^2.1.12"
