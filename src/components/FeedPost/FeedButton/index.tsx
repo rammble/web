@@ -1,9 +1,11 @@
 import { Button } from '@chakra-ui/button'
 import { useBoolean } from '@chakra-ui/hooks'
 import { Box, HStack, Text } from '@chakra-ui/layout'
+import { As } from '@chakra-ui/react'
 import { FC, ReactElement } from 'react'
 
 export interface FeedButtonProps {
+  as?: As
   icon: ReactElement
   label?: string
   ariaLabel: string
@@ -13,6 +15,7 @@ export interface FeedButtonProps {
 }
 
 export const FeedButton: FC<FeedButtonProps> = ({
+  as,
   icon,
   label,
   ariaLabel,
@@ -24,8 +27,9 @@ export const FeedButton: FC<FeedButtonProps> = ({
 
   return (
     <Button
+      as={as}
       variant="unstyled"
-      color={isActive ? color : 'ui'}
+      color={isActive ? color : 'ui.60'}
       _hover={{ color }}
       aria-label={ariaLabel}
       pos="relative"

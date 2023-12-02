@@ -24,7 +24,7 @@ export const LikeButton: FC<LikeButtonProps> = ({
     <Button
       aria-label={ariaLabel}
       variant="unstyled"
-      color={isActive ? 'accent.red' : 'ui'}
+      color={isActive ? 'accent.red' : 'ui.60'}
       _hover={{ color: 'accent.red' }}
       pos="relative"
       zIndex={1}

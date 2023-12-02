@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { Box, HStack } from '@chakra-ui/layout'
 import { Button, IconButton } from '@chakra-ui/button'
+import { FeedButton } from 'src/components/FeedPost/FeedButton'
+import { ShareIcon } from 'src/icons/ShareIcon'
 import { ThreeDotsIcon } from '../../icons/ThreeDotsIcon'
 import {
   Icon,
@@ -10,6 +12,7 @@ import {
   MenuList,
   MenuDivider,
   IconProps,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { TrashIcon } from '../../icons/TrashIcon'
 import { ThumbsDownIcon } from '../../icons/ThumbsDownIcon'
@@ -20,64 +23,103 @@ import { WarningIcon } from '../../icons/WarningIcon'
 
 const options = [
   {
-    title: 'Unpin from Profile',
-    icon: FilledStarIcon,
-  },
-  {
-    title: 'Pin to Profile',
+    type: 'stateful',
+    title: 'Pin to profile',
     icon: EmptyStarIcon,
+    color: 'brand',
+    active: {
+      title: 'Unpin from profile',
+      icon: FilledStarIcon,
+    },
   },
   {
+    type: 'item',
     title: 'Not Interested in this Post',
     icon: ThumbsDownIcon,
   },
   {
+    type: 'item',
     title: 'Follow @user',
     icon: AddUserIcon,
   },
   {
+    type: 'item',
     title: 'Report Post',
     icon: WarningIcon,
-    isDangerous: true,
   },
   {
+    type: 'splitter',
+  },
+  {
+    type: 'dangerous',
     title: 'Delete Post',
-    isDangerous: true,
     icon: TrashIcon,
   },
 ]
 
 export const FeedMenu: FC = ({}) => {
+  const disclosure = useDisclosure()
+
   return (
-    <Menu isLazy>
-      <MenuButton
-        variant={'unstyled'}
-        as={IconButton}
-        aria-label="Menu"
-        color="ui.40"
-        icon={
-          <ThreeDotsIcon boxSize="32px" transition="all 0.05s ease-in-out" />
-        }
-        _active={{
-          color: 'ui',
-        }}
+    <Menu isLazy {...disclosure}>
+      <FeedButton
+        as={MenuButton}
+        icon={<ThreeDotsIcon boxSize={5} />}
+        ariaLabel="Menu"
+        color="ui.100"
+        onClick={disclosure.onToggle}
+        isActive={disclosure.isOpen}
       />
-      <MenuList borderRadius={16} bg={'blurp.darker'} p={3} zIndex={100}>
-        {options.map((d, i) => {
-          return (
-            <Box key={i}>
-              {d.isDangerous && <MenuDivider bg={'ui.5'} mb={1} mt={1} />}
+      <MenuList
+        borderRadius={16}
+        bg="blurp.darker"
+        p={2}
+        zIndex={20}
+        border="none"
+      >
+        {options.map((item, i) => {
+          if (item.type === 'splitter') {
+            return <MenuDivider key={i} borderColor="ui.5" borderWidth={2} />
+          }
+
+          if (item.type === 'item' || item.type === 'dangerous') {
+            return (
               <MenuItem
-                bg={'none'}
-                icon={<Icon boxSize={5} as={d.icon} />}
-                p={2}
-                borderRadius={5}
-                _hover={{ bg: d?.isDangerous ? 'accent.red' : 'ui.3' }}
-                _active={{ bg: 'blurp.lighter' }}
+                bg="unset"
+                key={i}
+                color={item.type === 'dangerous' ? 'accent.red' : 'ui.60'}
+                _hover={{
+                  bg: 'ui.3',
+                  color: item.type === 'dangerous' ? 'accent.red' : 'ui.100',
+                }}
+                icon={<Icon as={item.icon} boxSize={5} color="inherit" />}
+                py={2}
+                pl={3}
+                pr={4}
+                borderRadius={8}
               >
-                {d.title}
+                {item.title}
               </MenuItem>
-            </Box>
+            )
+          }
+
+          return (
+            <MenuItem
+              bg="unset"
+              color="ui.60"
+              _hover={{
+                bg: 'ui.3',
+                color: item.color,
+              }}
+              key={i}
+              icon={<Icon as={item.icon} boxSize={5} />}
+              py={2}
+              pl={3}
+              pr={4}
+              borderRadius={8}
+            >
+              {item.title}
+            </MenuItem>
           )
         })}
       </MenuList>
