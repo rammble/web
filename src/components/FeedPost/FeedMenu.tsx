@@ -1,25 +1,21 @@
-import { FC } from 'react'
-import { Box, HStack } from '@chakra-ui/layout'
-import { Button, IconButton } from '@chakra-ui/button'
-import { FeedButton } from 'src/components/FeedPost/FeedButton'
-import { ShareIcon } from 'src/icons/ShareIcon'
-import { ThreeDotsIcon } from '../../icons/ThreeDotsIcon'
 import {
   Icon,
   Menu,
   MenuButton,
+  MenuDivider,
   MenuItem,
   MenuList,
-  MenuDivider,
-  IconProps,
   useDisclosure,
 } from '@chakra-ui/react'
-import { TrashIcon } from '../../icons/TrashIcon'
-import { ThumbsDownIcon } from '../../icons/ThumbsDownIcon'
-import { EmptyStarIcon } from '../../icons/EmptyStarIcon'
-import { FilledStarIcon } from '../../icons/FilledStarIcon'
-import { AddUserIcon } from '../../icons/AddUserIcon'
-import { WarningIcon } from '../../icons/WarningIcon'
+import { FC } from 'react'
+import { FeedButton } from 'src/components/FeedPost/FeedButton'
+import { AddUserIcon } from 'src/icons/AddUserIcon'
+import { EmptyStarIcon } from 'src/icons/EmptyStarIcon'
+import { FilledStarIcon } from 'src/icons/FilledStarIcon'
+import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
+import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
+import { TrashIcon } from 'src/icons/TrashIcon'
+import { WarningIcon } from 'src/icons/WarningIcon'
 
 const options = [
   {
@@ -33,8 +29,11 @@ const options = [
     },
   },
   {
+    type: 'splitter',
+  },
+  {
     type: 'item',
-    title: 'Not Interested in this Post',
+    title: 'Not Interested in this ramble',
     icon: ThumbsDownIcon,
   },
   {
@@ -44,7 +43,7 @@ const options = [
   },
   {
     type: 'item',
-    title: 'Report Post',
+    title: 'Report ramble',
     icon: WarningIcon,
   },
   {
@@ -52,7 +51,7 @@ const options = [
   },
   {
     type: 'dangerous',
-    title: 'Delete Post',
+    title: 'Delete ramble',
     icon: TrashIcon,
   },
 ]
@@ -61,7 +60,7 @@ export const FeedMenu: FC = ({}) => {
   const disclosure = useDisclosure()
 
   return (
-    <Menu isLazy {...disclosure}>
+    <Menu isLazy {...disclosure} offset={[-20, 8]}>
       <FeedButton
         as={MenuButton}
         icon={<ThreeDotsIcon boxSize={5} />}
@@ -112,7 +111,7 @@ export const FeedMenu: FC = ({}) => {
                 color: item.color,
               }}
               key={i}
-              icon={<Icon as={item.icon} boxSize={5} />}
+              icon={<Icon as={item.icon} boxSize={5} color="inherit" />}
               py={2}
               pl={3}
               pr={4}
