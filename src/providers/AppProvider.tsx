@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import { rubik, theme, urbanist } from 'src/theme'
 import { ChakraBaseProvider } from '@chakra-ui/react'
+import { AppApolloProvider } from 'src/providers/ApolloProvider'
 
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
   <>
@@ -12,6 +13,8 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
         }
       `}
     </style>
-    <ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
+    <AppApolloProvider>
+      <ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
+    </AppApolloProvider>
   </>
 )
