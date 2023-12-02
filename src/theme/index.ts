@@ -1,4 +1,4 @@
-import { ChakraTheme, extendBaseTheme } from '@chakra-ui/react'
+import { ChakraTheme, extendBaseTheme, extendTheme } from '@chakra-ui/react'
 import { Rubik, Urbanist } from 'next/font/google'
 import { DEFAULT_DURATION, DEFAULT_EASING } from 'src/components/motion'
 import { colors } from 'src/theme/colors'
@@ -9,7 +9,7 @@ import { spacing } from 'src/theme/spacing'
 export const rubik = Rubik({ subsets: ['latin'] })
 export const urbanist = Urbanist({ subsets: ['latin'] })
 
-export const theme = extendBaseTheme({
+export const theme = extendTheme({
   config: {
     cssVarPrefix: 'ram',
     initialColorMode: 'dark',

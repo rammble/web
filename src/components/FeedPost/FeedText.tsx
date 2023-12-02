@@ -5,6 +5,6 @@ export interface FeedTextProps {
   text: string
 }
 
-export const FeedText: FC<FeedTextProps> = ({ text }) => {
-  return <EditorRenderer content={text} />
-}
+export const FeedText: FC<FeedTextProps> = ({ text }) => (
+  <EditorRenderer content={text} />
+)

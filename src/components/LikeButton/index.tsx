@@ -3,55 +3,82 @@ import { Button } from '@chakra-ui/button'
 import { EmptyHeartIcon } from 'src/icons/EmptyHeartIcon'
 import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
 import { useBoolean } from '@chakra-ui/hooks'
-import { HStack, Text } from '@chakra-ui/layout'
+import { Box, HStack, Text } from '@chakra-ui/layout'
 
 export interface LikeButtonProps {
-  likes: Number
+  ariaLabel: string
+  label?: string
+  isActive?: boolean
+  onClick?: () => void
 }
 
-export const LikeButton: FC<LikeButtonProps> = ({ likes }) => {
-  const [isLiked, setIsLiked] = useBoolean(false)
+export const LikeButton: FC<LikeButtonProps> = ({
+  label,
+  ariaLabel,
+  isActive,
+  onClick = () => {},
+}) => {
+  const [isHovering, setIsHovering] = useBoolean(false)
 
   return (
     <Button
-      variant={'unstyled'}
-      color={isLiked ? 'brand' : 'ui'}
-      _hover={{ color: 'brand' }}
-      aria-label="Like"
+      aria-label={ariaLabel}
+      variant="unstyled"
+      color={isActive ? 'accent.red' : 'ui'}
+      _hover={{ color: 'accent.red' }}
       pos="relative"
-      onClick={setIsLiked.toggle}
+      zIndex={1}
+      onClick={onClick}
+      onMouseEnter={setIsHovering.on}
+      onMouseLeave={setIsHovering.off}
     >
-      <HStack>
+      <HStack zIndex={1} pr={label ? 1 : 0}>
         <EmptyHeartIcon
-          boxSize="32px"
-          transform={`scale(${isLiked ? 0 : 1})`}
-          opacity={isLiked ? 0 : 1}
+          boxSize={5}
+          transform={`scale(${isActive ? 0 : 1})`}
+          opacity={isActive ? 0 : 1}
           transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1.5)"
         />
         <FilledHeartIcon
           pos="absolute"
           inset={0}
-          boxSize="32px"
-          color="brand"
-          transform={`scale(${isLiked ? 1 : 0})`}
-          opacity={isLiked ? 1 : 0}
+          boxSize={5}
+          color="accent.red"
+          transform={`scale(${isActive ? 1 : 0})`}
+          opacity={isActive ? 1 : 0}
           transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1.5)"
         />
         <FilledHeartIcon
           pos="absolute"
           inset={0}
-          boxSize="32px"
-          color="brand"
-          transform={`scale(${isLiked ? 2 : 0})`}
-          opacity={isLiked ? 0 : 1}
+          boxSize={5}
+          color="accent.red"
+          transform={`scale(${isActive ? 2 : 0})`}
+          opacity={isActive ? 0 : 1}
           transitionDelay="0.2s"
           transition={`all ${
-            isLiked ? 0.22 : 0
+            isActive ? 0.22 : 0
           }s cubic-bezier(0.14, 0.91, 0.6, 1)`}
         />
-        <Text transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1)">
-          {likes.toLocaleString()}
-        </Text>
+        <Box
+          rounded="full"
+          zIndex={-1}
+          pos="absolute"
+          inset={-2}
+          h={9}
+          bg="accent.red"
+          transform={`scale(${isHovering ? 1 : 0})`}
+          opacity={isHovering ? 0.05 : 0}
+          transition="all 0.08s cubic-bezier(0.04, 0.91, 0.6, 1)"
+        />
+        {label && (
+          <Text
+            fontSize={14}
+            transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1)"
+          >
+            {label}
+          </Text>
+        )}
       </HStack>
     </Button>
   )

@@ -1,14 +1,13 @@
-import { FC } from 'react'
-import { CreatePostModalProps } from './CreatePostModal'
-import { HStack } from '@chakra-ui/layout'
 import { IconButton } from '@chakra-ui/button'
+import { HStack } from '@chakra-ui/layout'
+import { FC } from 'react'
 import { AttachmentIcon } from '../../icons/AttachmentIcon'
-import { GifIcon } from '../../icons/GifIcon'
-import { PollIcon } from '../../icons/PollIcon'
-import { EmoteIcon } from '../../icons/EmoteIcon'
 import { CalenderIcon } from '../../icons/CalenderIcon'
+import { EmoteIcon } from '../../icons/EmoteIcon'
+import { GifIcon } from '../../icons/GifIcon'
 import { MicrophoneIcon } from '../../icons/MicrophoneIcon'
-import { EmojiModal } from '../Emojis/index'
+import { PollIcon } from '../../icons/PollIcon'
+
 export interface PostOptionButtonsProps {}
 
 

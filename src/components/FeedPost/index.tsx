@@ -1,3 +1,4 @@
+import { useBoolean } from '@chakra-ui/hooks'
 import { Image } from '@chakra-ui/image'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
@@ -19,6 +20,9 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
   const onUserProfile = router.pathname.includes('/user')
 
   const isPinnedAndUserProfile = isPinned && onUserProfile
+
+  const [isLiked, { toggle: toggleIsLiked }] = useBoolean(false)
+  const [isReposted, { toggle: toggleIsReposted }] = useBoolean(false)
 
   return (
     <HStack alignItems={'flex-start'} w={'100%'} gap={4} m={1}>
@@ -84,7 +88,17 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
               })}
             </HStack>
           </VStack>
-          <FeedButtons likes={data.post.likes} />
+          <FeedButtons
+            likeCount={69}
+            commentCount={420}
+            repostCount={1124122}
+            onLike={toggleIsLiked}
+            onRepost={toggleIsReposted}
+            onComment={() => console.log('comment')}
+            onShare={() => console.log('share')}
+            isLiked={isLiked}
+            isReposted={isReposted}
+          />
         </VStack>
       </HStack>
     </HStack>

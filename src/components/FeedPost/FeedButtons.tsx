@@ -1,40 +1,77 @@
+import { Flex, SimpleGrid } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { HStack } from '@chakra-ui/layout'
-import { IconButton } from '@chakra-ui/button'
-import { RepostIcon } from '../../icons/RepostIcon'
-import { ShareIcon } from '../../icons/ShareIcon'
-import { LikeButton } from '../LikeButton/index'
+import { FeedButton } from 'src/components/FeedPost/FeedButton'
+import { LikeButton } from 'src/components/LikeButton'
+import { CommentIcon } from 'src/icons/CommentIcon'
+import { RepostIcon } from 'src/icons/RepostIcon'
+import { ShareIcon } from 'src/icons/ShareIcon'
 
 export interface FeedButtonsProps {
-  likes: number
+  likeCount: number
+  commentCount: number
+  repostCount: number
+
+  onLike: () => void
+  onComment: () => void
+  onRepost: () => void
+  onShare: () => void
+
+  isLiked?: boolean
+  isReposted?: boolean
 }
 
-export const FeedButtons: FC<FeedButtonsProps> = ({ likes }) => {
+const ifZeroLocaleStr = (count: number) =>
+  count === 0 ? undefined : count.toLocaleString()
+
+export const FeedButtons: FC<FeedButtonsProps> = ({
+  likeCount = 0,
+  commentCount = 0,
+  repostCount = 0,
+  onLike,
+  onComment,
+  onRepost,
+  onShare,
+
+  isLiked,
+  isReposted,
+}) => {
   return (
-    <HStack w="full" justify="space-between">
-      <LikeButton likes={likes} />
-      <HStack spacing={4}>
-        <IconButton
-          variant={'unstyled'}
-          aria-label="Repost"
-          color="ui.60"
-          icon={
-            <RepostIcon boxSize="32px" transition="all 0.05s ease-in-out" />
-          }
-          _active={{
-            color: 'brand',
-          }}
+    <SimpleGrid w="full" columns={4} spacing={0}>
+      <Flex justify="start">
+        <LikeButton
+          label={ifZeroLocaleStr(likeCount)}
+          ariaLabel="Like"
+          onClick={onLike}
+          isActive={isLiked}
         />
-        <IconButton
-          variant={'unstyled'}
-          aria-label="Share"
-          color="ui.60"
-          icon={<ShareIcon boxSize="32px" transition="all 0.05s ease-in-out" />}
-          _active={{
-            color: 'brand',
-          }}
+      </Flex>
+      <Flex justify="start">
+        <FeedButton
+          icon={<CommentIcon boxSize={5} />}
+          label={ifZeroLocaleStr(commentCount)}
+          ariaLabel="Comment"
+          color="accent.yellow"
+          onClick={onComment}
         />
-      </HStack>
-    </HStack>
+      </Flex>
+      <Flex justify="start">
+        <FeedButton
+          icon={<RepostIcon boxSize={5} />}
+          label={ifZeroLocaleStr(repostCount)}
+          ariaLabel="Repost"
+          color="accent.green"
+          onClick={onRepost}
+          isActive={isReposted}
+        />
+      </Flex>
+      <Flex justify="end">
+        <FeedButton
+          icon={<ShareIcon boxSize={5} />}
+          ariaLabel="Repost"
+          color="brand"
+          onClick={onShare}
+        />
+      </Flex>
+    </SimpleGrid>
   )
 }
