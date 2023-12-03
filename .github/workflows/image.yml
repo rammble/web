@@ -40,5 +40,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          secrets: |
+          build-args: |
             NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
