@@ -2,6 +2,8 @@
 FROM node:18.12.1-alpine3.17 AS builder
 ENV NODE_ENV production
 
+ARG NODE_AUTH_TOKEN
+
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 
@@ -14,13 +16,14 @@ RUN yarn rebuild && yarn build
 
 # Production image, copy all the files and run next
 FROM node:18.12.1-alpine3.17 AS runner
+ENV NODE_ENV production
 
 ARG WEB_PORT=3042
+ARG NODE_AUTH_TOKEN
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-ENV NODE_ENV production
 WORKDIR /app
 
 # You only need to copy next.config.js if you are NOT using the default configuration
