@@ -8,7 +8,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build-and-push-image:
@@ -41,4 +40,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+            NODE_AUTH_TOKEN=${{ secrets.NPM_ACCESS_TOKEN }}
