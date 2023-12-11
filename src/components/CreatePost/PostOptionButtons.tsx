@@ -10,24 +10,51 @@ import { PollIcon } from '../../icons/PollIcon'
 
 export interface PostOptionButtonsProps {}
 
-
 export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
   return (
     <HStack>
       <IconButton
+        size={'md'}
         icon={<AttachmentIcon boxSize={6} />}
         _hover={{ bg: 'brand.darkest' }}
-        bg={'blurp.lighter'}
+        bg={'blurp.darker'}
         aria-label={'Attach image'}
       />
-      <IconButton icon={<GifIcon boxSize={6} />} aria-label={'Gifs'} />
-      <IconButton icon={<PollIcon boxSize={6} />} aria-label={'Gifs'} />
-      <IconButton icon={<EmoteIcon boxSize={6} />} aria-label={'Emojis'} />
       <IconButton
+        size={'md'}
+        bg={'blurp.darker'}
+        _hover={{ bg: 'brand.darkest' }}
+        icon={<GifIcon boxSize={6} />}
+        aria-label={'Gifs'}
+      />
+      <IconButton
+        size={'md'}
+        bg={'blurp.darker'}
+        _hover={{ bg: 'brand.darkest' }}
+        icon={<PollIcon boxSize={6} />}
+        aria-label={'Gifs'}
+      />
+      <IconButton
+        size={'md'}
+        bg={'blurp.darker'}
+        _hover={{ bg: 'brand.darkest' }}
+        icon={<EmoteIcon boxSize={6} />}
+        aria-label={'Emojis'}
+      />
+      <IconButton
+        size={'md'}
+        bg={'blurp.darker'}
+        _hover={{ bg: 'brand.darkest' }}
         icon={<MicrophoneIcon boxSize={6} />}
         aria-label={'Microphone'}
       />
-      <IconButton icon={<CalenderIcon boxSize={6} />} aria-label={'Calendar'} />
+      <IconButton
+        size={'md'}
+        bg={'blurp.darker'}
+        _hover={{ bg: 'brand.darkest' }}
+        icon={<CalenderIcon boxSize={6} />}
+        aria-label={'Calendar'}
+      />
     </HStack>
   )
 }
