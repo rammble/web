@@ -11,7 +11,13 @@ const variants = {
 
 const smallSize = defineStyle({})
 
-const largeSize = defineStyle({})
+const largeSize = defineStyle({
+  px: 10,
+  py: 3,
+  fontSize: 'md',
+  fontWeight: '500',
+  borderRadius: '3xl',
+})
 
 const sizes = {
   large: largeSize,
