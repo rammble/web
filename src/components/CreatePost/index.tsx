@@ -20,10 +20,10 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
     return (
       <>
         <Input
-          variant={'unstyled'}
+          variant="unstyled"
           onClick={onOpen}
           display="flex"
-          outline={'none'}
+          outline="none"
           type="text"
           placeholder="Ramble about anything..."
           w="100%"
@@ -43,13 +43,13 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
           <HStack>
             <AttachmentIcon
               zIndex={10}
-              cursor={'pointer'}
+              cursor="pointer"
               boxSize="24px"
               color="brand"
             />
             <SendIcon
               zIndex={10}
-              cursor={'pointer'}
+              cursor="pointer"
               boxSize="24px"
               color="brand.darker"
             />
@@ -62,11 +62,6 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
           right={0}
           transition={transitions.fast}
           initial={{ opacity: 0, scale: 0.6 }}
-          /*animate={{
-                opacity: isEmpty ? 0 : 1,
-                scale: isEmpty ? 0.6 : 1,
-                pointerEvents: isEmpty ? 'none' : 'auto',
-              }}*/
         >
           <IconButton
             // onClick={() => setQuery('')}
@@ -87,7 +82,7 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
     return (
       <Flex gap={5}>
         <Text
-          color={'ui.90'}
+          color="ui.90"
           isTruncated
           maxWidth={150}
           fontWeight={700}
@@ -95,7 +90,7 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
         >
           XiG
         </Text>
-        <Text color={'ui.40'} isTruncated maxWidth={300} fontWeight={400}>
+        <Text color="ui.40" isTruncated maxWidth={300} fontWeight={400}>
           Xignotic
         </Text>
       </Flex>
