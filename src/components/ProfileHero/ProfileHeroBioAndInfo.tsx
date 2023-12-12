@@ -2,15 +2,11 @@ import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
 import { LinkIcon } from 'src/icons/LinkIcon'
 import { CalenderIcon } from 'src/icons/CalenderIcon'
 import { FC } from 'react'
-import { FakeProfileCallToAction } from 'src/utils/placeholder.data'
+import { FakeProfileSelfPromoBanner } from 'src/utils/placeholder.data'
 import { Button } from '@chakra-ui/button'
-export interface ProfileHeroBioAndInfoProps {
-  profileCTO?: boolean
-}
+export interface ProfileHeroBioAndInfoProps {}
 
-export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = ({
-  profileCTO,
-}) => {
+export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = ({}) => {
   return (
     <>
       <Text as="p" px={4} fontSize={16} fontWeight={400} lineHeight="normal">
@@ -61,36 +57,7 @@ export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = ({
         flexGrow={0}
         w="100%"
         px={4}
-      >
-        {profileCTO ? (
-          <Box
-            w="full"
-            h={'full'}
-            borderRadius={'2xl'}
-            style={{
-              backgroundImage:
-                'linear-gradient(0deg, rgba(246, 250, 255, 0.05), rgba(246, 250, 255, 0.05)), linear-gradient(125.2deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 99.69%);',
-            }}
-          >
-            <VStack p={4} alignItems="start" spacing={4}>
-              <Text fontWeight={400} color="ui.100" fontSize="xl">
-                {FakeProfileCallToAction.text}
-              </Text>
-              <Text fontWeight={500} color="ui.30">
-                {FakeProfileCallToAction.description}
-              </Text>
-              <HStack spacing={4}>
-                <Button size="large" textColor="black" backgroundColor="ui">
-                  {FakeProfileCallToAction.buttons[0].text}
-                </Button>
-                <Button size="large" textColor="ui.30" backgroundColor="ui.1">
-                  {FakeProfileCallToAction.buttons[1].text}
-                </Button>
-              </HStack>
-            </VStack>
-          </Box>
-        ) : null}
-      </HStack>
+      ></HStack>
       <HStack
         spacing={4}
         fontSize={16}

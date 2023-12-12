@@ -55,7 +55,7 @@ export const FakeFeedPosts = [
   },
 ]
 
-export const FakeProfileCallToAction = {
+export const FakeProfileSelfPromoBanner = {
   text: 'Im offering commissions for #art and #ai',
   description:
     'I can draw anything you want, just contact me! Isnt this just cool? Like holy smokes this is epic.',
