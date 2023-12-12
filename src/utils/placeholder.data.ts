@@ -54,3 +54,19 @@ export const FakeFeedPosts = [
     },
   },
 ]
+
+export const FakeProfileSelfPromoBanner = {
+  text: 'Im offering commissions for #art and #ai',
+  description:
+    'I can draw anything you want, just contact me! Isnt this just cool? Like holy smokes this is epic.',
+  buttons: [
+    {
+      text: 'Contact me',
+      url: 'https://www.google.com',
+    },
+    {
+      text: 'See more',
+      url: 'https://www.google.com',
+    },
+  ],
+}
