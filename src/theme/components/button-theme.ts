@@ -11,6 +11,8 @@ const SelfPromo = defineStyle({
   padding: '8px 32px',
   gap: '10px',
   fontWeight: '500',
+  border: '1px solid',
+  borderColor: 'ui.1',
 })
 
 const variants = {
