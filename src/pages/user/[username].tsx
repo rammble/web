@@ -7,7 +7,6 @@ import { ProfileHeroBioAndInfo } from 'src/components/ProfileHero/ProfileHeroBio
 import { ProfileFeedTabs } from 'src/components/ProfileFeedTabs'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { FeedPost } from 'src/components/FeedPost'
-import { ProfileSelfPromoBanner } from 'src/components/ProfileHero/ProfileSelfPromoBanner'
 
 const ProfilePage: NextPage<{
   params: { username: string }
@@ -20,7 +19,6 @@ const ProfilePage: NextPage<{
         <VStack w="100%" spacing={4}>
           <ProfileHeroInfo username={params.username} />
           <ProfileHeroBioAndInfo />
-          <ProfileSelfPromoBanner />
           <VStack w="100%" spacing={1}>
             <ProfileFeedTabs />
             {FakeFeedPosts.map((d, i) => {

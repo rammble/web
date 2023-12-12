@@ -16,7 +16,7 @@ export const ProfileSelfPromoBanner: FC<ProfileHeroActionProps> = () => {
           'linear-gradient(0deg, rgba(246, 250, 255, 0.05), rgba(246, 250, 255, 0.05)), linear-gradient(125.2deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 99.69%)',
       }}
     >
-      <VStack p={4} alignItems="start" spacing={4}>
+      <VStack p={4} alignItems="start">
         <Text as="span" fontWeight={400} color="ui.100" fontSize="xl">
           {FakeProfileSelfPromoBanner.text}
         </Text>

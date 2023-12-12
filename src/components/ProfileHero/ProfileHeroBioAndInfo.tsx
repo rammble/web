@@ -1,14 +1,13 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
+import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { LinkIcon } from 'src/icons/LinkIcon'
 import { CalenderIcon } from 'src/icons/CalenderIcon'
 import { FC } from 'react'
-import { FakeProfileSelfPromoBanner } from 'src/utils/placeholder.data'
-import { Button } from '@chakra-ui/button'
+import { ProfileSelfPromoBanner } from 'src/components/ProfileHero/ProfileSelfPromoBanner'
 export interface ProfileHeroBioAndInfoProps {}
 
 export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = ({}) => {
   return (
-    <>
+    <VStack spacing={4}>
       <Text as="p" px={4} fontSize={16} fontWeight={400} lineHeight="normal">
         this is my bio | im a{' '}
         <Text as="span" color="brand">
@@ -57,7 +56,9 @@ export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = ({}) => {
         flexGrow={0}
         w="100%"
         px={4}
-      ></HStack>
+      >
+        <ProfileSelfPromoBanner />
+      </HStack>
       <HStack
         spacing={4}
         fontSize={16}
@@ -87,6 +88,6 @@ export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = ({}) => {
           <Text as="span">rambles</Text>
         </HStack>
       </HStack>
-    </>
+    </VStack>
   )
 }
