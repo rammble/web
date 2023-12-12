@@ -43,6 +43,8 @@ export const colors = {
   'nui.80': '#070707E6',
   'nui.90': '#070707FF',
   'nui.100': '#070707FF',
+  'gradient.ui.promo':
+    'linear-gradient(0deg, rgba(246, 250, 255, 0.05), rgba(246, 250, 255, 0.05)), linear-gradient(125.2deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 99.69%)',
   'gradient.ui.2-5':
     'linear-gradient(125deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 99.69%)',
   'gradient.ui.7-5':

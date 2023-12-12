@@ -5,8 +5,8 @@ const baseStyle = defineStyle({})
 const solidVariant = defineStyle({})
 
 const SelfPromo = defineStyle({
-  width: 'Hug (159px)',
-  height: 'Hug (40px)',
+  width: '159px',
+  height: '40px',
   borderRadius: '999px',
   padding: '8px 32px',
   gap: '10px',
