@@ -70,3 +70,62 @@ export const FakeProfileSelfPromoBanner = {
     },
   ],
 }
+
+export const FakeNotifications = [
+  {
+    title: 'Xignotic',
+    time: Date.now(),
+    text: 'liked your post',
+    read: false,
+    image: 'https://picsum.photos/56?1',
+    system: false,
+  },
+  {
+    title: 'Xignotic',
+    time: Date.UTC(2021, 8, 1, 12, 0, 0, 0),
+    text: 'tagged you in we live in a society',
+    read: false,
+    image: 'https://picsum.photos/56?1',
+    system: false,
+  },
+  {
+    title: 'Rammble',
+    time: Date.UTC(2021, 8, 1, 12, 0, 0, 0),
+    text: 'You have been chosen to be a moderator. This is probably not the kind of message you should get in a system message, but it does the job.',
+    read: false,
+    image: 'https://picsum.photos/56?1',
+    system: true,
+  },
+  {
+    title: 'Xignotic',
+    time: Date.UTC(2021, 8, 1, 12, 0, 0, 0),
+    text: 'liked your post',
+    read: true,
+    image: 'https://picsum.photos/56?1',
+    system: false,
+  },
+  {
+    title: 'Xignotic',
+    time: Date.UTC(2021, 8, 1, 12, 0, 0, 0),
+    text: 'tagged you in We live in a society',
+    read: true,
+    image: 'https://picsum.photos/56?1',
+    system: false,
+  },
+  {
+    title: 'Xignotic',
+    time: Date.UTC(2021, 8, 1, 12, 0, 0, 0),
+    text: 'liked your post',
+    read: true,
+    image: 'https://picsum.photos/56?1',
+    system: false,
+  },
+  {
+    title: 'Rammble',
+    time: Date.UTC(2021, 8, 1, 12, 0, 0, 0),
+    text: 'You have been chosen to be a moderator. This is probably not the kind of message you should get in a system message, but it does the job.',
+    read: true,
+    image: 'https://picsum.photos/56?1',
+    system: true,
+  },
+]

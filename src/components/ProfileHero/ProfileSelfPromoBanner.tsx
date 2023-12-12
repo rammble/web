@@ -7,7 +7,7 @@ export interface ProfileHeroActionProps {}
 
 export const ProfileSelfPromoBanner: FC<ProfileHeroActionProps> = () => {
   return (
-    <Box w="full" h="full" borderRadius="12px" layerStyle="gradientUiPromo">
+    <Box w="full" h="full" borderRadius="12px" layerStyle="gradients.grey">
       <VStack p={4} alignItems="start">
         <Text as="span" fontWeight={400} color="ui.100" fontSize="xl">
           {FakeProfileSelfPromoBanner.text}
