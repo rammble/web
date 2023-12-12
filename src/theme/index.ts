@@ -5,6 +5,7 @@ import { colors } from 'src/theme/colors'
 import { components } from 'src/theme/components'
 import { sizes } from 'src/theme/sizes'
 import { spacing } from 'src/theme/spacing'
+import { layerStyles } from 'src/theme/layer-styles'
 
 export const rubik = Rubik({ subsets: ['latin'] })
 export const urbanist = Urbanist({ subsets: ['latin'] })
@@ -15,6 +16,7 @@ export const theme = extendTheme({
     initialColorMode: 'dark',
     useSystemColorMode: false,
   },
+  layerStyles: { ...layerStyles },
   colors,
   components,
   fonts: {

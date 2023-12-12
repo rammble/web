@@ -7,12 +7,7 @@ export interface ProfileHeroActionProps {}
 
 export const ProfileSelfPromoBanner: FC<ProfileHeroActionProps> = () => {
   return (
-    <Box
-      w="full"
-      h="full"
-      borderRadius="2xl"
-      bgGradient="linear-gradient(0deg, rgba(246, 250, 255, 0.05), rgba(246, 250, 255, 0.05)), linear-gradient(125.2deg, rgba(255, 255, 255, 0.075) 0%, rgba(255, 255, 255, 0) 99.69%)"
-    >
+    <Box w="full" h="full" borderRadius="12px" layerStyle="gradientUiPromo">
       <VStack p={4} alignItems="start">
         <Text as="span" fontWeight={400} color="ui.100" fontSize="xl">
           {FakeProfileSelfPromoBanner.text}
