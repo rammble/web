@@ -5,6 +5,7 @@ import { colors } from 'src/theme/colors'
 import { components } from 'src/theme/components'
 import { sizes } from 'src/theme/sizes'
 import { spacing } from 'src/theme/spacing'
+import {satisfies} from "next/dist/lib/semver-noop";
 
 export const rubik = Rubik({ subsets: ['latin'] })
 export const urbanist = Urbanist({ subsets: ['latin'] })
@@ -50,6 +51,8 @@ export const theme = extendTheme({
       },
       html: {
         bg: 'bg',
+        height: '100%',
+        width: '100%'
       },
       body: {
         bg: 'bg',
