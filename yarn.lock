@@ -2141,6 +2141,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"check-password-strength@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "check-password-strength@npm:2.0.7"
+  checksum: 32eb46d970b50a24c959fe041f3eb3c3d6e474bbab99d9d910f64442a60dbb5e91c7bdd165db1fd2cebb6d2e291f6e3b66af8c6066e30c913ab1f8e0cd3b971a
+  languageName: node
+  linkType: hard
+
 "client-only@npm:0.0.1":
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
@@ -3027,6 +3034,7 @@ __metadata:
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     "@types/react-twemoji": "npm:^0.4.3"
+    check-password-strength: "npm:^2.0.7"
     framer-motion: "npm:^10.16.4"
     immer: "npm:^10.0.3"
     jotai: "npm:^2.5.0"
@@ -3035,6 +3043,7 @@ __metadata:
     prettier: "npm:^3.0.3"
     react: "npm:^18"
     react-dom: "npm:^18"
+    react-hook-form: "npm:^7.49.2"
     react-pull-to-refresh: "npm:^2.0.1"
     react-twemoji: "npm:^0.5.0"
     tippy.js: "npm:^6.3.7"
@@ -3091,6 +3100,15 @@ __metadata:
     "@types/react":
       optional: true
   checksum: c7678012ae075d623e577b06d5fbf6a756f6ba6d630c307641cb6aafaa4059e8685e5dc0918cc2026198a4c0a65b0f917d9a3801c601e74a9438941c5d716e76
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.49.2":
+  version: 7.49.2
+  resolution: "react-hook-form@npm:7.49.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 8e2d3209d49a816f08e61a3b1847e9edff5ecb6e5b3cd056780c2331f8bb32aa0b7a2542bece602b415ddd4009023c5d054a27a021dc5014672623d5990853c8
   languageName: node
   linkType: hard
 
