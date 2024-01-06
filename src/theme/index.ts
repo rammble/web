@@ -16,7 +16,7 @@ export const theme = extendTheme({
     initialColorMode: 'dark',
     useSystemColorMode: false,
   },
-  layerStyles: { ...layerStyles },
+  layerStyles,
   colors,
   components,
   fonts: {
@@ -52,6 +52,20 @@ export const theme = extendTheme({
       },
       html: {
         bg: 'bg',
+        '::-webkit-scrollbar': {
+          width: '8px',
+          height: '8px',
+        },
+        '::-webkit-scrollbar-track': {
+          bg: 'transparent',
+        },
+        '::-webkit-scrollbar-thumb': {
+          bg: 'ui.5',
+          borderRadius: 'full',
+        },
+        '::-webkit-scrollbar-thumb:hover': {
+          bg: 'brand',
+        },
       },
       body: {
         bg: 'bg',
