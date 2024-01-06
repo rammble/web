@@ -41,6 +41,7 @@ jobs:
           echo "Current version: ${{ steps.pkg.outputs.version }}"
 
   build-and-push-image:
+    if: ${{ needs.check-versions.outputs.is_version_mismatch == 'true' }}
     needs: check-versions
     runs-on: ubuntu-latest
     permissions:
