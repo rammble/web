@@ -47,8 +47,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    outputs:
-      version: ${{ steps.pkg.outputs.version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
