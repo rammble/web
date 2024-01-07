@@ -1,29 +1,16 @@
-import { FC, useMemo, useState } from 'react'
+import { FC, useState } from 'react'
 import { AuthLayout } from 'src/components/AuthLayout'
-import { Box, Center, Flex, Heading, Text } from '@chakra-ui/layout'
+import { Box, Flex, Text } from '@chakra-ui/layout'
 import { InputField } from 'src/components/AuthLayout/InputField'
 import { Button } from '@chakra-ui/button'
 import {
-  SubmitHandler,
-  RegisterOptions,
-  useForm,
   FieldValues,
+  RegisterOptions,
+  SubmitHandler,
+  useForm,
 } from 'react-hook-form'
-import ConnectionFields from 'src/components/AuthLayout/Connections/ConnectionFields'
-import {
-  AbsoluteCenter,
-  Checkbox,
-  Divider,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  useMediaQuery,
-} from '@chakra-ui/react'
+import { TabPanel, TabPanels, Tabs, useMediaQuery } from '@chakra-ui/react'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
-import OneTimePasswordTab from 'src/components/AuthLayout/Tabs/OneTimePassword'
-import { AuthCompleteTab } from 'src/components/AuthLayout/Tabs/AuthCompleteTab'
 import { useRouter } from 'next/router'
 import { ResetPasswordTab } from 'src/components/AuthLayout/Tabs/ResetPasswordTab'
 
@@ -101,7 +88,6 @@ const ForgotPasswordPage: FC = () => {
   }
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data)
     router.push({
       pathname: '/signin',
       query: { isReset: true },

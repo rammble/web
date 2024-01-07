@@ -34,8 +34,6 @@ export default class PasswordStrengthService {
       if (isValid) strength++
     })
 
-    console.log(password, password?.length, strength)
-
     return strengthLevels[strength]
   }
 }

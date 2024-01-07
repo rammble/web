@@ -1,7 +1,17 @@
 import { Center, Flex, Heading, HStack, Text } from '@chakra-ui/layout'
 import { Avatar, PinInput, PinInputField } from '@chakra-ui/react'
+import { FC } from 'react'
+import { UserProps } from 'src/pages'
 
-export default function OneTimePasswordTab({ user, setTabIndex }) {
+export interface OneTimePasswordTabProps {
+  user: UserProps
+  setTabIndex: (key: number) => void
+}
+
+export const OneTimePasswordTab: FC<OneTimePasswordTabProps> = ({
+  user,
+  setTabIndex,
+}) => {
   return (
     <Flex gap={4} w={'350px'} flexDir={'column'}>
       <Flex flexDir={'column'} gap={4}>

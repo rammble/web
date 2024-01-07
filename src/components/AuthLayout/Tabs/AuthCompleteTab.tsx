@@ -1,23 +1,9 @@
-import {
-  Box,
-  Center,
-  Flex,
-  Heading,
-  HStack,
-  Text,
-  VStack,
-} from '@chakra-ui/layout'
-import {
-  AbsoluteCenter,
-  Avatar,
-  PinInputField,
-  PinInput,
-  Checkbox,
-} from '@chakra-ui/react'
-
+import { Center, Flex, Heading, Text } from '@chakra-ui/layout'
+import { Avatar, Checkbox } from '@chakra-ui/react'
 import { FC } from 'react'
 import { UserProps } from 'src/pages'
 import { Button } from '@chakra-ui/button'
+
 export interface AuthCompleteTabProps {
   user: UserProps
   otpCode: string

@@ -1,30 +1,26 @@
 import { FC, useMemo, useState } from 'react'
-import { AuthLayout } from 'src/components/AuthLayout/index'
-import { Box, Center, Flex, Heading, Text } from '@chakra-ui/layout'
+import { AuthLayout } from 'src/components/AuthLayout'
+import { Box, Flex } from '@chakra-ui/layout'
 import { InputField } from 'src/components/AuthLayout/InputField'
 import { Button } from '@chakra-ui/button'
 import {
-  SubmitHandler,
-  RegisterOptions,
-  useForm,
   FieldValues,
+  RegisterOptions,
+  SubmitHandler,
+  useForm,
 } from 'react-hook-form'
 import ConnectionFields from 'src/components/AuthLayout/Connections/ConnectionFields'
 import {
   AbsoluteCenter,
-  Checkbox,
   Divider,
-  Tab,
-  TabList,
   TabPanel,
   TabPanels,
   Tabs,
   useMediaQuery,
 } from '@chakra-ui/react'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
-import OneTimePasswordTab from 'src/components/AuthLayout/Tabs/OneTimePassword'
+import { OneTimePasswordTab } from 'src/components/AuthLayout/Tabs/OneTimePassword'
 import { AuthCompleteTab } from 'src/components/AuthLayout/Tabs/AuthCompleteTab'
-import { router } from 'next/client'
 import { useRouter } from 'next/router'
 
 export interface ISignUpFieldOptions {
@@ -95,8 +91,6 @@ const SignUpPage: FC = () => {
   const handleTabsChange = (index: number) => {
     setTabIndex(index)
   }
-
-  console.log(isPasswordReset)
 
   const inputFields = useMemo(
     () =>
