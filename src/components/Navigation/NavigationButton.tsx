@@ -9,6 +9,19 @@ export interface NavigationButtonProps {
   page: PagesObjectProps
 }
 
+// Navigation Button notification badge component, should just show in top left corner of the button
+export const NavigationButtonNotificationBadge: FC = () => {
+  return (
+    <Flex
+      w={'8px'}
+      h={'8px'}
+      bg={'accent.red'}
+      borderRadius={'50%'}
+      position={'relative'}
+    />
+  )
+}
+
 export const NavigationButton: FC<NavigationButtonProps> = ({ page }) => {
   const router = useRouter()
 
@@ -30,6 +43,7 @@ export const NavigationButton: FC<NavigationButtonProps> = ({ page }) => {
       <Text fontSize={'20px'} color={isActive ? 'ui.90' : 'ui.60'}>
         {page.title}
       </Text>
+      {/*<NavigationButtonNotificationBadge />*/}
     </HStack>
   )
 }
