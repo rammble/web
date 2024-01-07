@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
 import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
-import moment from 'moment/moment'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { NotificationItemProps } from 'src/components/NotificationItem/index'
 import { Spacer } from '@chakra-ui/react'
 import { NotificationMenu } from 'src/components/NotificationItem/NotificationMenu'
+dayjs.extend(relativeTime)
 
 export const SystemNotificationItem: FC<NotificationItemProps> = ({
   image,
@@ -20,7 +22,7 @@ export const SystemNotificationItem: FC<NotificationItemProps> = ({
           {title}
         </Text>
         <Text>·</Text>
-        <Text>{moment(time).fromNow()}</Text>
+        <Text>{dayjs().from(time, true)} ago</Text>
       </HStack>
       <Text color="ui.60" lineHeight="19px">
         {text}
