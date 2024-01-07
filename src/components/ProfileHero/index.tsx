@@ -1,11 +1,14 @@
 import { FC } from 'react'
+import { Text } from '@chakra-ui/layout'
 
-export interface ProfileHeroProps {}
+export interface ProfileHeroProps {
+  username: string
+}
 
-export const ProfileHeader: FC<ProfileHeroProps> = () => {
+export const ProfileHero: FC<ProfileHeroProps> = ({ username }) => {
   return (
     <div>
-      <h1>ProfileHeader</h1>
+      <Text>Profile Hero</Text>
     </div>
   )
 }

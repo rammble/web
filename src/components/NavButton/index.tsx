@@ -14,7 +14,7 @@ export interface FeedButtonProps {
   onClick?: () => void
 }
 
-export const FeedButton: FC<FeedButtonProps> = ({
+export const NavButton: FC<FeedButtonProps> = ({
   as,
   icon,
   label,

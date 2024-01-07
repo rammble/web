@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import {
   Icon,
   Menu,
@@ -7,56 +8,20 @@ import {
   MenuList,
   useDisclosure,
 } from '@chakra-ui/react'
-import { FC } from 'react'
 import { NavButton } from '../NavButton'
-import { AddUserIcon } from 'src/icons/AddUserIcon'
-import { EmptyStarIcon } from 'src/icons/EmptyStarIcon'
-import { FilledStarIcon } from 'src/icons/FilledStarIcon'
 import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
-import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
 import { TrashIcon } from 'src/icons/TrashIcon'
-import { WarningIcon } from 'src/icons/WarningIcon'
 
 const options = [
   {
-    type: 'stateful',
-    title: 'Pin to profile',
-    icon: EmptyStarIcon,
-    color: 'brand',
-    active: {
-      title: 'Unpin from profile',
-      icon: FilledStarIcon,
-    },
-  },
-  {
-    type: 'splitter',
-  },
-  {
-    type: 'item',
-    title: 'Not Interested in this ramble',
-    icon: ThumbsDownIcon,
-  },
-  {
-    type: 'item',
-    title: 'Follow @user',
-    icon: AddUserIcon,
-  },
-  {
-    type: 'item',
-    title: 'Report ramble',
-    icon: WarningIcon,
-  },
-  {
-    type: 'splitter',
-  },
-  {
     type: 'dangerous',
-    title: 'Delete ramble',
+    title: 'Delete',
     icon: TrashIcon,
+    color: 'brand',
   },
 ]
 
-export const FeedMenu: FC = ({}) => {
+export const NotificationMenu: FC = ({}) => {
   const disclosure = useDisclosure()
 
   return (

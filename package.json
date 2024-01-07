@@ -1,6 +1,6 @@
 {
   "name": "rammble",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,6 +21,7 @@
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
     "@tiptap/suggestion": "^2.1.13",
+    "dayjs": "^1.11.10",
     "framer-motion": "^10.16.4",
     "immer": "^10.0.3",
     "jotai": "^2.5.0",

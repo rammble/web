@@ -6,6 +6,7 @@ import { components } from 'src/theme/components'
 import { sizes } from 'src/theme/sizes'
 import { spacing } from 'src/theme/spacing'
 import { satisfies } from 'next/dist/lib/semver-noop'
+import { layerStyles } from 'src/theme/layer-styles'
 
 export const rubik = Rubik({ subsets: ['latin'] })
 export const urbanist = Urbanist({ subsets: ['latin'] })
@@ -16,6 +17,7 @@ export const theme = extendTheme({
     initialColorMode: 'dark',
     useSystemColorMode: false,
   },
+  layerStyles,
   colors,
   components,
   fonts: {
@@ -53,6 +55,20 @@ export const theme = extendTheme({
         bg: 'bg',
         height: '100%',
         width: '100%',
+        '::-webkit-scrollbar': {
+          width: '8px',
+          height: '8px',
+        },
+        '::-webkit-scrollbar-track': {
+          bg: 'transparent',
+        },
+        '::-webkit-scrollbar-thumb': {
+          bg: 'ui.5',
+          borderRadius: 'full',
+        },
+        '::-webkit-scrollbar-thumb:hover': {
+          bg: 'brand',
+        },
       },
       body: {
         bg: 'bg',

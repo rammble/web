@@ -1,31 +1,15 @@
+import { FC, PropsWithChildren, useState } from 'react'
 import {
-  FC,
-  PropsWithChildren,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Box,
   Popover,
-  PopoverContent,
   PopoverBody,
+  PopoverContent,
   PopoverTrigger,
 } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
-import { EditorRenderer } from 'src/components/EditorRenderer'
 import { transitions } from 'src/components/motion'
 import { PostOptionButtons } from './PostOptionButtons'
 import { Textarea } from '@chakra-ui/textarea'
-import { Flex, HStack, Text } from '@chakra-ui/layout'
+import { HStack, Text } from '@chakra-ui/layout'
 
 export interface CreatePostModalProps extends PropsWithChildren {
   isOpen: boolean
@@ -39,9 +23,6 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
 }) => {
   const [content, setContent] = useState('')
   const [count, setCount] = useState(0)
-  const inputFieldRef = useRef()
-
-  console.log(content)
 
   return (
     <Popover
@@ -53,6 +34,9 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
     >
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent
+        w="100%"
+        borderColor="blurp.darker"
+        backgroundColor="blurp.darker"
         motionProps={{
           transition: transitions.fast,
         }}
@@ -77,16 +61,27 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
         }}
       >
         <PopoverBody p={3}>
-          <EditorRenderer editable content={content} onUpdate={setContent} />
-          <HStack mt={2} justifyContent={'space-between'}>
+          <Textarea
+            resize="none"
+            _hover={{ borderColor: 'brand' }}
+            placeholder="Ramble about anything..."
+            backgroundColor="bg.lighter"
+            borderColor="brand"
+            onChange={(e) => {
+              setContent(e.target.value)
+              setCount(e.target.value.length)
+            }}
+            maxLength={140}
+          />
+          <HStack mt={2} justifyContent="space-between">
             <HStack>
-              <Text cursor={'pointer'} fontSize={12} color={'brand.darker'}>
+              <Text cursor="pointer" fontSize={12} color="brand.darker">
                 Posting guidelines
               </Text>
               <Text
-                cursor={'pointer'}
+                cursor="pointer"
                 fontSize={12}
-                color={'ui.40'}
+                color="ui.40"
                 fontWeight={200}
               >
                 Support
@@ -100,12 +95,14 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
               {count}/140
             </Text>
           </HStack>
-          <HStack mt={2} justifyContent={'space-between'}>
+          <HStack mt={2} justifyContent="space-between">
             <PostOptionButtons />
             <Button
+              borderRadius={10}
+              size="md"
               _hover={{ bg: 'brand', color: 'ui.100' }}
-              bg={'brand.darkest'}
-              color={'brand'}
+              bg="brand.darkest"
+              color="brand"
             >
               Post
             </Button>
