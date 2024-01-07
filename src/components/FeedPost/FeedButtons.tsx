@@ -1,6 +1,6 @@
 import { Flex, SimpleGrid } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { FeedButton } from 'src/components/FeedPost/FeedButton'
+import { NavButton } from '../NavButton'
 import { LikeButton } from 'src/components/LikeButton'
 import { CommentIcon } from 'src/icons/CommentIcon'
 import { RepostIcon } from 'src/icons/RepostIcon'
@@ -46,7 +46,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
         />
       </Flex>
       <Flex justify="start">
-        <FeedButton
+        <NavButton
           icon={<CommentIcon boxSize={5} />}
           label={ifZeroLocaleStr(commentCount)}
           ariaLabel="Comment"
@@ -55,7 +55,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
         />
       </Flex>
       <Flex justify="start">
-        <FeedButton
+        <NavButton
           icon={<RepostIcon boxSize={5} />}
           label={ifZeroLocaleStr(repostCount)}
           ariaLabel="Repost"
@@ -65,7 +65,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
         />
       </Flex>
       <Flex justify="end">
-        <FeedButton
+        <NavButton
           icon={<ShareIcon boxSize={5} />}
           ariaLabel="Repost"
           color="brand"

@@ -2141,13 +2141,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-password-strength@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "check-password-strength@npm:2.0.7"
-  checksum: 32eb46d970b50a24c959fe041f3eb3c3d6e474bbab99d9d910f64442a60dbb5e91c7bdd165db1fd2cebb6d2e291f6e3b66af8c6066e30c913ab1f8e0cd3b971a
-  languageName: node
-  linkType: hard
-
 "client-only@npm:0.0.1":
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
@@ -2241,6 +2234,13 @@ __metadata:
   version: 1.0.2
   resolution: "dash-get@npm:1.0.2"
   checksum: 94adb16db3699f52326b86e94f25296b3a1730fb37034b8ec7f42524d61354b55d6dbf49669fcf81cc8d1d5de1f82d375175b61fd746fddeafa6bf9412499e38
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.11.10":
+  version: 1.11.10
+  resolution: "dayjs@npm:1.11.10"
+  checksum: 4de9af50639d47df87f2e15fa36bb07e0f9ed1e9c52c6caa1482788ee9a384d668f1dbd00c54f82aaab163db07d61d2899384b8254da3a9184fc6deca080e2fe
   languageName: node
   linkType: hard
 
@@ -3034,7 +3034,7 @@ __metadata:
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     "@types/react-twemoji": "npm:^0.4.3"
-    check-password-strength: "npm:^2.0.7"
+    dayjs: "npm:^1.11.10"
     framer-motion: "npm:^10.16.4"
     immer: "npm:^10.0.3"
     jotai: "npm:^2.5.0"

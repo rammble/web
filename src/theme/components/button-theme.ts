@@ -4,8 +4,20 @@ const baseStyle = defineStyle({})
 
 const solidVariant = defineStyle({})
 
+const SelfPromo = defineStyle({
+  width: '159px',
+  height: '40px',
+  borderRadius: '999px',
+  padding: '8px 32px',
+  gap: '10px',
+  fontWeight: '500',
+  border: '1px solid',
+  borderColor: 'ui.1',
+})
+
 const variants = {
   solid: solidVariant,
+  selfpromo: SelfPromo,
   unstyled: defineStyle({}),
 }
 
