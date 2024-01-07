@@ -1,11 +1,5 @@
-import { Box, Center, Flex, Heading, HStack, Text } from '@chakra-ui/layout'
-import {
-  AbsoluteCenter,
-  Avatar,
-  PinInputField,
-  PinInput,
-} from '@chakra-ui/react'
-import { ReactNode } from 'react'
+import { Center, Flex, Heading, HStack, Text } from '@chakra-ui/layout'
+import { Avatar, PinInput, PinInputField } from '@chakra-ui/react'
 
 export default function OneTimePasswordTab({ user, setTabIndex }) {
   return (
