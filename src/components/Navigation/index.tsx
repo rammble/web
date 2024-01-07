@@ -68,7 +68,7 @@ export const Navigation: FC<NavigationProps> = ({}) => {
     <MotionStack
       ml={5}
       direction="column"
-      h="100%"
+      h="full"
       justify="space-between"
       zIndex={10}
       bg="bg"

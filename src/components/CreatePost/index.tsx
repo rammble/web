@@ -26,7 +26,7 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
           outline="none"
           type="text"
           placeholder="Ramble about anything..."
-          w="100%"
+          w="full"
           bg="transparent"
         />
         <MotionBox

@@ -45,7 +45,7 @@ const LoaderPlaceholderPage = () => (
 const FeedPage: FC = () => (
   <>
     <CreatePost />
-    <VStack w="100%" gap={2}>
+    <VStack w="full" gap={2}>
       <Divider height={'1px'} mt={4} mb={2} bg={'blurp.lighter'} />
       {FakeFeedPosts.map((p, i) => {
         return <FeedPost key={i} data={p} />

@@ -13,7 +13,7 @@ export interface ProfileHeroInfoProps {
 
 export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
   return (
-    <HStack alignItems={'center'} direction="row" w="100%" spacing={4}>
+    <HStack alignItems={'center'} direction="row" w="full" spacing={4}>
       <Avatar
         mt={-10}
         borderRadius="20px"
@@ -21,8 +21,8 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
         src="https://picsum.photos/96"
         boxShadow="0 0 0 6px #121217"
       />
-      <VStack mt={1} w="100%" align="start" spacing={3}>
-        <VStack w="100%" align="start" justify="start" spacing={1}>
+      <VStack mt={1} w="full" align="start" spacing={3}>
+        <VStack w="full" align="start" justify="start" spacing={1}>
           <HStack spacing={2}>
             <Text
               fontSize={24}
@@ -47,7 +47,7 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
           </Text>
         </VStack>
       </VStack>
-      <HStack w="100%" spacing={3} justify="end">
+      <HStack w="full" spacing={3} justify="end">
         <IconButton
           p={2}
           rounded="12px"

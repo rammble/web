@@ -12,7 +12,7 @@ export const ProfileHeroBanner: FC<ProfileHeroBannerProps> = () => {
       bgColor="ui.3"
       bgImage="https://picsum.photos/600/600"
       rounded="24px 8px"
-      w="100%"
+      w="full"
       h="148px"
       p={2}
       align="start"

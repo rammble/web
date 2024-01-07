@@ -10,7 +10,7 @@ const Category = styled(ContentCategory)`
     React.Children.count(props.children) === 0 ? 'block' : 'initial'};
 `
 const Notifications: FC = () => (
-  <VStack px={4} pt={4} pb={4} w="100%" align="start" spacing={6}>
+  <VStack px={4} pt={2} pb={4} w="full" align="start" spacing={6}>
     <Heading as="h2" color="brand" fontSize={24} fontWeight={500}>
       Notifications
     </Heading>

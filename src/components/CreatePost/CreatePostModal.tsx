@@ -1,8 +1,8 @@
-import { FC, PropsWithChildren, useRef, useState } from 'react'
+import { FC, PropsWithChildren, useState } from 'react'
 import {
   Popover,
-  PopoverContent,
   PopoverBody,
+  PopoverContent,
   PopoverTrigger,
 } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
