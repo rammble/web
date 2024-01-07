@@ -22,7 +22,7 @@ export const AvatarCarousel: FC = () => (
       bottom={0}
       right={0}
       w="95px"
-      h="100%"
+      h="full"
       zIndex={10}
       pointerEvents="none"
       bgGradient="linear(270deg, bg 0%, transparent 100%)"

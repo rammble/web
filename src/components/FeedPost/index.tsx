@@ -25,7 +25,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
   const [isReposted, { toggle: toggleIsReposted }] = useBoolean(false)
 
   return (
-    <HStack alignItems={'flex-start'} w={'100%'} gap={4} m={1}>
+    <HStack alignItems={'flex-start'} w={'full'} gap={4} m={1}>
       <UserAvatar user={data.user} />
       <HStack
         outline={isPinnedAndUserProfile ? '1.5px solid' : 'none'}
@@ -33,7 +33,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
         p={'12px 16px 16px 16px'}
         borderRadius={'8px'}
         bg="bg.lighter"
-        w="100%"
+        w="full"
         align="start"
       >
         <VStack spacing={3} w="full" align="start">
@@ -48,7 +48,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
               Pinned Ramble
             </Text>
           )}
-          <HStack w={'100%'} fontSize={16} justifyContent={'space-between'}>
+          <HStack w={'full'} fontSize={16} justifyContent={'space-between'}>
             <HStack
               cursor={'pointer'}
               onClick={() => router.push(`/user/${data.user.username}`)}
@@ -71,7 +71,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
                 <Image
                   mt={2}
                   objectFit={'cover'}
-                  w={'100%'}
+                  w={'full'}
                   h={'315px'}
                   rounded="12px"
                   src={data.post.images[0].url}

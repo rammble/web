@@ -2141,13 +2141,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-password-strength@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "check-password-strength@npm:2.0.7"
-  checksum: 32eb46d970b50a24c959fe041f3eb3c3d6e474bbab99d9d910f64442a60dbb5e91c7bdd165db1fd2cebb6d2e291f6e3b66af8c6066e30c913ab1f8e0cd3b971a
-  languageName: node
-  linkType: hard
-
 "client-only@npm:0.0.1":
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
@@ -3034,7 +3027,6 @@ __metadata:
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     "@types/react-twemoji": "npm:^0.4.3"
-    check-password-strength: "npm:^2.0.7"
     framer-motion: "npm:^10.16.4"
     immer: "npm:^10.0.3"
     jotai: "npm:^2.5.0"

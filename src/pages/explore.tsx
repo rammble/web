@@ -16,7 +16,7 @@ const ExplorePage: FC = () => {
   const isEmpty = query.length === 0
 
   return (
-    <VStack px={4} pt={2} pb={4} w="100%" align="start" spacing={6}>
+    <VStack px={4} pt={2} pb={4} w="full" align="start" spacing={6}>
       <Heading as="h2" color="brand" fontSize={24} fontWeight={500}>
         Search
       </Heading>
@@ -28,7 +28,7 @@ const ExplorePage: FC = () => {
           type="text"
           placeholder="Search people, posts, or hashtags..."
           h="56px"
-          w="100%"
+          w="full"
           bg="transparent"
           pl={5}
           pr={14}
@@ -104,7 +104,7 @@ const ExplorePage: FC = () => {
         </Wrap>
       </ContentCategory>
       <ContentCategory title="Posts">
-        <VStack w="100%" spacing={1} overflow="hidden">
+        <VStack w="full" spacing={1} overflow="hidden">
           {FakeFeedPosts.map((d, i) => {
             return <FeedPost key={i} data={d} />
           })}

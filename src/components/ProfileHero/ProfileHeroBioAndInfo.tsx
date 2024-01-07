@@ -33,7 +33,7 @@ export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = () => {
         fontWeight={400}
         color="ui.40"
         flexGrow={0}
-        w="100%"
+        w="full"
         px={4}
       >
         <HStack spacing={1} w="50%">
@@ -54,7 +54,7 @@ export const ProfileHeroBioAndInfo: FC<ProfileHeroBioAndInfoProps> = () => {
         fontWeight={400}
         color="ui.40"
         flexGrow={0}
-        w="100%"
+        w="full"
         px={4}
       >
         <HStack spacing={1}>

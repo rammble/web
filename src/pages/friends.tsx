@@ -6,7 +6,7 @@ import { FeedPost } from 'src/components/FeedPost'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 
 const Friends: FC = () => (
-  <VStack px={4} pt={2} pb={4} w="100%" align="start" spacing={6}>
+  <VStack px={4} pt={2} pb={4} w="full" align="start" spacing={6}>
     <Heading as="h2" color="brand" fontSize={24} fontWeight={500}>
       Friends
     </Heading>
@@ -15,7 +15,7 @@ const Friends: FC = () => (
       <AvatarCarousel />
     </ContentCategory>
     <ContentCategory title="Recent Activity">
-      <VStack w="100%" spacing={1} overflow="hidden">
+      <VStack w="full" spacing={1} overflow="hidden">
         {FakeFeedPosts.map((d, i) => {
           return <FeedPost key={i} data={d} />
         })}

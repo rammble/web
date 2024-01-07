@@ -10,7 +10,6 @@ import { PollIcon } from '../../icons/PollIcon'
 
 export interface PostOptionButtonsProps {}
 
-
 export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
   return (
     <HStack>

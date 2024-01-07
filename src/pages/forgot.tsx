@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from 'react'
-import { AuthLayout } from 'src/components/AuthLayout/index'
+import { AuthLayout } from 'src/components/AuthLayout'
 import { Box, Center, Flex, Heading, Text } from '@chakra-ui/layout'
 import { InputField } from 'src/components/AuthLayout/InputField'
 import { Button } from '@chakra-ui/button'
@@ -24,8 +24,8 @@ import {
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import OneTimePasswordTab from 'src/components/AuthLayout/Tabs/OneTimePassword'
 import { AuthCompleteTab } from 'src/components/AuthLayout/Tabs/AuthCompleteTab'
-import { router } from 'next/client'
 import { useRouter } from 'next/router'
+import { ResetPasswordTab } from 'src/components/AuthLayout/Tabs/ResetPasswordTab'
 
 export interface ISignUpFieldOptions {
   hasLengthCounter?: boolean
@@ -56,10 +56,23 @@ const fields = [
   {
     title: 'password',
     type: 'password',
-    maxLength: 32,
+    maxLength: 128,
     options: {
-      hasForgotPassword: true,
+      hasPasswordStrength: true,
     },
+    validations: {
+      pattern: {
+        value: /^\S*$/,
+        message: ' This field cannot include spaces.',
+      },
+      required: 'This field is required',
+      maxLength: { value: 32, message: 'Your password is too long' },
+    },
+  },
+  {
+    title: 'confirm password',
+    type: 'password',
+    maxLength: 32,
     validations: {
       pattern: {
         value: /^\S*$/,
@@ -71,11 +84,10 @@ const fields = [
   },
 ]
 
-const SignUpPage: FC = () => {
+const ForgotPasswordPage: FC = () => {
   const [isMobile] = useMediaQuery('(min-width: 1200px)')
-  const [tabIndex, setTabIndex] = useState(0)
   const router = useRouter()
-  const isPasswordReset = router.query?.isReset
+  const [tabIndex, setTabIndex] = useState(0)
   const user = FakeFeedPosts[0].user
   const {
     register,
@@ -90,32 +102,18 @@ const SignUpPage: FC = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data)
+    router.push({
+      pathname: '/signin',
+      query: { isReset: true },
+    })
   }
 
   const handleTabsChange = (index: number) => {
     setTabIndex(index)
   }
 
-  console.log(isPasswordReset)
-
-  const inputFields = useMemo(
-    () =>
-      fields.map((f, i) => {
-        return (
-          <InputField
-            key={i}
-            register={register}
-            field={f}
-            errors={getErrorByTitle(f.title)}
-            watchValue={watch(f.title as any)}
-          />
-        )
-      }),
-    [],
-  )
-
   return (
-    <AuthLayout heading={'Welcome back'} isMobile={isMobile}>
+    <AuthLayout heading={'Reset your password'} isMobile={isMobile}>
       <Tabs onChange={handleTabsChange} index={tabIndex}>
         <TabPanels>
           <TabPanel>
@@ -128,7 +126,23 @@ const SignUpPage: FC = () => {
                   justifyContent={'space-evenly'}
                   gap={'20px'}
                 >
-                  <Box>{inputFields}</Box>
+                  <Text fontWeight={400} fontSize={'16px'}>
+                    Now that you have confirmed it is you, let’s make a new
+                    password that you wont forget!
+                  </Text>
+                  <Box>
+                    {fields.map((f, i) => {
+                      return (
+                        <InputField
+                          key={i}
+                          register={register}
+                          field={f}
+                          errors={getErrorByTitle(f.title)}
+                          watchValue={watch(f.title as any)}
+                        />
+                      )
+                    })}
+                  </Box>
                   <Button
                     onClick={() => setTabIndex(1)}
                     textTransform={'uppercase'}
@@ -143,38 +157,14 @@ const SignUpPage: FC = () => {
                     bg={'brand.darkest'}
                     p={'16px'}
                   >
-                    Get Rambling
+                    Reset Password
                   </Button>
-                  {isMobile && (
-                    <Box
-                      position="relative"
-                      paddingTop="5"
-                      paddingBottom="5"
-                      bg={'bg.darker'}
-                    >
-                      <Divider borderColor={'ui.20'} w={'full'} />
-                      <AbsoluteCenter
-                        color={'ui.20'}
-                        flexDir={'row'}
-                        bg={'bg.darker'}
-                        px="4"
-                        fontWeight={500}
-                        fontSize={'14px'}
-                      >
-                        or continue with
-                      </AbsoluteCenter>
-                    </Box>
-                  )}
-                  <ConnectionFields isSignUpPage={false} />
                 </Flex>
               </form>
             </Box>
           </TabPanel>
           <TabPanel>
-            <OneTimePasswordTab setTabIndex={setTabIndex} user={user} />
-          </TabPanel>
-          <TabPanel>
-            <AuthCompleteTab user={user} otpCode={'124214'} />
+            <ResetPasswordTab user={user} />
           </TabPanel>
         </TabPanels>
       </Tabs>
@@ -182,4 +172,4 @@ const SignUpPage: FC = () => {
   )
 }
 
-export default SignUpPage
+export default ForgotPasswordPage
