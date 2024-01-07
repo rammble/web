@@ -1,18 +1,18 @@
-import {Box, Flex, Text, VStack} from '@chakra-ui/layout'
-import {FC, PropsWithChildren, Suspense} from 'react'
-import {Navigation} from 'src/components/Navigation'
+import { Box, Flex, Text, VStack } from '@chakra-ui/layout'
+import { FC, PropsWithChildren, Suspense } from 'react'
+import { Navigation } from 'src/components/Navigation'
 
-export interface LayoutProps extends PropsWithChildren {
-}
+export interface LayoutProps extends PropsWithChildren {}
 
-export const Layout: FC<LayoutProps> = ({children}) => {
-
+export const Layout: FC<LayoutProps> = ({ children }) => {
   const isLoggedIn = false
 
   if (!isLoggedIn) {
-    return <Box h={'100%'} w={'100%'}>
-      {children}
-    </Box>
+    return (
+      <Box h={'100%'} w={'100%'}>
+        {children}
+      </Box>
+    )
   }
 
   return (
@@ -22,10 +22,9 @@ export const Layout: FC<LayoutProps> = ({children}) => {
           <Suspense fallback={<Text>LOADING</Text>}>{children}</Suspense>
         </Box>
         <Box>
-          <Navigation/>
+          <Navigation />
         </Box>
       </Flex>
-
     </VStack>
   )
 }
