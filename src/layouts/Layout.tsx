@@ -1,11 +1,17 @@
 import { Box, Flex, Text, VStack } from '@chakra-ui/layout'
 import { FC, PropsWithChildren, Suspense } from 'react'
 import { Navigation } from 'src/components/Navigation'
+import { useRouter } from 'next/router'
 
 export interface LayoutProps extends PropsWithChildren {}
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
-  const isLoggedIn = false
+  // Change this please
+  const router = useRouter()
+
+  const authRoutes = ['/signin', '/signup', '/forgot']
+
+  const isLoggedIn = !authRoutes.includes(router.pathname)
 
   if (!isLoggedIn) {
     return (
