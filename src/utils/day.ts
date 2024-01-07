@@ -2,6 +2,6 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
-export const fromTime = (time: number) => dayjs().from(time, true)
+export const day = dayjs()
 
-export default dayjs
+export const fromTime = (time: number) => day.from(time, true)
