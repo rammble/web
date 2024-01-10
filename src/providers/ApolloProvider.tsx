@@ -6,7 +6,14 @@ export const AppApolloProvider: FC<PropsWithChildren> = ({ children }) => {
     () =>
       new ApolloClient({
         cache: new InMemoryCache(),
-        uri: 'https://api.rammble.net',
+        uri: 'http://api.rammble.local',
+        credentials: 'include',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Credentials': 'true',
+        },
       }),
     [],
   )

@@ -7,11 +7,17 @@ import { ProfileHeroBioAndInfo } from 'src/components/ProfileHero/ProfileHeroBio
 import { ProfileFeedTabs } from 'src/components/ProfileFeedTabs'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { FeedPost } from 'src/components/FeedPost'
+import { Navigation } from 'src/components/Navigation'
+import React from 'react'
+import { MainLayout } from 'src/layouts/MainLayout'
 
 const ProfilePage: NextPage<{
   params: { username: string }
 }> = ({ params }) => (
-  <>
+  <MainLayout
+    renderChatNode={() => null}
+    renderRightNode={() => <Navigation />}
+  >
     <Meta />
     <VStack w="full" spacing={0} pt="calc(64px + 8px)" px={2} pb={2}>
       <VStack w="full" spacing={0}>
@@ -28,7 +34,7 @@ const ProfilePage: NextPage<{
         </VStack>
       </VStack>
     </VStack>
-  </>
+  </MainLayout>
 )
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

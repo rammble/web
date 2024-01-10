@@ -27,7 +27,7 @@ export default function ConnectionFields({
             fontWeight={400}
             fontSize={'14px'}
             ml={2}
-            onClick={() => router.push(isSignUpPage ? '/signin' : '/signup')}
+            onClick={() => router.push(isSignUpPage ? '/login' : '/register')}
             color={'brand'}
           >
             {isSignUpPage ? 'Sign in' : 'Create an account'}

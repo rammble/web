@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 import { AuthLayout } from 'src/components/AuthLayout'
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import { InputField } from 'src/components/AuthLayout/InputField'
@@ -16,6 +16,7 @@ import {
   Divider,
   useMediaQuery,
 } from '@chakra-ui/react'
+import { useSelf } from 'src/hooks/useSelf'
 
 export interface ISignUpFieldOptions {
   hasLengthCounter?: boolean
@@ -29,6 +30,12 @@ export interface ISignUpField {
   maxLength?: number
   options?: ISignUpFieldOptions
   validations: RegisterOptions
+}
+
+interface RegisterFieldValues {
+  email: string
+  username: string
+  password: string
 }
 
 const fields = [
@@ -78,6 +85,9 @@ const fields = [
 ]
 
 const SignUpPage: FC = () => {
+  const [, actions] = useSelf({
+    redirectOnRegister: '/',
+  })
   const [isMobile] = useMediaQuery('(min-width: 1200px)')
 
   const {
@@ -85,15 +95,14 @@ const SignUpPage: FC = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FieldValues>()
+  } = useForm<RegisterFieldValues>()
 
   function getErrorByTitle(title: string) {
     return errors[title as keyof typeof errors]
   }
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data)
-  }
+  const onSubmit: SubmitHandler<RegisterFieldValues> = (data) =>
+    actions.signup(data.email, data.username, data.password)
 
   return (
     <AuthLayout heading={'Create your account'} isMobile={isMobile}>
