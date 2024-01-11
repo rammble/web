@@ -98,7 +98,7 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
   }
 
   return (
-    <Box pt={4}>
+    <Box w="full" pt={4}>
       <CreatePostModal isOpen={isOpen} onClose={onClose}>
         <HStack alignItems={'center'}>
           <UserAvatar user={FakeFeedPosts[0].user} />

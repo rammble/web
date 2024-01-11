@@ -19,7 +19,7 @@ const pages = [
   },
   {
     title: 'Logout',
-    path: '',
+    path: `/logout?ref=${encodeURIComponent('/')}`,
     isDangerous: true,
   },
 ]

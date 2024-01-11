@@ -6,7 +6,7 @@ export const AppApolloProvider: FC<PropsWithChildren> = ({ children }) => {
     () =>
       new ApolloClient({
         cache: new InMemoryCache(),
-        uri: 'https://api.rammble.net',
+        uri: '/api/graphql',
       }),
     [],
   )

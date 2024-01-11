@@ -21,7 +21,7 @@ import {
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { OneTimePasswordTab } from 'src/components/AuthLayout/Tabs/OneTimePassword'
 import { AuthCompleteTab } from 'src/components/AuthLayout/Tabs/AuthCompleteTab'
-import { useRouter } from 'next/router'
+import { useSelf } from 'src/hooks/useSelf'
 
 export interface ISignUpFieldOptions {
   hasLengthCounter?: boolean
@@ -51,7 +51,7 @@ const fields = [
   },
   {
     title: 'password',
-    type: 'password',
+    type: 'current-password',
     maxLength: 32,
     options: {
       hasForgotPassword: true,
@@ -68,10 +68,12 @@ const fields = [
 ]
 
 const SignUpPage: FC = () => {
+  const [, actions] = useSelf({
+    redirectOnLogin: '/',
+  })
+
   const [isMobile] = useMediaQuery('(min-width: 1200px)')
   const [tabIndex, setTabIndex] = useState(0)
-  const router = useRouter()
-  const isPasswordReset = router.query?.isReset
   const user = FakeFeedPosts[0].user
   const {
     register,
@@ -84,12 +86,11 @@ const SignUpPage: FC = () => {
     return errors[title as keyof typeof errors]
   }
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data)
-  }
+  const onSubmit: SubmitHandler<FieldValues> = (data) =>
+    actions.login(data.username, data.password)
 
   const handleTabsChange = (index: number) => {
-    setTabIndex(index)
+    // setTabIndex(index)
   }
 
   const inputFields = useMemo(

@@ -4,7 +4,7 @@ import { Input } from '@chakra-ui/input'
 import PasswordStrength from 'src/components/AuthLayout/PasswordStrength'
 import { Tooltip } from '@chakra-ui/react'
 import { UseFormRegister, FieldValues } from 'react-hook-form'
-import { ISignUpField } from 'src/pages/signup'
+import { ISignUpField } from 'src/pages/register'
 import { QuestionIcon } from 'src/icons/QuestionIcon'
 import { useRouter } from 'next/router'
 
