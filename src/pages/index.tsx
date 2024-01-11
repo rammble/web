@@ -1,7 +1,7 @@
 import { MainLayout } from 'src/layouts/MainLayout'
 import { Navigation } from 'src/components/Navigation'
 import { CreatePost } from 'src/components/CreatePost'
-import { Box, VStack } from '@chakra-ui/layout'
+import { VStack } from '@chakra-ui/layout'
 import { Divider } from '@chakra-ui/react'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { FeedPost } from 'src/components/FeedPost'

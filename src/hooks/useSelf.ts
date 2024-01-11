@@ -1,32 +1,23 @@
 import {
-  GetMeQuery,
-  GetMeQueryHookResult,
   GetMeQueryResult,
   useGetMeQuery,
   useLoginMutation,
   useSignupMutation,
 } from '@rammble/sdk'
-import { useAuth } from 'src/providers/AuthProvider'
 import { NotUndefined } from 'src/utils/types'
 import { useRouter } from 'next/router'
 
 export interface UseSelfOptions {
   redirectOnLogin?: string
-  redirectOnLogout?: string
   redirectOnRegister?: string
 }
 
 export const useSelf = <
   TIsLoggedInOverride extends true | undefined = undefined,
->({
-  redirectOnLogin,
-  redirectOnRegister,
-  redirectOnLogout,
-}: UseSelfOptions = {}) => {
+>({ redirectOnLogin, redirectOnRegister }: UseSelfOptions = {}) => {
   const router = useRouter()
-  const auth = useAuth()
 
-  const { data: me, refetch, loading: isLoadingMeQuery } = useGetMeQuery()
+  const { data: me, loading: isLoadingMeQuery } = useGetMeQuery()
 
   const [loginMutation, { loading: isLoadingLogin }] = useLoginMutation()
   const [signupMutation, { loading: isLoadingSignup }] = useSignupMutation()
@@ -39,7 +30,7 @@ export const useSelf = <
       await gotoLogin()
     }
 
-    const { data } = await loginMutation({
+    await loginMutation({
       variables: {
         input: {
           username,
@@ -48,31 +39,9 @@ export const useSelf = <
       },
     })
 
-    if (!data?.token) {
-      throw new Error('Invalid credentials')
-    }
-
-    auth.setToken(data.token)
-
-    await refetch()
-
     if (redirectOnLogin) {
       return router.push(redirectOnLogin)
     }
-
-    return data.token
-  }
-
-  const logout = async () => {
-    auth.setToken(undefined)
-    auth.setRefresh(undefined)
-    await refetch()
-
-    if (redirectOnLogout) {
-      return router.push(redirectOnLogout)
-    }
-
-    return router.push('/')
   }
 
   const signup = async (email: string, username: string, password: string) => {
@@ -80,7 +49,7 @@ export const useSelf = <
       await gotoRegister()
     }
 
-    const { data } = await signupMutation({
+    await signupMutation({
       variables: {
         input: {
           email,
@@ -90,19 +59,9 @@ export const useSelf = <
       },
     })
 
-    if (!data?.token) {
-      throw new Error('Invalid credentials')
-    }
-
-    auth.setToken(data.token)
-
-    await refetch()
-
     if (redirectOnRegister) {
       return router.push(redirectOnRegister)
     }
-
-    return data.token
   }
 
   const data = me?.me
@@ -131,7 +90,6 @@ export const useSelf = <
     } as const,
     {
       login,
-      logout,
       signup,
       gotoLogin,
       gotoRegister,

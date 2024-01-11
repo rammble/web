@@ -14,10 +14,8 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
         }
       `}
     </style>
-    <AuthProvider>
-      <AppApolloProvider>
-        <ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
-      </AppApolloProvider>
-    </AuthProvider>
+    <AppApolloProvider>
+      <ChakraBaseProvider theme={theme}>{children}</ChakraBaseProvider>
+    </AppApolloProvider>
   </>
 )

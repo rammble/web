@@ -3,11 +3,11 @@
   "version": "0.2.1",
   "private": true,
   "scripts": {
-    "dev": "next dev -H rammble.local -p 80",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "debug": "cross-env NEXT_PUBLIC_SHOW_DEBUG=1 next dev",
+    "dev:local": "yarn dev -- -H rammble.local -p 80",
     "prettier": "prettier --write ./src/**/*.{ts,tsx}"
   },
   "dependencies": {
@@ -23,8 +23,10 @@
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
     "@tiptap/suggestion": "^2.1.13",
+    "cookies": "^0.9.1",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.4",
+    "http-proxy": "^1.18.1",
     "immer": "^10.0.3",
     "jotai": "^2.5.0",
     "jotai-immer": "^0.2.0",
@@ -39,7 +41,9 @@
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
+    "@types/cookies": "^0.7.10",
     "@types/graphql": "^14.5.0",
+    "@types/http-proxy": "^1.17.14",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

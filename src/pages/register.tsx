@@ -32,12 +32,6 @@ export interface ISignUpField {
   validations: RegisterOptions
 }
 
-interface RegisterFieldValues {
-  email: string
-  username: string
-  password: string
-}
-
 const fields = [
   {
     title: 'email',
@@ -95,13 +89,13 @@ const SignUpPage: FC = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<RegisterFieldValues>()
+  } = useForm<FieldValues>()
 
   function getErrorByTitle(title: string) {
     return errors[title as keyof typeof errors]
   }
 
-  const onSubmit: SubmitHandler<RegisterFieldValues> = (data) =>
+  const onSubmit: SubmitHandler<FieldValues> = (data) =>
     actions.signup(data.email, data.username, data.password)
 
   return (

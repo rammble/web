@@ -21,7 +21,6 @@ import {
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { OneTimePasswordTab } from 'src/components/AuthLayout/Tabs/OneTimePassword'
 import { AuthCompleteTab } from 'src/components/AuthLayout/Tabs/AuthCompleteTab'
-import { useRouter } from 'next/router'
 import { useSelf } from 'src/hooks/useSelf'
 
 export interface ISignUpFieldOptions {
@@ -75,8 +74,6 @@ const SignUpPage: FC = () => {
 
   const [isMobile] = useMediaQuery('(min-width: 1200px)')
   const [tabIndex, setTabIndex] = useState(0)
-  const router = useRouter()
-  const isPasswordReset = router.query?.isReset
   const user = FakeFeedPosts[0].user
   const {
     register,
@@ -93,7 +90,7 @@ const SignUpPage: FC = () => {
     actions.login(data.username, data.password)
 
   const handleTabsChange = (index: number) => {
-    setTabIndex(index)
+    // setTabIndex(index)
   }
 
   const inputFields = useMemo(
