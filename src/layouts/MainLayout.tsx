@@ -57,13 +57,7 @@ export const MainLayout: FC<MainLayoutProps> = ({
 
   return (
     <HStack spacing={8} boxSize="full" align="stretch" justify="center">
-      <Flex
-        id="left-side-node"
-        h="full"
-        w="layouts.main.left"
-        bg="#00112e"
-        flexGrow={0}
-      >
+      <Flex id="left-side-node" h="full" w="layouts.main.left" flexGrow={0}>
         {leftNode}
       </Flex>
       <Flex id="main-content" h="full" w="layouts.main.middle" flexGrow={0}>

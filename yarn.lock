@@ -542,7 +542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/next-js@npm:^2.1.5":
+"@chakra-ui/next-js@npm:^2.2.0":
   version: 2.2.0
   resolution: "@chakra-ui/next-js@npm:2.2.0"
   dependencies:
@@ -936,7 +936,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/react@npm:^2.8.1":
+"@chakra-ui/react@npm:^2.8.2":
   version: 2.8.2
   resolution: "@chakra-ui/react@npm:2.8.2"
   dependencies:
@@ -1397,14 +1397,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.11.1":
-  version: 11.11.1
-  resolution: "@emotion/react@npm:11.11.1"
+"@emotion/react@npm:^11.11.3":
+  version: 11.11.3
+  resolution: "@emotion/react@npm:11.11.3"
   dependencies:
     "@babel/runtime": "npm:^7.18.3"
     "@emotion/babel-plugin": "npm:^11.11.0"
     "@emotion/cache": "npm:^11.11.0"
-    "@emotion/serialize": "npm:^1.1.2"
+    "@emotion/serialize": "npm:^1.1.3"
     "@emotion/use-insertion-effect-with-fallbacks": "npm:^1.0.1"
     "@emotion/utils": "npm:^1.2.1"
     "@emotion/weak-memoize": "npm:^0.3.1"
@@ -1414,7 +1414,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 1aea4d735b537fbfbeda828bbf929488a7e1b5b7d131f14aeede8737e92bb3b611e15fec353e97f85aed7a65a1c86a695a04ba6e9be905231beef6bd624cb705
+  checksum: ce995395b8714343715284beb8478afdfa72b89ed83981a15a170ca0f4a2f77d7a4a198fd50c1f9c6efcd0535768d168ff88c5921dc5f90bb33134c7a75f9455
   languageName: node
   linkType: hard
 
@@ -1428,6 +1428,19 @@ __metadata:
     "@emotion/utils": "npm:^1.2.1"
     csstype: "npm:^3.0.2"
   checksum: d243e0e5abce8d2183d25a32ec89bf650ee741ebadb29e6405abde05d4e2ed446ba5b3f725a29833ad709d0d08f0a5c8d0532fdcd43f4b23d931d8b6d4f218c1
+  languageName: node
+  linkType: hard
+
+"@emotion/serialize@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@emotion/serialize@npm:1.1.3"
+  dependencies:
+    "@emotion/hash": "npm:^0.9.1"
+    "@emotion/memoize": "npm:^0.8.1"
+    "@emotion/unitless": "npm:^0.8.1"
+    "@emotion/utils": "npm:^1.2.1"
+    csstype: "npm:^3.0.2"
+  checksum: 875241eafaa30e7d3b7cf9b585d8c1f224cbf627a674e87eb1d7662dafa76a8c8d67f14a79dbf7d1eaa017e9f68389962990fbcc699d5ad65035a1a047432a3f
   languageName: node
   linkType: hard
 
@@ -1574,12 +1587,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rammble/sdk@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@rammble/sdk@npm:1.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40rammble%2Fsdk%2F1.0.3%2F2a2c931fb68724b176d597bf7e29b2d8bff6847a"
+"@rammble/sdk@npm:1.0.6":
+  version: 1.0.6
+  resolution: "@rammble/sdk@npm:1.0.6::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40rammble%2Fsdk%2F1.0.6%2F13145caf5ce8224480d23d22ef7e7efbf4fecf33"
   dependencies:
     "@apollo/client": "npm:^3.8.8"
-  checksum: 1b58689d914369879d383278db2bb73f237cf34a65dcf82ab2c5200b9e55742e0056e10a519f15058a60b7816270f5713117271afd9acf54729477a91d4c88f0
+  checksum: 0004b95479fcbd26fcf953f8cd68426f5cb1ef0f241bec4187df56757487f3dc49c557fad3eb1648932cb3da8a27b726f6839b345b88ac4337ef2495f59647a5
   languageName: node
   linkType: hard
 
@@ -2649,7 +2662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:*":
+"graphql@npm:*, graphql@npm:^16.8.1":
   version: 16.8.1
   resolution: "graphql@npm:16.8.1"
   checksum: 129c318156b466f440914de80dbf7bc67d17f776f2a088a40cb0da611d19a97c224b1c6d2b13cbcbc6e5776e45ed7468b8432f9c3536724e079b44f1a3d57a8a
@@ -3365,11 +3378,11 @@ __metadata:
   dependencies:
     1.0.3: "npm:^1.0.3"
     "@apollo/client": "npm:^3.8.8"
-    "@chakra-ui/next-js": "npm:^2.1.5"
-    "@chakra-ui/react": "npm:^2.8.1"
-    "@emotion/react": "npm:^11.11.1"
+    "@chakra-ui/next-js": "npm:^2.2.0"
+    "@chakra-ui/react": "npm:^2.8.2"
+    "@emotion/react": "npm:^11.11.3"
     "@emotion/styled": "npm:^11.11.0"
-    "@rammble/sdk": "npm:^1.0.3"
+    "@rammble/sdk": "npm:1.0.6"
     "@tiptap/core": "npm:^2.1.13"
     "@tiptap/pm": "npm:^2.1.13"
     "@tiptap/react": "npm:^2.1.13"
@@ -3386,6 +3399,7 @@ __metadata:
     cross-env: "npm:^7.0.3"
     dayjs: "npm:^1.11.10"
     framer-motion: "npm:^10.16.4"
+    graphql: "npm:^16.8.1"
     http-proxy: "npm:^1.18.1"
     immer: "npm:^10.0.3"
     jotai: "npm:^2.5.0"

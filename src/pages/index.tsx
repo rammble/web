@@ -3,11 +3,13 @@ import { Navigation } from 'src/components/Navigation'
 import { CreatePost } from 'src/components/CreatePost'
 import { VStack } from '@chakra-ui/layout'
 import { Divider } from '@chakra-ui/react'
-import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { FeedPost } from 'src/components/FeedPost'
 import { NextPage } from 'next'
+import { useSelf } from 'src/hooks/useSelf'
 
 const FeedPage: NextPage = () => {
+  const [me] = useSelf<true>()
+
   return (
     <MainLayout
       isFeed
@@ -17,9 +19,7 @@ const FeedPage: NextPage = () => {
       <VStack w="full" gap={2}>
         <CreatePost />
         <Divider height={'1px'} mt={4} mb={2} bg={'blurp.lighter'} />
-        {FakeFeedPosts.map((p, i) => {
-          return <FeedPost key={i} data={p} />
-        })}
+        {me?.posts?.map((post) => <FeedPost key={post.id} data={post} />)}
       </VStack>
     </MainLayout>
   )

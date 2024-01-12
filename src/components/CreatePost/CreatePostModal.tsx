@@ -10,6 +10,13 @@ import { transitions } from 'src/components/motion'
 import { PostOptionButtons } from './PostOptionButtons'
 import { Textarea } from '@chakra-ui/textarea'
 import { HStack, Text } from '@chakra-ui/layout'
+import {
+  GetMeDocument,
+  gql,
+  useCreatePostMutation,
+  useGetMeQuery,
+} from '@rammble/sdk'
+import { GraphQLSchema } from 'graphql/type'
 
 export interface CreatePostModalProps extends PropsWithChildren {
   isOpen: boolean
@@ -21,6 +28,9 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
   onClose,
   children,
 }) => {
+  const [createPost] = useCreatePostMutation({
+    refetchQueries: ['GetMe'],
+  })
   const [content, setContent] = useState('')
   const [count, setCount] = useState(0)
 
@@ -103,6 +113,16 @@ export const CreatePostModal: FC<CreatePostModalProps> = ({
               _hover={{ bg: 'brand', color: 'ui.100' }}
               bg="brand.darkest"
               color="brand"
+              onClick={() =>
+                createPost({
+                  variables: {
+                    input: {
+                      body: content,
+                      private: false,
+                    },
+                  },
+                })
+              }
             >
               Post
             </Button>
