@@ -101,7 +101,7 @@ export const CreatePost: FC<FeedPostProps> = ({}) => {
     <Box w="full" pt={4}>
       <CreatePostModal isOpen={isOpen} onClose={onClose}>
         <HStack alignItems={'center'}>
-          <UserAvatar user={FakeFeedPosts[0].user} />
+          <UserAvatar user={FakeFeedPosts[0].user as any} />
           <Box rounded="8px" bg="#15151F" w="full" pos="relative">
             <Box p={4}>{!isOpen ? <InputField /> : <PlaceholderField />}</Box>
           </Box>

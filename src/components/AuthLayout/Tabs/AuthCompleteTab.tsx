@@ -1,11 +1,10 @@
 import { Center, Flex, Heading, Text } from '@chakra-ui/layout'
 import { Avatar, Checkbox } from '@chakra-ui/react'
 import { FC } from 'react'
-import { UserProps } from 'src/pages'
 import { Button } from '@chakra-ui/button'
 
 export interface AuthCompleteTabProps {
-  user: UserProps
+  user: any
   otpCode: string
 }
 

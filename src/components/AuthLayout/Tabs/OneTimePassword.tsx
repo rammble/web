@@ -1,10 +1,9 @@
 import { Center, Flex, Heading, HStack, Text } from '@chakra-ui/layout'
 import { Avatar, PinInput, PinInputField } from '@chakra-ui/react'
 import { FC } from 'react'
-import { UserProps } from 'src/pages'
 
 export interface OneTimePasswordTabProps {
-  user: UserProps
+  user: any
   setTabIndex: (key: number) => void
 }
 

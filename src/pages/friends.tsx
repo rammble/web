@@ -21,11 +21,7 @@ const Friends: FC = () => (
         <AvatarCarousel />
       </ContentCategory>
       <ContentCategory title="Recent Activity">
-        <VStack w="full" spacing={1} overflow="hidden">
-          {FakeFeedPosts.map((d, i) => {
-            return <FeedPost key={i} data={d} />
-          })}
-        </VStack>
+        <VStack w="full" spacing={1} overflow="hidden"></VStack>
       </ContentCategory>
     </VStack>
   </MainLayout>

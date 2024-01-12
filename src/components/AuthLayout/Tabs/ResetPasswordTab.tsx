@@ -1,11 +1,10 @@
 import { Flex, Text } from '@chakra-ui/layout'
 
 import { FC } from 'react'
-import { UserProps } from 'src/pages'
 import { Button } from '@chakra-ui/button'
 
 export interface ResetPasswordTabProps {
-  user: UserProps
+  user: any
 }
 
 export const ResetPasswordTab: FC<ResetPasswordTabProps> = ({ user }) => {
