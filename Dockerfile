@@ -1,5 +1,5 @@
 # Install dependencies and rebuild the source code only when neededonly
-FROM node:18.12.1-alpine3.17 AS base
+FROM node:18 AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -7,7 +7,6 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-ARG WEB_PORT=3042
 ARG NODE_AUTH_TOKEN
 
 # Install dependencies based on the preferred package manager
@@ -27,10 +26,12 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ARG NODE_AUTH_TOKEN
+
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN yarn build
 
@@ -41,9 +42,11 @@ RUN yarn build
 FROM base AS runner
 WORKDIR /app
 
+ARG WEB_PORT
+
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
-# ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -66,11 +69,6 @@ EXPOSE ${WEB_PORT}
 ENV PORT ${WEB_PORT}
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
-
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry.
-ENV NEXT_TELEMETRY_DISABLED 1
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
