@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Documents/Projects/rammble/backend/.idea/backend.iml" filepath="$USER_HOME$/Documents/Projects/rammble/backend/.idea/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/rammble.iml" filepath="$PROJECT_DIR$/.idea/rammble.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/Projects/rammble/sdk/.idea/sdk.iml" filepath="$USER_HOME$/Documents/Projects/rammble/sdk/.idea/sdk.iml" />
     </modules>
   </component>
 </project>

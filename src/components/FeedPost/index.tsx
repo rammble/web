@@ -1,32 +1,31 @@
 import { useBoolean } from '@chakra-ui/hooks'
-import { Image } from '@chakra-ui/image'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
-import { FeedProps } from 'src/pages'
 import { UserAvatar } from 'src/components/UserAvatar'
 import { FeedButtons } from 'src/components/FeedPost/FeedButtons'
 import { FeedMenu } from 'src/components/FeedPost/FeedMenu'
 import { FeedText } from 'src/components/FeedPost/FeedText'
+import { GetMeQuery } from '@rammble/sdk'
 
 export interface FeedPostProps {
-  data: FeedProps
+  data: GetMeQuery['me']['posts'][number]
   isLoading?: boolean
 }
 
 export const FeedPost: FC<FeedPostProps> = ({ data }) => {
   const router = useRouter()
-  const isPinned = data.post.isPinned
+  // const isPinned = data.post.isPinned
   const onUserProfile = router.pathname.includes('/user')
 
-  const isPinnedAndUserProfile = isPinned && onUserProfile
+  const isPinnedAndUserProfile = onUserProfile
 
   const [isLiked, { toggle: toggleIsLiked }] = useBoolean(false)
   const [isReposted, { toggle: toggleIsReposted }] = useBoolean(false)
 
   return (
     <HStack alignItems={'flex-start'} w={'full'} gap={4} m={1}>
-      <UserAvatar user={data.user} />
+      <UserAvatar user={data.poster} />
       <HStack
         outline={isPinnedAndUserProfile ? '1.5px solid' : 'none'}
         outlineColor={isPinnedAndUserProfile ? 'brand' : 'none'}
@@ -51,13 +50,13 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
           <HStack w={'full'} fontSize={16} justifyContent={'space-between'}>
             <HStack
               cursor={'pointer'}
-              onClick={() => router.push(`/user/${data.user.username}`)}
+              onClick={() => router.push(`/@${data.poster.username}`)}
             >
               <Text fontWeight={500} isTruncated maxWidth={150}>
-                {data.user.displayName}
+                {data.poster.username}
               </Text>
               <Text color={'ui.40'} isTruncated maxWidth={150}>
-                {data.user.username}
+                {data.poster.username}
               </Text>
               <Text color="ui.40">·</Text>
               <Text color="ui.40">32m</Text>
@@ -66,8 +65,8 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
           </HStack>
           <VStack align="start" spacing={1}>
             <VStack align="start" spacing={1}>
-              <FeedText text={data.post.text} />
-              {data.post.images[0] && (
+              <FeedText text={data.body} />
+              {/*{data.post.images[0] && (
                 <Image
                   mt={2}
                   objectFit={'cover'}
@@ -76,9 +75,9 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
                   rounded="12px"
                   src={data.post.images[0].url}
                 />
-              )}
+              )}*/}
             </VStack>
-            <HStack spacing={3} color="ui.alt">
+            {/*<HStack spacing={3} color="ui.alt">
               {data.post.tags.map((t, i) => {
                 return (
                   <Text _hover={{ color: 'brand' }} cursor={'pointer'} key={i}>
@@ -86,7 +85,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
                   </Text>
                 )
               })}
-            </HStack>
+            </HStack>*/}
           </VStack>
           <FeedButtons
             likeCount={69}
