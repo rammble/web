@@ -3,9 +3,9 @@ import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { EmptyHeartIcon } from 'src/icons/EmptyHeartIcon'
 import { EmoteIcon } from 'src/icons/EmoteIcon'
 import { IconButton } from '@chakra-ui/button'
-import { MailIcon } from '../../icons/MailIcon'
-import { Avatar } from '@chakra-ui/react'
-import { FollowButton } from '../UserComponents/FollowButton'
+import { MailIcon } from 'src/icons/MailIcon'
+import Image from 'next/image'
+import { FollowButton } from 'src/components/UserComponents/FollowButton'
 
 export interface ProfileHeroInfoProps {
   username: string
@@ -14,12 +14,11 @@ export interface ProfileHeroInfoProps {
 export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
   return (
     <HStack alignItems={'center'} direction="row" w="full" spacing={4}>
-      <Avatar
-        mt={-10}
-        borderRadius="20px"
-        boxSize="96px"
-        src="https://picsum.photos/96"
-        boxShadow="0 0 0 6px #121217"
+      <Image
+        alt={`Profile Picture of ${username}`}
+        width={96}
+        height={96}
+        src="https://cdn.rammble.net/test/sweaty-speedrunner.gif"
       />
       <VStack mt={1} w="full" align="start" spacing={3}>
         <VStack w="full" align="start" justify="start" spacing={1}>

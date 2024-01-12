@@ -15,10 +15,8 @@ export interface FeedPostProps {
 
 export const FeedPost: FC<FeedPostProps> = ({ data }) => {
   const router = useRouter()
-  // const isPinned = data.post.isPinned
-  const onUserProfile = router.pathname.includes('/user')
 
-  const isPinnedAndUserProfile = onUserProfile
+  const isPinnedAndUserProfile = router.pathname.includes('/user')
 
   const [isLiked, { toggle: toggleIsLiked }] = useBoolean(false)
   const [isReposted, { toggle: toggleIsReposted }] = useBoolean(false)
