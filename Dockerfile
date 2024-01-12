@@ -51,4 +51,4 @@ EXPOSE ${WEB_PORT}
 # Uncomment the following line in case you want to disable telemetry.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["yarn", "start"]
+CMD ["node", "/.next/standalone/server.js"]
