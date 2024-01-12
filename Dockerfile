@@ -1,5 +1,5 @@
 # Install dependencies and rebuild the source code only when neededonly
-FROM node:18 AS base
+FROM node:18-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
