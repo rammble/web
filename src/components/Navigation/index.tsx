@@ -19,6 +19,7 @@ export interface NavigationProps {}
 
 export interface PagesObjectProps {
   title: String
+  description?: String
   path: String
   icon: undefined | string | JSX.Element
 }

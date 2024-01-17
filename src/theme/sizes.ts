@@ -5,7 +5,7 @@ export const sizes = {
   half: '50%',
   layouts: {
     main: {
-      left: '296px',
+      left: '396px',
       middle: '640px',
       right: '216px',
       chat: '48px',

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
-import { Flex, HStack } from '@chakra-ui/layout'
+import { Center, Flex, HStack } from '@chakra-ui/layout'
 import { useSelf } from 'src/hooks/useSelf'
 import { Spinner } from '@chakra-ui/spinner'
 
@@ -52,15 +52,31 @@ export const MainLayout: FC<MainLayoutProps> = ({
   }, [self.isLoading, self.isLoggedIn, isAuthenticationRequired])
 
   if (self.isLoading || (!self.isLoggedIn && isAuthenticationRequired)) {
-    return <Spinner />
+    return (
+      <Center>
+        <Spinner />
+      </Center>
+    )
   }
 
   return (
     <HStack spacing={8} boxSize="full" align="stretch" justify="center">
-      <Flex id="left-side-node" h="full" w="layouts.main.left" flexGrow={0}>
+      <Flex
+        mt={4}
+        id="left-side-node"
+        h="full"
+        w="layouts.main.left"
+        flexGrow={0}
+      >
         {leftNode}
       </Flex>
-      <Flex id="main-content" h="full" w="layouts.main.middle" flexGrow={0}>
+      <Flex
+        mt={4}
+        id="main-content"
+        h="full"
+        w="layouts.main.middle"
+        flexGrow={0}
+      >
         {children}
       </Flex>
       <Flex id="right-side-node" h="full" w="layouts.main.right" flexGrow={0}>
