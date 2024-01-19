@@ -1,8 +1,9 @@
 import { FC } from 'react'
-import { Box, Flex, HStack, Text } from '@chakra-ui/layout'
+import { Flex, Text } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
 import { Icon } from '@chakra-ui/react'
 import { PagesObjectProps } from 'src/components/Navigation'
+import { Button } from '@chakra-ui/button'
 
 export interface NavigationButtonProps {
   page: PagesObjectProps
@@ -23,30 +24,36 @@ export const NavigationButtonNotificationBadge: FC = () => {
 export const SettingsButton: FC<NavigationButtonProps> = ({ page }) => {
   const router = useRouter()
 
-  console.log(router.pathname, page.path)
   const isActive = router.pathname == page.path
   return (
-    <HStack
-      w={'full'}
-      h={'48px'}
+    <Button
       bg={isActive ? 'ui.3' : 'bg'}
-      p={8}
       cursor={'pointer'}
-      borderRadius={8}
+      borderRadius={'12px'}
+      w={'full'}
       gap={4}
+      p={4}
+      whiteSpace="normal"
+      height="auto"
+      blockSize="auto"
       onClick={() => router.push(page.path as string)}
     >
       <Icon color={isActive ? 'ui.90' : 'ui.60'} boxSize={8}>
         {page.icon}
       </Icon>
-      <Box>
-        <Text fontSize={'16px'} color={isActive ? 'ui.90' : 'ui.60'}>
+      <Flex
+        textAlign={'left'}
+        w={'full'}
+        flexDir={'column'}
+        alignItems={'flex-start'}
+      >
+        <Text fontSize={'16px'} fontWeight={500}>
           {page.title}
         </Text>
-        <Text fontSize={'12px'} color={'ui.60'} fontWeight={400}>
+        <Text fontSize={'12px'} fontWeight={400} color={'ui.40'}>
           {page.description}
         </Text>
-      </Box>
-    </HStack>
+      </Flex>
+    </Button>
   )
 }

@@ -1,17 +1,18 @@
-import { Center, VStack } from '@chakra-ui/layout'
+import { Box, Center, VStack } from '@chakra-ui/layout'
 import React, { FC } from 'react'
-import { MainLayout } from 'src/layouts/MainLayout'
 import { Navigation } from 'src/components/Navigation'
 import { NotificationIcon } from 'src/icons/NotificationIcon'
 import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
 import { SettingsButton } from 'src/pages/settings/SettingsButton'
-import { Input } from '@chakra-ui/input'
+import { Input, InputGroup, InputRightElement } from '@chakra-ui/input'
 import { UserIcon } from 'src/icons/UserIcon'
 import { LockIcon } from 'src/icons/LockIcon'
 import { ShieldTickIcon } from 'src/icons/ShieldTickIcon'
 import { AccessibilityIcon } from 'src/icons/AccessibilityIcon'
 import { SettingsSubPage } from 'src/components/Settings/SettingsSubPage'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
+import { SettingsLayout } from 'src/layouts/SettingsLayout'
+import { SearchIcon } from 'src/icons/SearchIcon'
 
 const pages = [
   {
@@ -50,7 +51,7 @@ const pages = [
   },
   {
     title: 'Accessibility, display and languages',
-    description: 'Manage how Rammble content is displayed to you',
+    description: 'Manage how Rammble content is displayed to you.',
     path: '/settings/accessibility',
     icon: <AccessibilityIcon />,
   },
@@ -59,17 +60,24 @@ const pages = [
 const SettingsPage: FC = () => {
   const SettingsButtons = () => {
     return (
-      <VStack gap={2}>
-        <Input placeholder={'Search settings...'} border={'input'} />
-        {pages.map((p, i) => {
-          return <SettingsButton key={i} page={p} />
-        })}
+      <VStack w={'full'} gap={4}>
+        <InputGroup>
+          <Input placeholder={'Search settings...'} border={'input'} />
+          <InputRightElement>
+            <SearchIcon boxSize={5} cursor={'pointer'} />
+          </InputRightElement>
+        </InputGroup>
+        <Box w={'full'}>
+          {pages.map((p, i) => {
+            return <SettingsButton key={i} page={p} />
+          })}
+        </Box>
       </VStack>
     )
   }
 
   return (
-    <MainLayout
+    <SettingsLayout
       renderLeftNode={() => <SettingsButtons />}
       renderChatNode={() => null}
       renderRightNode={() => <Navigation />}
@@ -83,7 +91,7 @@ const SettingsPage: FC = () => {
           }
         />
       </Center>
-    </MainLayout>
+    </SettingsLayout>
   )
 }
 
