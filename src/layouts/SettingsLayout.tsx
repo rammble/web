@@ -3,18 +3,19 @@ import { Center, Flex, HStack } from '@chakra-ui/layout'
 import { useSelf } from 'src/hooks/useSelf'
 import { Spinner } from '@chakra-ui/spinner'
 
-export interface MainLayoutData {
+export interface SettingsLayoutData {
   isFeed?: boolean
   isAuthenticationRequired?: boolean
 }
 
-export interface MainLayoutProps extends PropsWithChildren<MainLayoutData> {
-  renderLeftNode?: (data: MainLayoutData) => ReactNode
-  renderRightNode: (data: MainLayoutData) => ReactNode
-  renderChatNode: (data: MainLayoutData) => ReactNode
+export interface SettingsLayoutProps
+  extends PropsWithChildren<SettingsLayoutData> {
+  renderLeftNode?: (data: SettingsLayoutData) => ReactNode
+  renderRightNode: (data: SettingsLayoutData) => ReactNode
+  renderChatNode: (data: SettingsLayoutData) => ReactNode
 }
 
-export const MainLayout: FC<MainLayoutProps> = ({
+export const SettingsLayout: FC<SettingsLayoutProps> = ({
   renderLeftNode,
   renderRightNode,
   renderChatNode,
@@ -61,16 +62,21 @@ export const MainLayout: FC<MainLayoutProps> = ({
 
   return (
     <HStack spacing={8} boxSize="full" align="stretch" justify="center">
-      <Flex id="left-side-node" h="full" w="layouts.main.left" flexGrow={0}>
+      <Flex id="left-side-node" h="full" w="layouts.settings.left" flexGrow={0}>
         {leftNode}
       </Flex>
-      <Flex id="main-content" h="full" w="layouts.main.middle" flexGrow={0}>
+      <Flex id="main-content" h="full" w="layouts.settings.middle" flexGrow={0}>
         {children}
       </Flex>
-      <Flex id="right-side-node" h="full" w="layouts.main.right" flexGrow={0}>
+      <Flex
+        id="right-side-node"
+        h="full"
+        w="layouts.settings.right"
+        flexGrow={0}
+      >
         {rightNode}
       </Flex>
-      <Flex id="chat-node" h="full" w="layouts.main.chat" flexGrow={0}>
+      <Flex id="chat-node" h="full" w="layouts.settings.chat" flexGrow={0}>
         {chatNode}
       </Flex>
     </HStack>

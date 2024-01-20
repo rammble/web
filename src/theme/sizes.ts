@@ -10,5 +10,11 @@ export const sizes = {
       right: '216px',
       chat: '48px',
     },
+    settings: {
+      left: '396px',
+      middle: '640px',
+      right: '216px',
+      chat: '48px',
+    },
   },
 } satisfies Partial<ChakraTheme>['sizes']

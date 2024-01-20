@@ -24,7 +24,6 @@ export default class PasswordStrengthService {
     let strength = 0
 
     if (password?.length >= 25) {
-      console.log(true)
       strength++
     }
 
