@@ -17,40 +17,40 @@ export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
         size={'md'}
         icon={<AttachmentIcon boxSize={6} />}
         _hover={{ bg: 'blurp.darker' }}
-        bg={'none'}
+        bg={'transparent'}
         aria-label={'Attach image'}
       />
       <IconButton
         size={'md'}
-        bg={'none'}
+        bg={'transparent'}
         _hover={{ bg: 'blurp.darker' }}
         icon={<GifIcon boxSize={6} />}
         aria-label={'Gifs'}
       />
       <IconButton
         size={'md'}
-        bg={'none'}
+        bg={'transparent'}
         _hover={{ bg: 'blurp.darker' }}
         icon={<PollIcon boxSize={6} />}
         aria-label={'Gifs'}
       />
       <IconButton
         size={'md'}
-        bg={'none'}
+        bg={'transparent'}
         _hover={{ bg: 'blurp.darker' }}
         icon={<EmoteIcon boxSize={6} />}
         aria-label={'Emojis'}
       />
       <IconButton
         size={'md'}
-        bg={'none'}
+        bg={'transparent'}
         _hover={{ bg: 'blurp.darker' }}
         icon={<MicrophoneIcon boxSize={6} />}
         aria-label={'Microphone'}
       />
       <IconButton
         size={'md'}
-        bg={'none'}
+        bg={'transparent  '}
         _hover={{ bg: 'blurp.darker' }}
         icon={<CalenderIcon boxSize={6} />}
         aria-label={'Calendar'}
