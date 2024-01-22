@@ -16,42 +16,42 @@ export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
       <IconButton
         size={'md'}
         icon={<AttachmentIcon boxSize={6} />}
-        _hover={{ bg: 'brand.darkest' }}
-        bg={'blurp.darker'}
+        _hover={{ bg: 'blurp.darker' }}
+        bg={'transparent'}
         aria-label={'Attach image'}
       />
       <IconButton
         size={'md'}
-        bg={'blurp.darker'}
-        _hover={{ bg: 'brand.darkest' }}
+        bg={'transparent'}
+        _hover={{ bg: 'blurp.darker' }}
         icon={<GifIcon boxSize={6} />}
         aria-label={'Gifs'}
       />
       <IconButton
         size={'md'}
-        bg={'blurp.darker'}
-        _hover={{ bg: 'brand.darkest' }}
+        bg={'transparent'}
+        _hover={{ bg: 'blurp.darker' }}
         icon={<PollIcon boxSize={6} />}
         aria-label={'Gifs'}
       />
       <IconButton
         size={'md'}
-        bg={'blurp.darker'}
-        _hover={{ bg: 'brand.darkest' }}
+        bg={'transparent'}
+        _hover={{ bg: 'blurp.darker' }}
         icon={<EmoteIcon boxSize={6} />}
         aria-label={'Emojis'}
       />
       <IconButton
         size={'md'}
-        bg={'blurp.darker'}
-        _hover={{ bg: 'brand.darkest' }}
+        bg={'transparent'}
+        _hover={{ bg: 'blurp.darker' }}
         icon={<MicrophoneIcon boxSize={6} />}
         aria-label={'Microphone'}
       />
       <IconButton
         size={'md'}
-        bg={'blurp.darker'}
-        _hover={{ bg: 'brand.darkest' }}
+        bg={'transparent  '}
+        _hover={{ bg: 'blurp.darker' }}
         icon={<CalenderIcon boxSize={6} />}
         aria-label={'Calendar'}
       />
