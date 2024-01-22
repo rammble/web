@@ -14,7 +14,7 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
     refetchQueries: ['GetMe'],
   })
   const [content, setContent] = useState('')
-  const [count, setCount] = useState(0)
+  const count = content.length
 
   return (
     <Flex w={'full'} gap={4}>
@@ -28,7 +28,6 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
           borderColor="brand"
           onChange={(e) => {
             setContent(e.target.value)
-            setCount(e.target.value.length)
           }}
           maxLength={140}
         />
