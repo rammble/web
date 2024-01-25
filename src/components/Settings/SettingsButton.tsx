@@ -4,27 +4,17 @@ import { useRouter } from 'next/router'
 import { Icon } from '@chakra-ui/react'
 import { PagesObjectProps } from 'src/components/Navigation'
 import { Button } from '@chakra-ui/button'
+import { SettingsIconDisplayer } from 'src/components/Settings/SettingsIconDisplayer'
 
 export interface NavigationButtonProps {
   page: PagesObjectProps
 }
 
-export const NavigationButtonNotificationBadge: FC = () => {
-  return (
-    <Flex
-      w={'8px'}
-      h={'8px'}
-      bg={'accent.red'}
-      borderRadius={'50%'}
-      position={'relative'}
-    />
-  )
-}
-
 export const SettingsButton: FC<NavigationButtonProps> = ({ page }) => {
   const router = useRouter()
 
-  const isActive = router.pathname == page.path
+  const isActive = router.asPath === page.path
+
   return (
     <Button
       bg={isActive ? 'ui.3' : 'bg'}
@@ -38,9 +28,10 @@ export const SettingsButton: FC<NavigationButtonProps> = ({ page }) => {
       blockSize="auto"
       onClick={() => router.push(page.path as string)}
     >
-      <Icon color={isActive ? 'ui.90' : 'ui.60'} boxSize={8}>
-        {page.icon}
-      </Icon>
+      <SettingsIconDisplayer
+        iconName={page.icon as string}
+        isActive={isActive}
+      />
       <Flex
         textAlign={'left'}
         w={'full'}
