@@ -17,6 +17,8 @@ const SettingsPage: FC = () => {
   const pageData = SettingsPages[category as keyof typeof SettingsPages]
   const subPages = pageData?.subPages
 
+  const subPageIsEmpty = subPages?.length === 0 || !subPages
+
   return (
     <SettingsLayout
       renderLeftNode={() => <SettingNavButtons />}
@@ -38,7 +40,7 @@ const SettingsPage: FC = () => {
           {subPages?.map((subPage, i) => {
             return <SettingsButton page={subPage} />
           })}
-          {(subPages?.length === 0 || !subPages) && (
+          {subPageIsEmpty && (
             <Tag colorScheme={'red'} mt={5} p={5} color={'ui.40'}>
               Uh ohhhhhhh... looks like we don't have any options for this right
               now!
