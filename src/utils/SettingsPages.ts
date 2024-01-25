@@ -74,7 +74,7 @@ export const SettingsPages = {
     page: {
       title: 'Accessibility, display and languages',
       description: 'Manage how Rammble content is displayed to you.',
-      path: '/settings/notifications',
+      path: '/settings/accessibility',
       icon: 'AccessibilityIcon',
     },
     subPages: [],
