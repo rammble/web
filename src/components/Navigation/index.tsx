@@ -2,7 +2,7 @@ import { Image } from '@chakra-ui/image'
 import { Box, Flex } from '@chakra-ui/layout'
 import { ComponentWithAs, Icon, IconProps, Text } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement, ReactNode } from 'react'
 import { CogIcon } from 'src/icons/CogIcon'
 import { FeedIcon } from 'src/icons/FeedIcon'
 import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
@@ -21,7 +21,7 @@ export interface PagesObjectProps {
   title: String
   description?: String
   path: String
-  icon: undefined | string | ReactElement
+  icon: ReactNode
 }
 
 const pages = [
