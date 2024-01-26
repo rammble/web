@@ -62,10 +62,23 @@ export const SettingsLayout: FC<SettingsLayoutProps> = ({
 
   return (
     <HStack spacing={8} boxSize="full" align="stretch" justify="center">
-      <Flex id="left-side-node" h="full" w="layouts.settings.left" flexGrow={0}>
+      <Flex
+        pt={5}
+        id="left-side-node"
+        h="full"
+        w="layouts.settings.left"
+        flexGrow={0}
+      >
         {leftNode}
       </Flex>
-      <Flex id="main-content" h="full" w="layouts.settings.middle" flexGrow={0}>
+      <Flex
+        pt={5}
+        id="main-content"
+        h="full"
+        flexDir={'column'}
+        w="layouts.settings.middle"
+        flexGrow={0}
+      >
         {children}
       </Flex>
       <Flex

@@ -25,6 +25,11 @@ const nextConfig = {
         destination: '/user/:username',
         permanent: true,
       },
+      {
+        source: '/settings',
+        destination: '/settings/account',
+        permanent: true,
+      },
     ]
   },
 }
