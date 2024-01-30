@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "dev:local": "yarn dev -- -H rammble.local -p 80",
-    "prettier": "prettier --write ./src/**/*.{ts,tsx}"
+    "prettier": "prettier --write ./src/**/*.{ts,tsx}",
+    "theme": "chakra-cli tokens ./src/theme/index.ts --strict-component-types --strict-token-types",
+    "postinstall": "yarn theme",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
@@ -35,12 +39,24 @@
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
     "react-pull-to-refresh": "^2.0.1",
+    "react-smooth-corners": "^1.0.4",
     "react-twemoji": "^0.5.0",
     "tippy.js": "^6.3.7",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "twemoji": "^14.0.2",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^2.4.1",
+    "@chakra-ui/storybook-addon": "^5.1.0",
+    "@storybook/addon-essentials": "^7.6.10",
+    "@storybook/addon-interactions": "^7.6.10",
+    "@storybook/addon-links": "^7.6.10",
+    "@storybook/addon-onboarding": "1.0.11",
+    "@storybook/blocks": "^7.6.10",
+    "@storybook/nextjs": "^7.6.10",
+    "@storybook/react": "^7.6.10",
+    "@storybook/test": "^7.6.10",
     "@types/cookies": "^0.7.10",
     "@types/graphql": "^14.5.0",
     "@types/http-proxy": "^1.17.14",
@@ -50,6 +66,7 @@
     "@types/react-twemoji": "^0.4.3",
     "cross-env": "^7.0.3",
     "prettier": "^3.0.3",
+    "storybook": "^7.6.10",
     "typescript": "^5"
   },
   "packageManager": "yarn@4.0.2"

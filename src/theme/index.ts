@@ -1,18 +1,24 @@
-import { ChakraTheme, extendBaseTheme, extendTheme } from '@chakra-ui/react'
-import { Rubik, Urbanist } from 'next/font/google'
-import { DEFAULT_DURATION, DEFAULT_EASING } from 'src/components/motion'
-import { colors } from 'src/theme/colors'
+import {
+  colors,
+  semanticTokens as colorsSemanticTokens,
+} from 'src/theme/colors'
 import { components } from 'src/theme/components'
 import { sizes } from 'src/theme/sizes'
 import { spacing } from 'src/theme/spacing'
-import { satisfies } from 'next/dist/lib/semver-noop'
 import { layerStyles } from 'src/theme/layer-styles'
 import { borders } from 'src/theme/borders'
+import {
+  fonts,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
+  textStyles,
+} from 'src/theme/fonts'
+import { transition } from 'src/theme/transition'
+import { extendBaseTheme } from '@chakra-ui/react'
 
-export const rubik = Rubik({ subsets: ['latin'] })
-export const urbanist = Urbanist({ subsets: ['latin'] })
-
-export const theme = extendTheme({
+export const themeRaw = {
   config: {
     cssVarPrefix: 'ram',
     initialColorMode: 'dark',
@@ -21,64 +27,42 @@ export const theme = extendTheme({
   layerStyles,
   colors,
   components,
-  fonts: {
-    heading: 'var(--font-urbanist)',
-    body: 'var(--font-rubik)',
-  },
   space: spacing,
   borders: { ...borders },
   sizes: { ...spacing, ...sizes },
-  transition: {
-    easing: {
-      normal: `cubic-bezier(${DEFAULT_EASING.join(', ')})`,
-    },
-    duration: {
-      fast: `${DEFAULT_DURATION / 2}ms`,
-      normal: `${DEFAULT_DURATION}ms`,
-      slow: `${DEFAULT_DURATION * 2}ms`,
-    },
-    property: {
-      all: 'all',
-      common:
-        'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform',
-      colors: 'background-color, border-color, color, fill, stroke',
-      opacity: 'opacity',
-      shadow: 'box-shadow',
-      transform: 'transform',
-    },
+  fonts,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
+  textStyles,
+  transition,
+  semanticTokens: {
+    colors: colorsSemanticTokens.colors,
   },
   styles: {
     global: {
+      ':root': {
+        // '--rammble-font': montserrat.style,
+      },
       '*': {
         tapHighlightColor: 'transparent',
         WebkitTapHighlightColor: 'transparent',
       },
       html: {
-        bg: 'bg',
+        bg: 'panel.background',
         height: '100%',
         width: '100%',
-        '::-webkit-scrollbar': {
-          width: '8px',
-          height: '8px',
-        },
-        '::-webkit-scrollbar-track': {
-          bg: 'transparent',
-        },
-        '::-webkit-scrollbar-thumb': {
-          bg: 'ui.5',
-          borderRadius: 'full',
-        },
-        '::-webkit-scrollbar-thumb:hover': {
-          bg: 'brand',
-        },
       },
       body: {
-        bg: 'bg',
-        color: 'ui',
+        bg: 'panel.background',
+        color: 'text',
         fontFamily: 'body',
       },
     },
   },
-} satisfies Partial<ChakraTheme>)
+} as const
 
-export default theme
+export const theme = themeRaw
+
+export const current = extendBaseTheme(themeRaw)

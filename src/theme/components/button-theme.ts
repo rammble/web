@@ -1,35 +1,141 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system'
 
-const baseStyle = defineStyle({})
+const baseStyle = defineStyle(({ colorScheme: scheme }) => {
+  return {
+    border: '1px solid',
+    color: 'contrast.white',
+    borderColor: 'transparent',
+    transitionProperty: 'common',
+    transitionDuration: 'fast',
+    boxShadow: '0 0 2px 4px transparent, 0 0 4px 8px transparent',
+    _focus: {
+      boxShadow: `0 0 0 2px var(--ram-colors-${scheme}-3), 0 0 0 4px var(--ram-colors-${scheme}-8a)`,
+    },
+    fontWeight: 'medium',
+  } as const
+})
 
-const solidVariant = defineStyle({})
+const solidVariant = defineStyle(({ colorScheme: scheme }) => {
+  return {
+    bg: `${scheme}.9`,
+    _hover: {
+      bg: `${scheme}.10`,
+    },
+    _active: {
+      opacity: 0.92,
+    },
+    _disabled: {
+      bg: `${scheme}.3a`,
+      color: `${scheme}.8a`,
+      cursor: 'not-allowed',
+    },
+  } as const
+})
 
-const SelfPromo = defineStyle({
-  width: '159px',
-  height: '40px',
-  borderRadius: '999px',
-  padding: '8px 32px',
-  gap: '10px',
-  fontWeight: '500',
-  border: '1px solid',
-  borderColor: 'ui.1',
+const softVariant = defineStyle(({ colorScheme: scheme }) => {
+  return {
+    bg: `${scheme}.3a`,
+    color: `${scheme}.11a`,
+    _hover: {
+      bg: `${scheme}.4a`,
+    },
+    _active: {
+      bg: `${scheme}.5a`,
+    },
+    _disabled: {
+      bg: `${scheme}.3a`,
+      color: `${scheme}.8a`,
+      cursor: 'not-allowed',
+    },
+  } as const
+})
+
+const outlineVariant = defineStyle(({ colorScheme: scheme }) => {
+  return {
+    bg: 'transparent',
+    borderColor: `${scheme}.8a`,
+    color: `${scheme}.11`,
+    _hover: {
+      bg: `${scheme}.2a`,
+    },
+    _active: {
+      bg: `${scheme}.3a`,
+    },
+    _disabled: {
+      bg: 'transparent',
+      borderColor: `${scheme}.7a`,
+      color: `${scheme}.8a`,
+      cursor: 'not-allowed',
+    },
+  } as const
+})
+
+const ghostVariant = defineStyle(({ colorScheme: scheme }) => {
+  return {
+    bg: 'transparent',
+    color: `${scheme}.11`,
+    _hover: {
+      bg: `${scheme}.3a`,
+    },
+    _active: {
+      bg: `${scheme}.4a`,
+    },
+    _disabled: {
+      bg: 'transparent',
+      color: `${scheme}.8a`,
+      cursor: 'not-allowed',
+    },
+    fontWeight: 'regular',
+  } as const
 })
 
 const variants = {
   solid: solidVariant,
-  selfpromo: SelfPromo,
+  soft: softVariant,
+  outline: outlineVariant,
+  ghost: ghostVariant,
   unstyled: defineStyle({}),
-}
+} as const
 
-const smallSize = defineStyle({})
+// Small
+const size1 = defineStyle({
+  py: '3px',
+  px: '7px',
+  rounded: '3px',
+  textStyle: '1',
+} as const)
 
-const largeSize = defineStyle({})
+// Medium
+const size2 = defineStyle({
+  py: '5px',
+  px: '11px',
+  rounded: '4px',
+  textStyle: '2',
+} as const)
+
+// Large
+const size3 = defineStyle({
+  py: '7px',
+  px: '15px',
+  rounded: '6px',
+  textStyle: '3',
+} as const)
+
+// XLarge
+const size4 = defineStyle({
+  py: '10px',
+  px: '23px',
+  rounded: '8px',
+  textStyle: '4',
+} as const)
 
 const sizes = {
-  large: largeSize,
-  small: smallSize,
+  '1': size1,
+  '2': size2,
+  '3': size3,
+  '4': size4,
   unstyled: defineStyle({}),
-}
+} as const
 
 export const buttonTheme = defineStyleConfig({
   baseStyle,
@@ -37,6 +143,7 @@ export const buttonTheme = defineStyleConfig({
   sizes,
   defaultProps: {
     variant: 'solid',
-    size: 'small',
+    size: '2',
+    colorScheme: 'neutral',
   },
-})
+} as const)

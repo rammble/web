@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2018",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,6 +17,6 @@
       "src/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "https://unpkg.com/twemoji@latest/dist/twemoji.min.js", "https_unpkg.com_twemoji@latest_dist_twemoji.min.js"],
+  "include": ["global.d.ts", ".storybook", "next-env.d.ts", "**/*.ts", "**/*.tsx", "https://unpkg.com/twemoji@latest/dist/twemoji.min.js", "https_unpkg.com_twemoji@latest_dist_twemoji.min.js"],
   "exclude": ["node_modules"]
 }
