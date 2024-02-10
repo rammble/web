@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/button'
 import { Heading, VStack, Wrap } from '@chakra-ui/layout'
-import { useColorMode } from '@chakra-ui/react'
+import { Tooltip, useColorMode } from '@chakra-ui/react'
 
 export default function TestingPage() {
   const sizes = ['1', '2', '3', '4']
@@ -11,9 +11,12 @@ export default function TestingPage() {
 
   return (
     <VStack>
-      <Button onClick={toggleColorMode}>
-        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-      </Button>
+      <Tooltip label={'hi hahahahah'} hasArrow>
+        <Button onClick={toggleColorMode}>
+          Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+        </Button>
+      </Tooltip>
+
       <Wrap spacing={8}>
         {schemes.map((scheme) => (
           <VStack align="start" key={scheme}>
