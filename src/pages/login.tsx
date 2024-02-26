@@ -1,178 +1,117 @@
-import { FC, useMemo, useState } from 'react'
-import { AuthLayout } from 'src/components/AuthLayout'
-import { Box, Flex } from '@chakra-ui/layout'
-import { InputField } from 'src/components/AuthLayout/InputField'
-import { Button } from '@chakra-ui/button'
-import {
-  FieldValues,
-  RegisterOptions,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form'
-import ConnectionFields from 'src/components/AuthLayout/Connections/ConnectionFields'
-import {
-  AbsoluteCenter,
-  Divider,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  useMediaQuery,
-} from '@chakra-ui/react'
-import { FakeFeedPosts } from 'src/utils/placeholder.data'
-import { OneTimePasswordTab } from 'src/components/AuthLayout/Tabs/OneTimePassword'
-import { AuthCompleteTab } from 'src/components/AuthLayout/Tabs/AuthCompleteTab'
-import { useSelf } from 'src/hooks/useSelf'
-
-export interface ISignUpFieldOptions {
-  hasLengthCounter?: boolean
-  hasPasswordStrength?: boolean
-}
-
-export interface ISignUpField {
-  title: string
-  type: string
-  maxLength?: number
-  options?: ISignUpFieldOptions
-  validations: RegisterOptions
-}
-
-const fields = [
-  {
-    title: 'username',
-    type: 'text',
-    validations: {
-      pattern: {
-        value: /^\S*$/,
-        message: ' This field cannot include spaces.',
-      },
-      required: 'This field is required',
-      maxLength: { value: 32, message: 'Your username is too long' },
-    },
-  },
-  {
-    title: 'password',
-    type: 'current-password',
-    maxLength: 32,
-    options: {
-      hasForgotPassword: true,
-    },
-    validations: {
-      pattern: {
-        value: /^\S*$/,
-        message: ' This field cannot include spaces.',
-      },
-      required: 'This field is required',
-      maxLength: { value: 32, message: 'Your password is too long' },
-    },
-  },
-]
+import { FC } from 'react'
+import { HStack, Text, VStack } from '@chakra-ui/layout'
+import { LogoIcon } from 'src/icons/LogoIcon'
+import { Link } from '@chakra-ui/next-js'
+import { Button, IconButton } from '@chakra-ui/button'
+import { DiscordIcon } from 'src/icons/DiscordIcon'
+import { Divider } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/input'
+import { GoogleIcon } from 'src/icons/GoogleIcon'
+import { CloseIcon } from 'src/icons/CloseIcon'
+import { SearchIcon } from 'src/icons/SearchIcon'
+import { AuthLayout } from 'src/layouts/AuthLayout'
 
 const SignUpPage: FC = () => {
-  const [, actions] = useSelf({
-    redirectOnLogin: '/',
-  })
-
-  const [isMobile] = useMediaQuery('(min-width: 1200px)')
-  const [tabIndex, setTabIndex] = useState(0)
-  const user = FakeFeedPosts[0].user
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<FieldValues>()
-
-  function getErrorByTitle(title: string) {
-    return errors[title as keyof typeof errors]
-  }
-
-  const onSubmit: SubmitHandler<FieldValues> = (data) =>
-    actions.login(data.username, data.password)
-
-  const handleTabsChange = (index: number) => {
-    // setTabIndex(index)
-  }
-
-  const inputFields = useMemo(
-    () =>
-      fields.map((f, i) => {
-        return (
-          <InputField
-            key={i}
-            register={register}
-            field={f}
-            errors={getErrorByTitle(f.title)}
-            watchValue={watch(f.title as any)}
-          />
-        )
-      }),
-    [],
-  )
-
   return (
-    <AuthLayout heading={'Welcome back'} isMobile={isMobile}>
-      <Tabs onChange={handleTabsChange} index={tabIndex}>
-        <TabPanels>
-          <TabPanel>
-            <Box gap={4} w={'350px'}>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <Flex
-                  h={'full'}
-                  w={'full'}
-                  flexDir={'column'}
-                  justifyContent={'space-evenly'}
-                  gap={'20px'}
-                >
-                  <Box>{inputFields}</Box>
-                  <Button
-                    onClick={() => setTabIndex(1)}
-                    textTransform={'uppercase'}
-                    variant={'filled'}
-                    type={'submit'}
-                    fontWeight={600}
-                    fontSize={'20px'}
-                    color={'brand'}
-                    borderColor={'brand.darkest'}
-                    border={'2px solid'}
-                    borderRadius={'8px'}
-                    bg={'brand.darkest'}
-                    p={'16px'}
-                  >
-                    Get Rambling
-                  </Button>
-                  {isMobile && (
-                    <Box
-                      position="relative"
-                      paddingTop="5"
-                      paddingBottom="5"
-                      bg={'bg.darker'}
-                    >
-                      <Divider borderColor={'ui.20'} w={'full'} />
-                      <AbsoluteCenter
-                        color={'ui.20'}
-                        flexDir={'row'}
-                        bg={'bg.darker'}
-                        px="4"
-                        fontWeight={500}
-                        fontSize={'14px'}
-                      >
-                        or continue with
-                      </AbsoluteCenter>
-                    </Box>
-                  )}
-                  <ConnectionFields isSignUpPage={false} />
-                </Flex>
-              </form>
-            </Box>
-          </TabPanel>
-          <TabPanel>
-            <OneTimePasswordTab setTabIndex={setTabIndex} user={user} />
-          </TabPanel>
-          <TabPanel>
-            <AuthCompleteTab user={user} otpCode={'124214'} />
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+    <AuthLayout>
+      <HStack boxSize="full" px="256px" py="96px" justify="space-between">
+        <VStack spacing={6}>
+          <LogoIcon h="60px" w="225px" />
+          <VStack
+            w="340px"
+            bg="rgba(29, 29, 33, 0.70)"
+            backdropFilter="blur(20px)"
+            rounded={6}
+            p={6}
+            pt={5}
+            border="1px solid"
+            borderColor="neutral.5a"
+            spacing={6}
+          >
+            <HStack spacing={1}>
+              <Text textStyle="2" fontWeight="regular" color="neutral.9a">
+                Don't have an account?
+              </Text>
+              <Link
+                href="/login"
+                textStyle="2"
+                fontWeight="regular"
+                color="accent.11a"
+              >
+                Create one
+              </Link>
+            </HStack>
+            <HStack w="full" spacing={1}>
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<DiscordIcon boxSize="18px" />}
+              />
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<GoogleIcon boxSize="18px" />}
+              />
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<CloseIcon boxSize="18px" />}
+              />
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<SearchIcon boxSize="18px" />}
+              />
+            </HStack>
+            <HStack spacing={2} w="full">
+              <Divider
+                w="full"
+                h="px"
+                bg="neutral.3a"
+                orientation="horizontal"
+              />
+              <Text textStyle="1" fontWeight="bold" color="neutral.5a">
+                OR
+              </Text>
+              <Divider
+                w="full"
+                h="px"
+                bg="neutral.3a"
+                orientation="horizontal"
+              />
+            </HStack>
+            <VStack as="form" w="full" spacing={4}>
+              <Input size="3" type="text" placeholder="Username" />
+              <Input
+                size="3"
+                type="password"
+                placeholder="Password"
+                autoComplete="current-password"
+              />
+            </VStack>
+            <HStack justify="space-between" w="full">
+              <Link href="/forgot-password" textStyle="2" color="accent.11a">
+                Forgot Password?
+              </Link>
+              <Button colorScheme="accent" size="2" variant="solid">
+                Login
+              </Button>
+            </HStack>
+          </VStack>
+        </VStack>
+      </HStack>
     </AuthLayout>
   )
 }

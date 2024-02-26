@@ -6,7 +6,13 @@ import { StarterKit } from '@tiptap/starter-kit'
 import Twemoji from 'react-twemoji'
 import { TwemojiExtension } from 'src/components/EditorRenderer/plugins/Twemoji.extension'
 
-const EditorContentChakra = chakra(EditorContent, {})
+const EditorContentChakra = chakra(EditorContent, {
+  baseStyle: {
+    textStyle: '3',
+    fontWeight: 'regular',
+    color: 'neutral.11a',
+  },
+})
 
 type EditorContentChakraComponent = ChakraComponent<
   'div',

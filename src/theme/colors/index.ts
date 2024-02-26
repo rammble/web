@@ -1,25 +1,39 @@
-import { generateSpectrum } from 'src/utils/colors'
-
-const [error, errorAlpha] = generateSpectrum('dark', [345, 71, 51])
-const [errorLight, errorLightAlpha] = generateSpectrum('light', [345, 71, 51])
-
-const [success, successAlpha] = generateSpectrum('dark', [164, 72, 46])
-const [successLight, successLightAlpha] = generateSpectrum(
-  'light',
-  [164, 72, 46],
-)
-
-const [warn, warnAlpha] = generateSpectrum('dark', [52, 64, 58])
-const [warnLight, warnLightAlpha] = generateSpectrum('light', [52, 64, 58])
-
-const [info, infoAlpha] = generateSpectrum('dark', [222, 68, 47])
-const [infoLight, infoLightAlpha] = generateSpectrum('light', [222, 68, 47])
-
-const [neutral, neutralAlpha] = generateSpectrum('dark', [40, 0, 50])
-const [neutralLight, neutralLightAlpha] = generateSpectrum('light', [40, 0, 50])
-
-const [accent, accentAlpha] = generateSpectrum('dark', [208, 83, 61])
-const [accentLight, accentLightAlpha] = generateSpectrum('light', [208, 83, 61])
+import {
+  neutral,
+  neutralAlpha,
+  neutralLight,
+  neutralLightAlpha,
+} from 'src/theme/colors/neutral'
+import {
+  accent,
+  accentAlpha,
+  accentLight,
+  accentLightAlpha,
+} from 'src/theme/colors/accent'
+import {
+  error,
+  errorAlpha,
+  errorLight,
+  errorLightAlpha,
+} from 'src/theme/colors/error'
+import {
+  success,
+  successAlpha,
+  successLight,
+  successLightAlpha,
+} from 'src/theme/colors/success'
+import {
+  warn,
+  warnAlpha,
+  warnLight,
+  warnLightAlpha,
+} from 'src/theme/colors/warn'
+import {
+  info,
+  infoAlpha,
+  infoLight,
+  infoLightAlpha,
+} from 'src/theme/colors/info'
 
 const rawColors = {
   accent: {
@@ -358,6 +372,10 @@ export const colors = {
       dark: '#202029',
       light: '#ffffff',
     },
+    default: {
+      dark: '#1D1D21B2',
+      light: '#0000001A', // TODO: CHANGE THIS TO CORRECT COLOR
+    },
   },
   text: {
     dark: '#edf4fa',
@@ -366,6 +384,14 @@ export const colors = {
   contrast: {
     black: '#02111f',
     white: '#edf4fa',
+  },
+  surface: {
+    dark: '#00000040',
+    light: '#FFFFFFE5',
+  },
+  'surface-accent': {
+    dark: '#17324B07',
+    light: '#17324B07',
   },
   ...rawColors,
 } as const
@@ -390,10 +416,18 @@ export const semanticTokens = {
         _dark: colors.panel.solid.dark,
         _light: colors.panel.solid.light,
       },
+      default: {
+        _dark: colors.panel.default.dark,
+        _light: colors.panel.default.light,
+      },
     },
     text: {
       _dark: colors.text.dark,
       _light: colors.text.light,
+    },
+    surface: {
+      _dark: colors.surface.dark,
+      _light: colors.surface.light,
     },
     contrast: {
       white: {

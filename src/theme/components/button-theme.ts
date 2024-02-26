@@ -8,6 +8,9 @@ const baseStyle = defineStyle(({ colorScheme: scheme }) => {
     transitionProperty: 'common',
     transitionDuration: 'fast',
     boxShadow: '0 0 2px 4px transparent, 0 0 4px 8px transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     _focus: {
       boxShadow: `0 0 0 2px var(--ram-colors-${scheme}-3), 0 0 0 4px var(--ram-colors-${scheme}-8a)`,
     },
@@ -99,34 +102,38 @@ const variants = {
 
 // Small
 const size1 = defineStyle({
-  py: '3px',
   px: '7px',
+  minW: '24px',
   rounded: '3px',
   textStyle: '1',
+  h: 5,
 } as const)
 
 // Medium
 const size2 = defineStyle({
-  py: '5px',
   px: '11px',
+  minW: '32px',
   rounded: '4px',
   textStyle: '2',
+  h: 6,
 } as const)
 
 // Large
 const size3 = defineStyle({
-  py: '7px',
   px: '15px',
+  minW: '40px',
   rounded: '6px',
   textStyle: '3',
+  h: 7,
 } as const)
 
 // XLarge
 const size4 = defineStyle({
-  py: '10px',
   px: '23px',
+  minW: '48px',
   rounded: '8px',
   textStyle: '4',
+  h: 8,
 } as const)
 
 const sizes = {

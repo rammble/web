@@ -50,7 +50,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
           icon={<CommentIcon boxSize={5} />}
           label={ifZeroLocaleStr(commentCount)}
           ariaLabel="Comment"
-          color="accent.yellow"
+          color="neutral"
           onClick={onComment}
         />
       </Flex>
@@ -59,7 +59,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
           icon={<RepostIcon boxSize={5} />}
           label={ifZeroLocaleStr(repostCount)}
           ariaLabel="Repost"
-          color="accent.green"
+          color="success"
           onClick={onRepost}
           isActive={isReposted}
         />
@@ -67,8 +67,9 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
       <Flex justify="end">
         <NavButton
           icon={<ShareIcon boxSize={5} />}
+          label={ifZeroLocaleStr(5311)}
           ariaLabel="Repost"
-          color="brand"
+          color="neutral"
           onClick={onShare}
         />
       </Flex>

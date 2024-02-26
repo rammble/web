@@ -23,12 +23,11 @@ export const LikeButton: FC<LikeButtonProps> = ({
   return (
     <Button
       aria-label={ariaLabel}
-      variant="unstyled"
-      color={isActive ? 'accent.red' : 'ui.60'}
-      _hover={{ color: 'accent.red' }}
+      variant="ghost"
       pos="relative"
       zIndex={1}
       onClick={onClick}
+      colorScheme={isActive ? 'error' : 'neutral'}
       onMouseEnter={setIsHovering.on}
       onMouseLeave={setIsHovering.off}
     >
@@ -41,7 +40,6 @@ export const LikeButton: FC<LikeButtonProps> = ({
         />
         <FilledHeartIcon
           pos="absolute"
-          inset={0}
           boxSize={5}
           color="accent.red"
           transform={`scale(${isActive ? 1 : 0})`}
@@ -50,7 +48,6 @@ export const LikeButton: FC<LikeButtonProps> = ({
         />
         <FilledHeartIcon
           pos="absolute"
-          inset={0}
           boxSize={5}
           color="accent.red"
           transform={`scale(${isActive ? 2 : 0})`}

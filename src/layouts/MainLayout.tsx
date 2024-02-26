@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
-import { Center, Flex, HStack } from '@chakra-ui/layout'
+import { Center, Flex, HStack, StackDivider } from '@chakra-ui/layout'
 import { useSelf } from 'src/hooks/useSelf'
 import { Spinner } from '@chakra-ui/spinner'
 
@@ -37,42 +37,50 @@ export const MainLayout: FC<MainLayoutProps> = ({
     [renderChatNode, isFeed],
   )
 
-  useEffect(() => {
-    if (!isAuthenticationRequired) {
-      return
-    }
-
-    if (self.isLoading) {
-      return
-    }
-
-    if (!self.isLoggedIn) {
-      gotoLogin()
-    }
-  }, [self.isLoading, self.isLoggedIn, isAuthenticationRequired])
-
-  if (self.isLoading || (!self.isLoggedIn && isAuthenticationRequired)) {
-    return (
-      <Center>
-        <Spinner />
-      </Center>
-    )
-  }
+  // useEffect(() => {
+  //   if (!isAuthenticationRequired) {
+  //     return
+  //   }
+  //
+  //   if (self.isLoading) {
+  //     return
+  //   }
+  //
+  //   if (!self.isLoggedIn) {
+  //     gotoLogin()
+  //   }
+  // }, [self.isLoading, self.isLoggedIn, isAuthenticationRequired])
+  //
+  // if (self.isLoading || (!self.isLoggedIn && isAuthenticationRequired)) {
+  //   return (
+  //     <Center>
+  //       <Spinner />
+  //     </Center>
+  //   )
+  // }
 
   return (
-    <HStack spacing={8} boxSize="full" align="stretch" justify="center">
+    <HStack
+      spacing="4"
+      boxSize="full"
+      align="stretch"
+      justify="center"
+      divider={<StackDivider borderColor="neutral.3a" />}
+    >
       <Flex id="left-side-node" h="full" w="layouts.main.left" flexGrow={0}>
         {leftNode}
       </Flex>
       <Flex id="main-content" h="full" w="layouts.main.middle" flexGrow={0}>
         {children}
       </Flex>
-      <Flex id="right-side-node" h="full" w="layouts.main.right" flexGrow={0}>
-        {rightNode}
-      </Flex>
-      <Flex id="chat-node" h="full" w="layouts.main.chat" flexGrow={0}>
-        {chatNode}
-      </Flex>
+      <HStack h="full" spacing="4">
+        <Flex id="right-side-node" h="full" w="layouts.main.right" flexGrow={0}>
+          {rightNode}
+        </Flex>
+        <Flex id="chat-node" h="full" w="layouts.main.chat" flexGrow={0}>
+          {chatNode}
+        </Flex>
+      </HStack>
     </HStack>
   )
 }

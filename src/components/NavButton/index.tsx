@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/button'
+import { Button, ButtonProps } from '@chakra-ui/button'
 import { useBoolean } from '@chakra-ui/hooks'
 import { Box, HStack, Text } from '@chakra-ui/layout'
 import { As } from '@chakra-ui/react'
@@ -9,7 +9,7 @@ export interface FeedButtonProps {
   icon: ReactElement
   label?: string
   ariaLabel: string
-  color: string
+  color: ButtonProps['colorScheme']
   isActive?: boolean
   onClick?: () => void
 }
@@ -28,27 +28,16 @@ export const NavButton: FC<FeedButtonProps> = ({
   return (
     <Button
       as={as}
-      variant="unstyled"
-      color={isActive ? color : 'ui.60'}
-      _hover={{ color }}
+      colorScheme={isActive ? color : 'neutral'}
       aria-label={ariaLabel}
       pos="relative"
       onClick={onClick}
       zIndex={1}
+      variant="ghost"
+      size="2"
       onMouseEnter={setIsHovering.on}
       onMouseLeave={setIsHovering.off}
     >
-      <Box
-        rounded="full"
-        zIndex={-1}
-        pos="absolute"
-        inset={-2}
-        h={9}
-        bg={color}
-        transform={`scale(${isHovering ? 1 : 0})`}
-        opacity={isHovering ? 0.05 : 0}
-        transition="all 0.08s cubic-bezier(0.04, 0.91, 0.6, 1)"
-      />
       <HStack zIndex={1} pr={label ? 1 : 0}>
         {icon}
         {label && (

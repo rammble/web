@@ -1,13 +1,29 @@
 import { FC, PropsWithChildren, useState } from 'react'
 import { Button } from '@chakra-ui/button'
 import { PostOptionButtons } from './PostOptionButtons'
-import { Textarea } from '@chakra-ui/textarea'
-import { Box, Flex, HStack, Text } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/layout'
 import { useCreatePostMutation } from '@rammble/sdk'
-import { UserAvatar } from 'src/components/UserAvatar'
-import { FakeFeedPosts } from 'src/utils/placeholder.data'
+import { OverflowingTextarea } from 'src/components/OverflowingTextarea'
+import { Avatar } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/next-js'
 
 export interface CreatePostModalProps extends PropsWithChildren {}
+
+const getTextColor = (count: number) => {
+  if (count <= 399) {
+    return 'neutral.9a'
+  }
+
+  if (count <= 469) {
+    return 'warn.9a'
+  }
+
+  if (count <= 479) {
+    return 'error.11a'
+  }
+
+  return 'error.9a'
+}
 
 export const CreatePost: FC<CreatePostModalProps> = () => {
   const [createPost] = useCreatePostMutation({
@@ -17,45 +33,39 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
   const count = content.length
 
   return (
-    <Flex w={'full'} gap={4}>
-      <UserAvatar user={FakeFeedPosts[0].user as any} />
-      <Box w={'full'}>
-        <Textarea
-          resize="none"
-          _hover={{ borderColor: 'brand' }}
+    <Flex w="full" gap="4">
+      <Avatar src="https://picsum.photos/48" size="4" />
+      <VStack w="full" spacing="2">
+        <OverflowingTextarea
+          minHeight="64px"
+          maxAdjustedHeight={240}
           placeholder="Ramble about anything..."
-          backgroundColor="bg.lighter"
-          borderColor="brand"
+          maxLength={480}
           onChange={(e) => {
             setContent(e.target.value)
           }}
-          maxLength={140}
         />
-        <HStack mt={2} justifyContent="space-between">
-          <HStack>
-            <Text cursor="pointer" fontSize={12} color="brand.darker">
-              Posting guidelines
-            </Text>
-            <Text cursor="pointer" fontSize={12} color="ui.40" fontWeight={200}>
-              Support
-            </Text>
-          </HStack>
-          <Text
-            fontSize={12}
-            color={count >= 130 ? 'accent.yellow' : 'ui.40'}
-            fontWeight={200}
+        <HStack w="full" justifyContent="space-between">
+          <Link
+            href="/guidelines"
+            textStyle="2"
+            fontWeight="regular"
+            color="accent.11a"
+            _hover={{
+              color: 'accent.10a',
+            }}
           >
-            {count}/140
+            Guidelines
+          </Link>
+          <Text textStyle="1" fontWeight="regular" color={getTextColor(count)}>
+            {count}/480
           </Text>
         </HStack>
-        <HStack mt={2} justifyContent="space-between">
+        <HStack w="full" justifyContent="space-between">
           <PostOptionButtons />
           <Button
-            borderRadius={10}
-            size="md"
-            _hover={{ bg: 'brand', color: 'ui.100' }}
-            bg="brand.darkest"
-            color="brand"
+            size="3"
+            colorScheme="accent"
             onClick={() =>
               createPost({
                 variables: {
@@ -70,7 +80,7 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
             Post
           </Button>
         </HStack>
-      </Box>
+      </VStack>
     </Flex>
   )
 }

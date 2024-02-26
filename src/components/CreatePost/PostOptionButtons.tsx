@@ -1,59 +1,27 @@
 import { IconButton } from '@chakra-ui/button'
 import { HStack } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { AttachmentIcon } from '../../icons/AttachmentIcon'
-import { CalenderIcon } from '../../icons/CalenderIcon'
-import { EmoteIcon } from '../../icons/EmoteIcon'
-import { GifIcon } from '../../icons/GifIcon'
-import { MicrophoneIcon } from '../../icons/MicrophoneIcon'
-import { PollIcon } from '../../icons/PollIcon'
+import { AttachmentIcon } from 'src/icons/AttachmentIcon'
+import { EmoteIcon } from 'src/icons/EmoteIcon'
 
 export interface PostOptionButtonsProps {}
 
 export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
   return (
-    <HStack>
+    <HStack spacing="0">
       <IconButton
-        size={'md'}
-        icon={<AttachmentIcon boxSize={6} />}
-        _hover={{ bg: 'blurp.darker' }}
-        bg={'transparent'}
-        aria-label={'Attach image'}
+        variant="ghost"
+        colorScheme="accent"
+        size="3"
+        icon={<AttachmentIcon boxSize="18px" />}
+        aria-label="Media"
       />
       <IconButton
-        size={'md'}
-        bg={'transparent'}
-        _hover={{ bg: 'blurp.darker' }}
-        icon={<GifIcon boxSize={6} />}
-        aria-label={'Gifs'}
-      />
-      <IconButton
-        size={'md'}
-        bg={'transparent'}
-        _hover={{ bg: 'blurp.darker' }}
-        icon={<PollIcon boxSize={6} />}
-        aria-label={'Gifs'}
-      />
-      <IconButton
-        size={'md'}
-        bg={'transparent'}
-        _hover={{ bg: 'blurp.darker' }}
-        icon={<EmoteIcon boxSize={6} />}
-        aria-label={'Emojis'}
-      />
-      <IconButton
-        size={'md'}
-        bg={'transparent'}
-        _hover={{ bg: 'blurp.darker' }}
-        icon={<MicrophoneIcon boxSize={6} />}
-        aria-label={'Microphone'}
-      />
-      <IconButton
-        size={'md'}
-        bg={'transparent  '}
-        _hover={{ bg: 'blurp.darker' }}
-        icon={<CalenderIcon boxSize={6} />}
-        aria-label={'Calendar'}
+        variant="ghost"
+        colorScheme="accent"
+        size="3"
+        icon={<EmoteIcon boxSize="18px" />}
+        aria-label="Emotes"
       />
     </HStack>
   )

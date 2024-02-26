@@ -1,4 +1,8 @@
-import { mode } from '@chakra-ui/theme-tools'
+export const toHexOpacity = (hex: string, opacity: number) =>
+  `${hex}${Math.round(opacity * 255)
+    .toString(16)
+    .padStart(2, '0')
+    .toUpperCase()}`
 
 export interface ScaleOptions {
   color: [hue: number, saturation: number, lightness: number]

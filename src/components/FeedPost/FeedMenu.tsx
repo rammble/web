@@ -16,6 +16,7 @@ import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
 import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
 import { TrashIcon } from 'src/icons/TrashIcon'
 import { WarningIcon } from 'src/icons/WarningIcon'
+import { Button, IconButton } from '@chakra-ui/button'
 
 const options = [
   {
@@ -61,11 +62,13 @@ export const FeedMenu: FC = ({}) => {
 
   return (
     <Menu isLazy {...disclosure} offset={[-20, 8]}>
-      <NavButton
+      <IconButton
+        size="1"
         as={MenuButton}
-        icon={<ThreeDotsIcon boxSize={5} />}
-        ariaLabel="Menu"
-        color="ui.100"
+        icon={<ThreeDotsIcon boxSize="4" />}
+        aria-label="Menu"
+        variant="ghost"
+        colorScheme="neutral"
         onClick={disclosure.onToggle}
         isActive={disclosure.isOpen}
       />
