@@ -1,19 +1,19 @@
-import { Image } from '@chakra-ui/image'
-import { Box, Flex } from '@chakra-ui/layout'
-import { ComponentWithAs, Icon, IconProps, Text } from '@chakra-ui/react'
+import { Box, VStack } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
-import { FC, ReactElement, ReactNode } from 'react'
-import { CogIcon } from 'src/icons/CogIcon'
-import { FeedIcon } from 'src/icons/FeedIcon'
-import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
-import { MessagingIcon } from 'src/icons/MessagingIcon'
-import { NotificationIcon } from 'src/icons/NotificationIcon'
-import { PeopleIcon } from 'src/icons/PeopleIcon'
-import { PlusIcon } from 'src/icons/PlusIcon'
-import { SearchIcon } from 'src/icons/SearchIcon'
+import { FC, ReactNode } from 'react'
+import {
+  BellIcon,
+  EnvelopeClosedIcon,
+  GearIcon,
+  HeartIcon,
+  HomeIcon,
+  MagnifyingGlassIcon,
+  PersonIcon,
+} from '@radix-ui/react-icons'
 import { MotionStack } from 'src/components/motion'
 import { NavigationButton } from 'src/components/Navigation/NavigationButton'
 import { NavigationSubButtons } from 'src/components/Navigation/NavigationSubButtons'
+import { Image } from '@chakra-ui/image'
 
 export interface NavigationProps {}
 
@@ -21,44 +21,44 @@ export interface PagesObjectProps {
   title: String
   description?: String
   path: String
-  icon: ReactNode
+  icon: ReactNode | any
 }
 
 const pages = [
   {
     title: 'Home',
     path: '/',
-    icon: <FeedIcon />,
+    icon: HomeIcon,
   },
   {
     title: 'Explore',
     path: '/explore',
-    icon: <SearchIcon />,
+    icon: MagnifyingGlassIcon,
   },
   {
     title: 'Friends',
     path: '/friends',
-    icon: <PeopleIcon />,
+    icon: PersonIcon,
   },
   {
     title: 'Notifications',
     path: '/notifications',
-    icon: <NotificationIcon />,
+    icon: BellIcon,
   },
   {
     title: 'Messages',
     path: '/messages',
-    icon: <MessagingIcon />,
+    icon: EnvelopeClosedIcon,
   },
   {
     title: 'Premium',
     path: '/premium',
-    icon: <FilledHeartIcon />,
+    icon: HeartIcon,
   },
   {
     title: 'Settings',
     path: '/settings',
-    icon: <CogIcon />,
+    icon: GearIcon,
   },
 ]
 
@@ -67,7 +67,6 @@ export const Navigation: FC<NavigationProps> = ({}) => {
 
   return (
     <MotionStack
-      ml={5}
       direction="column"
       h="full"
       justify="space-between"
@@ -76,39 +75,21 @@ export const Navigation: FC<NavigationProps> = ({}) => {
       gap={1.5}
       position={'fixed'}
     >
-      <Box>
+      <VStack mt={6} mb={4} spacing={7} alignItems={'flex-start'}>
         <Image
-          src="/full-logo.png"
+          w={'166px'}
+          h={'26px '}
+          src={'/full-logo.png'}
           alt={'logo'}
           cursor={'pointer'}
           onClick={() => router.push('/')}
         />
-
         <Box mt={3}>
           {pages.map((p, i) => {
             return <NavigationButton key={i} page={p} />
           })}
-
-          <Flex
-            cursor={'pointer'}
-            borderRadius={'45px'}
-            bg={'brand.darkest'}
-            mt={2}
-            p={2}
-            w={'200px'}
-            h={'48px'}
-            alignItems={'center'}
-            gap={4}
-          >
-            <Icon bg={'brand'} borderRadius={'100%'} boxSize={6} color={'bg'}>
-              <PlusIcon />
-            </Icon>
-            <Text fontSize={'20px'} color={'brand'}>
-              Ramble
-            </Text>
-          </Flex>
         </Box>
-      </Box>
+      </VStack>
 
       <Box>
         <NavigationSubButtons />

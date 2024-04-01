@@ -33,11 +33,10 @@ export const NavigationSubButtons: FC<NavigationSubButtonProps> = () => {
         return (
           <Text
             key={i}
-            fontWeight={400}
+            textStyle={'1'}
             cursor={'pointer'}
+            color={p?.isDangerous ? 'error.11' : 'neutral.11a'}
             onClick={() => router.push(p.path as string)}
-            color={p?.isDangerous ? 'accent.red' : 'ui.60'}
-            fontSize={12}
           >
             {p.title}
           </Text>
