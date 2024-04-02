@@ -1,29 +1,32 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Button } from '@chakra-ui/button'
-import { HStack } from '@chakra-ui/layout'
+import { HStack, VStack } from '@chakra-ui/layout'
+import {
+  Divider,
+  Tab,
+  TabIndicator,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from '@chakra-ui/react'
+import { CreatePost } from 'src/components/CreatePost'
+import { FakeFeedPosts } from 'src/utils/placeholder.data'
+import { FeedPost } from 'src/components/FeedPost'
 
 export interface ProfileFeedTabsProps {}
 
 export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = () => {
   return (
-    <HStack w="full" fontSize={16} fontWeight={500} color="ui.40">
-      <Button
-        w="full"
-        py={3}
-        color="ui.100"
-        borderTopRadius="8px"
-        bg="ui.5"
-        borderBottom="2px solid"
-        borderBottomColor="brand"
-      >
-        Rambles
-      </Button>
-      <Button w="full" py={3}>
-        Media
-      </Button>
-      <Button w="full" py={3}>
-        Likes
-      </Button>
-    </HStack>
+    <Tabs gap="8" size="2">
+      <TabList>
+        <Tab>Rammbles</Tab>
+        <Tab>Media</Tab>
+        <Tab>Likes</Tab>
+        <Tab>Commissions</Tab>
+      </TabList>
+      <TabIndicator />
+      <TabPanels></TabPanels>
+    </Tabs>
   )
 }

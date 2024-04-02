@@ -1,5 +1,9 @@
-import { FC } from 'react'
-import { Text } from '@chakra-ui/layout'
+import React, { FC } from 'react'
+import { Box, Text, VStack } from '@chakra-ui/layout'
+import { ProfileHeroBanner } from 'src/components/ProfileHero/ProfileHeroBanner'
+import { ProfileHeroInfo } from 'src/components/ProfileHero/ProfileHeroInfo'
+import { ProfileHeroBioAndInfo } from 'src/components/ProfileHero/ProfileHeroBioAndInfo'
+import { ProfileFeedTabs } from 'src/components/ProfileFeedTabs'
 
 export interface ProfileHeroProps {
   username: string
@@ -7,8 +11,9 @@ export interface ProfileHeroProps {
 
 export const ProfileHero: FC<ProfileHeroProps> = ({ username }) => {
   return (
-    <div>
-      <Text>Profile Hero</Text>
-    </div>
+    <Box w={'full'}>
+      <ProfileHeroBanner />
+      <ProfileHeroInfo username={username} />
+    </Box>
   )
 }

@@ -32,13 +32,20 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
       rounded="4"
     >
       <Avatar
+        onClick={() => router.push(`/user/${data.poster.username}`)}
+        cursor={'pointer'}
         src={`https://picsum.photos/40?n=${data.poster.username}`}
         size="4"
       />
       <HStack w="full" align="start">
         <VStack spacing="2" w="full" align="start">
           <HStack w={'full'} fontSize={16} justifyContent={'space-between'}>
-            <HStack textStyle="3" fontWeight="bold">
+            <HStack
+              onClick={() => router.push(`/user/${data.poster.username}`)}
+              cursor={'pointer'}
+              textStyle="3"
+              fontWeight="bold"
+            >
               <Text color="neutral.11a" isTruncated maxWidth="full">
                 {data.poster.username}
               </Text>

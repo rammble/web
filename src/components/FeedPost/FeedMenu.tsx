@@ -8,7 +8,6 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { FC } from 'react'
-import { NavButton } from '../NavButton'
 import { AddUserIcon } from 'src/icons/AddUserIcon'
 import { EmptyStarIcon } from 'src/icons/EmptyStarIcon'
 import { FilledStarIcon } from 'src/icons/FilledStarIcon'
@@ -16,7 +15,7 @@ import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
 import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
 import { TrashIcon } from 'src/icons/TrashIcon'
 import { WarningIcon } from 'src/icons/WarningIcon'
-import { Button, IconButton } from '@chakra-ui/button'
+import { IconButton } from '@chakra-ui/button'
 
 const options = [
   {
