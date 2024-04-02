@@ -9,16 +9,9 @@ export const FollowButton: FC<FollowButtonProps> = () => {
 
   return (
     <Button
-      bg={isFollowed ? 'blurp.lighter' : 'brand.darker'}
-      px={8}
-      py={2}
-      variant={'unstyled'}
-      color="ui.90"
-      fontSize={16}
-      rounded="12px"
-      _hover={{ bg: 'blurp.darker' }}
-      fontWeight={500}
-      lineHeight="24px"
+      bg={isFollowed ? 'neutral.3a' : 'accent.9'}
+      size={'3'}
+      variant={'solid'}
       onClick={setFollowed.toggle}
     >
       {isFollowed ? 'Unfollow' : 'Follow'}
