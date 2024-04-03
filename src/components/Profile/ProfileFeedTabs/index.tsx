@@ -1,8 +1,5 @@
 import React, { FC } from 'react'
-import { Button } from '@chakra-ui/button'
-import { HStack, VStack } from '@chakra-ui/layout'
 import {
-  Divider,
   Tab,
   TabIndicator,
   TabList,
@@ -10,9 +7,10 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react'
-import { CreatePost } from 'src/components/CreatePost'
+import { ProfileMediaTab } from 'src/components/Profile/ProfileFeedTabs/ProfileMediaTab'
+import { VStack } from '@chakra-ui/layout'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
-import { FeedPost } from 'src/components/FeedPost'
+import { FeedPost } from '../../Posts/FeedPost'
 
 export interface ProfileFeedTabsProps {}
 
@@ -26,7 +24,16 @@ export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = () => {
         <Tab>Commissions</Tab>
       </TabList>
       <TabIndicator />
-      <TabPanels></TabPanels>
+      <TabPanels>
+        <TabPanel>
+          <VStack w="full" spacing="2">
+            {FakeFeedPosts.map((post, index) => (
+              <FeedPost key={index} data={post} isLoading={false} />
+            ))}
+          </VStack>
+        </TabPanel>
+        <ProfileMediaTab />
+      </TabPanels>
     </Tabs>
   )
 }

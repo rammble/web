@@ -4,7 +4,6 @@ import { UserIcon } from 'src/icons/UserIcon'
 import { LockIcon } from 'src/icons/LockIcon'
 import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
 import { ShieldTickIcon } from 'src/icons/ShieldTickIcon'
-import { RammbleLogoIcon } from 'src/icons/RammbleLogoIcon'
 import { AccessibilityIcon } from 'src/icons/AccessibilityIcon'
 
 export interface SettingsIconDisplayerProps {
@@ -17,7 +16,6 @@ const SettingIcons = {
   LockIcon: LockIcon,
   FilledHeartIcon: FilledHeartIcon,
   ShieldTickIcon: ShieldTickIcon,
-  NotificationIcon: RammbleLogoIcon,
   AccessibilityIcon: AccessibilityIcon,
 }
 

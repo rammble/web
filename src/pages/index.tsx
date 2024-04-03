@@ -11,7 +11,7 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react'
-import { FeedPost } from 'src/components/FeedPost'
+import { FeedPost } from '../components/Posts/FeedPost'
 import { NextPage } from 'next'
 import { useSelf } from 'src/hooks/useSelf'
 import React from 'react'

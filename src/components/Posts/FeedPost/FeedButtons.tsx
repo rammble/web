@@ -1,15 +1,18 @@
 import { Flex, SimpleGrid } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { NavButton } from '../NavButton'
+import { NavButton } from 'src/components/NavButton'
 import { LikeButton } from 'src/components/LikeButton'
 import { CommentIcon } from 'src/icons/CommentIcon'
 import { RepostIcon } from 'src/icons/RepostIcon'
 import { ShareIcon } from 'src/icons/ShareIcon'
+import { ChatBubbleIcon, UpdateIcon } from '@radix-ui/react-icons'
+import { Icon } from '@chakra-ui/react'
 
 export interface FeedButtonsProps {
-  likeCount: number
-  commentCount: number
-  repostCount: number
+  likeCount?: number
+  commentCount?: number
+  repostCount?: number
+  shareCount?: number
 
   onLike: () => void
   onComment: () => void
@@ -27,6 +30,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
   likeCount = 0,
   commentCount = 0,
   repostCount = 0,
+  shareCount = 0,
   onLike,
   onComment,
   onRepost,
@@ -36,7 +40,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
   isReposted,
 }) => {
   return (
-    <SimpleGrid w="full" columns={4} spacing={0}>
+    <SimpleGrid w="full" columns={4} spacing={0} color={'neutral.8a'}>
       <Flex justify="start">
         <LikeButton
           label={ifZeroLocaleStr(likeCount)}
@@ -47,7 +51,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
       </Flex>
       <Flex justify="start">
         <NavButton
-          icon={<CommentIcon boxSize={5} />}
+          icon={<Icon as={ChatBubbleIcon} boxSize={4} />}
           label={ifZeroLocaleStr(commentCount)}
           ariaLabel="Comment"
           color="neutral"
@@ -56,7 +60,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
       </Flex>
       <Flex justify="start">
         <NavButton
-          icon={<RepostIcon boxSize={5} />}
+          icon={<Icon as={UpdateIcon} boxSize={4} />}
           label={ifZeroLocaleStr(repostCount)}
           ariaLabel="Repost"
           color="success"
@@ -66,8 +70,8 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
       </Flex>
       <Flex justify="end">
         <NavButton
-          icon={<ShareIcon boxSize={5} />}
-          label={ifZeroLocaleStr(5311)}
+          icon={<Icon as={ShareIcon} boxSize={4} />}
+          label={ifZeroLocaleStr(shareCount)}
           ariaLabel="Repost"
           color="neutral"
           onClick={onShare}

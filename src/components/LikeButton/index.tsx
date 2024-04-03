@@ -4,6 +4,8 @@ import { EmptyHeartIcon } from 'src/icons/EmptyHeartIcon'
 import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
 import { useBoolean } from '@chakra-ui/hooks'
 import { Box, HStack, Text } from '@chakra-ui/layout'
+import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons'
+import { Icon } from '@chakra-ui/react'
 
 export interface LikeButtonProps {
   ariaLabel: string
@@ -32,23 +34,26 @@ export const LikeButton: FC<LikeButtonProps> = ({
       onMouseLeave={setIsHovering.off}
     >
       <HStack zIndex={1} pr={label ? 1 : 0}>
-        <EmptyHeartIcon
-          boxSize={5}
+        <Icon
+          as={HeartIcon}
+          boxSize={4}
           transform={`scale(${isActive ? 0 : 1})`}
           opacity={isActive ? 0 : 1}
           transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1.5)"
         />
-        <FilledHeartIcon
+        <Icon
+          as={HeartFilledIcon}
           pos="absolute"
-          boxSize={5}
+          boxSize={4}
           color="accent.red"
           transform={`scale(${isActive ? 1 : 0})`}
           opacity={isActive ? 1 : 0}
           transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1.5)"
         />
-        <FilledHeartIcon
+        <Icon
+          as={HeartFilledIcon}
           pos="absolute"
-          boxSize={5}
+          boxSize={4}
           color="accent.red"
           transform={`scale(${isActive ? 2 : 0})`}
           opacity={isActive ? 0 : 1}

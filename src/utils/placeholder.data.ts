@@ -403,6 +403,49 @@ export const FakeFeedPosts: GetMeQuery['me']['posts'] = [
   },
 ]
 
+export const FakeMediaPosts = [
+  {
+    poster: {
+      id: 'ba4722cb-d9b5-492b-b212-33a1a84e546c',
+      username: 'Tiffany',
+    },
+    imageUrl:
+      'https://cdn.discordapp.com/attachments/913067274997481534/1224806406058676274/image.png?ex=661ed4db&is=660c5fdb&hm=fb643be18fc814672a31645f967707142554144ffef5ed3d31d4b579c0ed238e&',
+  },
+  {
+    poster: {
+      id: 'ba4722cb-d9b5-492b-b212-33a1a84e546c',
+      username: 'Tiffany',
+    },
+    imageUrl:
+      'https://cdn.discordapp.com/attachments/913067274997481534/1224806393215848541/image.png?ex=661ed4d7&is=660c5fd7&hm=c1648ab51103bdac0ce4f24bd94417badddd2af5e9ab99b8adbf4bd9025a6261&',
+  },
+  {
+    poster: {
+      id: 'ba4722cb-d9b5-492b-b212-33a1a84e546c',
+      username: 'Tiffany',
+    },
+    imageUrl:
+      'https://cdn.discordapp.com/attachments/913067274997481534/1224833221531799683/image.png?ex=661eedd4&is=660c78d4&hm=f55aade00599dc717d3a0a4842d6abe77348b95dd5c0a4d494a908872381ee55&',
+  },
+  {
+    poster: {
+      id: 'ba4722cb-d9b5-492b-b212-33a1a84e546c',
+      username: 'Tiffany',
+    },
+    imageUrl:
+      'https://cdn.discordapp.com/attachments/913067274997481534/1224833782008516730/image.png?ex=661eee59&is=660c7959&hm=6ff6cd5bc00417fac5fed5b9c3f033ca643279de970e12c2a682c4139b58cf49&',
+  },
+  {
+    poster: {
+      id: 'ba4722cb-d9b5-492b-b212-33a1a84e546c',
+      username: 'Tiffany',
+    },
+    imageUrl:
+      'https://cdn.discordapp.com/attachments/913067274997481534/1224833936962752512/image.png?ex=661eee7e&is=660c797e&hm=9084b676d255d1dd6ca6930dd597ea14103c4204607f1c0098c26b1ec2f05337&',
+  },
+]
+
 export const FakeProfileSelfPromoBanner = {
   text: 'Im offering commissions for #art and #ai',
   description:

@@ -2,13 +2,14 @@ import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { FC } from 'react'
 import { CalendarIcon, Link1Icon } from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
 export interface ProfileDetailsProps {}
 
 const details = [
   {
     icon: Link1Icon,
-    value: 'website.com/username/superlong/weird/url',
+    value: 'xignotic.dev/username/superlong/weird/url',
     isLink: true,
   },
   {

@@ -1,6 +1,6 @@
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { ProfileStat } from 'src/components/ProfileHero/ProfileStat'
+import { ProfileStat } from 'src/components/Profile/ProfileHero/ProfileStat'
 
 export interface ProfileHeroBioAndInfoProps {}
 

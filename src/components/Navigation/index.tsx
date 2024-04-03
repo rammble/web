@@ -51,8 +51,8 @@ const pages = [
     icon: EnvelopeClosedIcon,
   },
   {
-    title: 'Premium',
-    path: '/premium',
+    title: 'Ramplify',
+    path: '/ramplify',
     icon: HeartIcon,
   },
   {

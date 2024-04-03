@@ -2,8 +2,13 @@ import { FC } from 'react'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { IconButton } from '@chakra-ui/button'
 import { FollowButton } from 'src/components/UserComponents/FollowButton'
-import { Avatar, Icon } from '@chakra-ui/react'
-import { CookieIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons'
+import { Avatar } from '@chakra-ui/react'
+import {
+  CookieIcon,
+  DrawingPinIcon,
+  EnvelopeClosedIcon,
+} from '@radix-ui/react-icons'
+import { ProfileBadge } from 'src/components/Profile/ProfileHero/ProfileBadge'
 
 export interface ProfileHeroInfoProps {
   username: string
@@ -39,7 +44,11 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
               Display Name
             </Text>
             <HStack spacing={1}>
-              <Icon as={CookieIcon} boxSize={5} color={'accent.8'} />
+              <ProfileBadge title={'Some kind of badge'} icon={CookieIcon} />
+              <ProfileBadge
+                title={'Professional Rammbler'}
+                icon={DrawingPinIcon}
+              />
             </HStack>
           </HStack>
           <Text textStyle={'2'} color={'neutral.8a'}>

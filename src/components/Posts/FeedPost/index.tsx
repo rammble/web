@@ -2,9 +2,9 @@ import { useBoolean } from '@chakra-ui/hooks'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
-import { FeedButtons } from 'src/components/FeedPost/FeedButtons'
-import { FeedMenu } from 'src/components/FeedPost/FeedMenu'
-import { FeedText } from 'src/components/FeedPost/FeedText'
+import { FeedButtons } from 'src/components/Posts/FeedPost/FeedButtons'
+import { FeedMenu } from 'src/components/Posts/FeedPost/FeedMenu'
+import { FeedText } from 'src/components/Posts/FeedPost/FeedText'
 import { GetMeQuery } from '@rammble/sdk'
 import { Avatar } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/next-js'
@@ -84,6 +84,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
             likeCount={69}
             commentCount={420}
             repostCount={1124122}
+            shareCount={4120}
             onLike={toggleIsLiked}
             onRepost={toggleIsReposted}
             onComment={() => console.log('comment')}
