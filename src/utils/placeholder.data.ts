@@ -446,6 +446,25 @@ export const FakeMediaPosts = [
   },
 ]
 
+export const FakeArticles = [
+  {
+    title: 'Terms and Conditions',
+    path: 'terms',
+  },
+  {
+    title: 'Privacy Policy',
+    path: 'privacy',
+  },
+  {
+    title: 'Community Guidelines',
+    path: 'guidelines',
+  },
+  {
+    title: 'Our Goals',
+    path: 'goals',
+  },
+]
+
 export const FakeProfileSelfPromoBanner = {
   text: 'Im offering commissions for #art and #ai',
   description:
