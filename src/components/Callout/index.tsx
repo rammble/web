@@ -4,6 +4,7 @@ import { InfoIcon } from 'src/icons/InfoIcon'
 import { FC, memo } from 'react'
 
 export interface CalloutProps {
+  type?: 'filled' | 'outline'
   variant: 'info' | 'warning' | 'error' | 'neutral' | 'success'
 }
 
@@ -19,7 +20,8 @@ const VariantIcon: FC<{ variant: CalloutProps['variant'] }> = memo(
 )
 
 export const Callout = forwardRef<StackProps & CalloutProps, typeof HStack>(
-  ({ variant, children, ...props }, ref) => {
+  ({ type = 'filled', variant, children, ...props }, ref) => {
+    const isFilled = type === 'filled'
     return (
       <HStack
         ref={ref}
@@ -28,7 +30,9 @@ export const Callout = forwardRef<StackProps & CalloutProps, typeof HStack>(
         rounded="3"
         spacing="2"
         align="start"
-        bg={`${variant}.3a`}
+        bg={isFilled ? `${variant}.3a` : 'transparent'}
+        border={isFilled ? 'none' : `2px solid`}
+        borderColor={isFilled ? 'none' : `${variant}.3a`}
         color={`${variant}.12`}
       >
         <Flex flexShrink={0} py="2px">
