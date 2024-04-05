@@ -1,7 +1,11 @@
 import { forwardRef } from '@chakra-ui/system'
 import { Flex, HStack, StackProps } from '@chakra-ui/layout'
 import { FC, memo } from 'react'
-import { QuestionMarkCircledIcon } from '@radix-ui/react-icons'
+import {
+  CheckCircledIcon,
+  CrossCircledIcon,
+  QuestionMarkCircledIcon,
+} from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'
 
 export interface CalloutProps {
@@ -16,10 +20,8 @@ const VariantIcon: FC<{ variant: CalloutProps['variant'] }> = memo(
       return <Icon as={QuestionMarkCircledIcon} w="4" h="4" />
     if (variant === 'warning')
       return <Icon as={QuestionMarkCircledIcon} w="4" h="4" />
-    if (variant === 'error')
-      return <Icon as={QuestionMarkCircledIcon} w="4" h="4" />
-    if (variant === 'success')
-      return <Icon as={QuestionMarkCircledIcon} w="4" h="4" />
+    if (variant === 'error') return <Icon as={CrossCircledIcon} w="4" h="4" />
+    if (variant === 'success') return <Icon as={CheckCircledIcon} w="4" h="4" />
   },
 )
 
