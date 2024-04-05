@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react'
 import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
-import { InfoIcon } from 'src/icons/InfoIcon'
+import { QuestionMarkCircledIcon } from '@radix-ui/react-icons'
+import { Icon } from '@chakra-ui/react'
 
 export type LeftSideWidget = PropsWithChildren<{
   title: string
@@ -28,7 +29,11 @@ export const LeftSideWidget = ({
         <Text textStyle="2" fontWeight="bold" color="accent.9">
           {title}
         </Text>
-        <Box>{hasInfo && <InfoIcon boxSize="4" color="info.7a" />}</Box>
+        <Box>
+          {hasInfo && (
+            <Icon as={QuestionMarkCircledIcon} boxSize="4" color="info.7a" />
+          )}
+        </Box>
       </HStack>
       {children}
     </VStack>

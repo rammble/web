@@ -1,11 +1,8 @@
 import { Flex, SimpleGrid } from '@chakra-ui/layout'
 import { FC } from 'react'
 import { NavButton } from 'src/components/NavButton'
-import { LikeButton } from 'src/components/LikeButton'
-import { CommentIcon } from 'src/icons/CommentIcon'
-import { RepostIcon } from 'src/icons/RepostIcon'
-import { ShareIcon } from 'src/icons/ShareIcon'
-import { ChatBubbleIcon, UpdateIcon } from '@radix-ui/react-icons'
+import { LikeButton } from '../PostInteractions/LikeButton'
+import { ChatBubbleIcon, Share1Icon, UpdateIcon } from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'
 
 export interface FeedButtonsProps {
@@ -70,7 +67,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
       </Flex>
       <Flex justify="end">
         <NavButton
-          icon={<Icon as={ShareIcon} boxSize={4} />}
+          icon={<Icon as={Share1Icon} boxSize={4} />}
           label={ifZeroLocaleStr(shareCount)}
           ariaLabel="Repost"
           color="neutral"

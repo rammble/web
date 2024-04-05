@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { IconButton } from '@chakra-ui/button'
-import { FollowButton } from 'src/components/UserComponents/FollowButton'
+import { FollowButton } from 'src/components/Profile/ProfileHero/FollowButton'
 import { Avatar } from '@chakra-ui/react'
 import {
   CookieIcon,

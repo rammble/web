@@ -9,23 +9,25 @@ import {
 } from '@chakra-ui/react'
 import { FC } from 'react'
 import { AddUserIcon } from 'src/icons/AddUserIcon'
-import { EmptyStarIcon } from 'src/icons/EmptyStarIcon'
-import { FilledStarIcon } from 'src/icons/FilledStarIcon'
-import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
 import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
-import { TrashIcon } from 'src/icons/TrashIcon'
-import { WarningIcon } from 'src/icons/WarningIcon'
 import { IconButton } from '@chakra-ui/button'
+import {
+  DotsHorizontalIcon,
+  ExclamationTriangleIcon,
+  StarFilledIcon,
+  StarIcon,
+  TrashIcon,
+} from '@radix-ui/react-icons'
 
 const options = [
   {
     type: 'stateful',
     title: 'Pin to profile',
-    icon: EmptyStarIcon,
+    icon: StarIcon,
     color: 'brand',
     active: {
       title: 'Unpin from profile',
-      icon: FilledStarIcon,
+      icon: StarFilledIcon,
     },
   },
   {
@@ -44,7 +46,7 @@ const options = [
   {
     type: 'item',
     title: 'Report ramble',
-    icon: WarningIcon,
+    icon: ExclamationTriangleIcon,
   },
   {
     type: 'splitter',
@@ -64,7 +66,7 @@ export const FeedMenu: FC = ({}) => {
       <IconButton
         size="1"
         as={MenuButton}
-        icon={<ThreeDotsIcon boxSize="4" />}
+        icon={<Icon as={DotsHorizontalIcon} boxSize="4" />}
         aria-label="Menu"
         variant="ghost"
         colorScheme="neutral"

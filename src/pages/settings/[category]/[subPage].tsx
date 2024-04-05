@@ -5,8 +5,8 @@ import { SettingsLayout } from 'src/layouts/SettingsLayout'
 import { useRouter } from 'next/router'
 import { SettingNavButtons } from 'src/components/Settings/SettingNavigationButtons'
 import { IconButton } from '@chakra-ui/button'
-import { LeftArrowIcon } from 'src/icons/LeftArrowIcon'
-import { Divider } from '@chakra-ui/react'
+import { Divider, Icon } from '@chakra-ui/react'
+import { ArrowLeftIcon } from '@radix-ui/react-icons'
 
 const SettingsPage: FC = () => {
   const router = useRouter()
@@ -24,7 +24,7 @@ const SettingsPage: FC = () => {
           <IconButton
             aria-label={'Go Back'}
             onClick={() => router.push(`/settings/${category}`)}
-            icon={<LeftArrowIcon boxSize={8} />}
+            icon={<Icon as={ArrowLeftIcon} boxSize={8} />}
           />
           <Heading color={'ui.100'} fontSize={'16px'} fontWeight={500}>
             {subPage || 'Unknown'}

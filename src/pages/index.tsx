@@ -1,6 +1,6 @@
 import { MainLayout } from 'src/layouts/MainLayout'
 import { Navigation } from 'src/components/Navigation'
-import { CreatePost } from 'src/components/CreatePost'
+import { CreatePost } from '../components/Posts/CreatePost'
 import { VStack } from '@chakra-ui/layout'
 import {
   Divider,

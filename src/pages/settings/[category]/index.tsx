@@ -13,7 +13,7 @@ const SettingsPage: FC = () => {
   const router = useRouter()
 
   const { category } = router.query
-  const user = FakeFeedPosts[0].user
+  const user = FakeFeedPosts[0].poster
   const pageData = SettingsPages[category as keyof typeof SettingsPages]
   const subPages = pageData?.subPages
 
@@ -41,7 +41,7 @@ const SettingsPage: FC = () => {
             return <SettingsButton page={subPage} />
           })}
           {subPageIsEmpty && (
-            <Tag colorScheme={'red'} mt={5} p={5} color={'ui.40'}>
+            <Tag colorScheme={'error'} mt={5} p={5} color={'ui.40'}>
               Uh ohhhhhhh... looks like we don't have any options for this right
               now!
             </Tag>

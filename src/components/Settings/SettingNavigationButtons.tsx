@@ -1,9 +1,10 @@
 import React from 'react'
 import { Box, VStack } from '@chakra-ui/layout'
 import { Input, InputGroup, InputRightElement } from '@chakra-ui/input'
-import { SearchIcon } from 'src/icons/SearchIcon'
 import { SettingsButton } from 'src/components/Settings/SettingsButton'
 import { SettingsPages } from 'src/utils/SettingsPages'
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { Icon } from '@chakra-ui/react'
 
 export const SettingNavButtons = () => {
   return (
@@ -11,7 +12,7 @@ export const SettingNavButtons = () => {
       <InputGroup>
         <Input placeholder={'Search settings...'} border={'input'} />
         <InputRightElement>
-          <SearchIcon boxSize={5} cursor={'pointer'} />
+          <Icon as={MagnifyingGlassIcon} boxSize={5} cursor={'pointer'} />
         </InputRightElement>
       </InputGroup>
       <Box w={'full'}>

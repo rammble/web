@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
+import { Text, VStack } from '@chakra-ui/layout'
 import { Callout } from 'src/components/Callout'
 import { LeftSideWidget } from 'src/components/LeftSideContent/LeftSideWidget'
 

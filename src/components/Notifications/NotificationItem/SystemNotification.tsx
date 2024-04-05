@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
-import { NotificationItemProps } from 'src/components/NotificationItem/index'
+import { NotificationItemProps } from 'src/components/Notifications/NotificationItem/index'
 import { Spacer } from '@chakra-ui/react'
-import { NotificationMenu } from 'src/components/NotificationItem/NotificationMenu'
+import { NotificationMenu } from 'src/components/Notifications/NotificationItem/NotificationMenu'
 import { fromTime } from 'src/utils/day'
 
 export const SystemNotificationItem: FC<NotificationItemProps> = ({

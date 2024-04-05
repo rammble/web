@@ -1,10 +1,12 @@
 import { FC } from 'react'
 import { Icon } from '@chakra-ui/react'
-import { UserIcon } from 'src/icons/UserIcon'
-import { LockIcon } from 'src/icons/LockIcon'
-import { FilledHeartIcon } from 'src/icons/FilledHeartIcon'
 import { ShieldTickIcon } from 'src/icons/ShieldTickIcon'
-import { AccessibilityIcon } from 'src/icons/AccessibilityIcon'
+import {
+  AccessibilityIcon,
+  HeartFilledIcon,
+  LockClosedIcon,
+  PersonIcon,
+} from '@radix-ui/react-icons'
 
 export interface SettingsIconDisplayerProps {
   iconName: string
@@ -12,9 +14,9 @@ export interface SettingsIconDisplayerProps {
 }
 
 const SettingIcons = {
-  UserIcon: UserIcon,
-  LockIcon: LockIcon,
-  FilledHeartIcon: FilledHeartIcon,
+  UserIcon: PersonIcon,
+  LockIcon: LockClosedIcon,
+  FilledHeartIcon: HeartFilledIcon,
   ShieldTickIcon: ShieldTickIcon,
   AccessibilityIcon: AccessibilityIcon,
 }

@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Flex, Text } from '@chakra-ui/layout'
 import { useRouter } from 'next/router'
-import { Icon } from '@chakra-ui/react'
 import { PagesObjectProps } from 'src/components/Navigation'
 import { Button } from '@chakra-ui/button'
 import { SettingsIconDisplayer } from 'src/components/Settings/SettingsIconDisplayer'

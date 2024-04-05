@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react'
 
-import { SystemNotificationItem } from 'src/components/NotificationItem/SystemNotification'
-import { Notification } from 'src/components/NotificationItem/Notification'
+import { SystemNotificationItem } from 'src/components/Notifications/NotificationItem/SystemNotification'
+import { Notification } from 'src/components/Notifications/NotificationItem/Notification'
 
 export interface NotificationItemProps {
   image?: string
