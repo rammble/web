@@ -16,5 +16,6 @@
     <orderEntry type="library" name="twemoji" level="application" />
     <orderEntry type="module" module-name="backend" />
     <orderEntry type="module" module-name="sdk" />
+    <orderEntry type="library" name="twemoji" level="application" />
   </component>
 </module>

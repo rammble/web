@@ -1,64 +1,15 @@
-import { FC, PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
-import { Center, Flex, HStack, StackDivider } from '@chakra-ui/layout'
-import { useSelf } from 'src/hooks/useSelf'
-import { Spinner } from '@chakra-ui/spinner'
+'use client'
 
-export interface MainLayoutData {
-  isFeed?: boolean
-  isAuthenticationRequired?: boolean
-}
+import { FC, PropsWithChildren } from 'react'
+import { Flex, HStack, StackDivider } from '@chakra-ui/layout'
+import { LeftSideContent } from 'src/components/client/LeftSideContent'
+import { Navigation } from 'src/components/client/Navigation'
 
-export interface MainLayoutProps extends PropsWithChildren<MainLayoutData> {
-  renderLeftNode?: (data: MainLayoutData) => ReactNode
-  renderRightNode: (data: MainLayoutData) => ReactNode
-  renderChatNode: (data: MainLayoutData) => ReactNode
-}
+export interface MainLayoutData {}
 
-export const MainLayout: FC<MainLayoutProps> = ({
-  renderLeftNode,
-  renderRightNode,
-  renderChatNode,
-  isFeed = false,
-  isAuthenticationRequired = true,
-  children,
-}) => {
-  const [self, { gotoLogin }] = useSelf()
+export interface MainLayoutProps extends PropsWithChildren<MainLayoutData> {}
 
-  const leftNode = useMemo(
-    () => renderLeftNode?.({ isFeed }),
-    [renderLeftNode, isFeed],
-  )
-  const rightNode = useMemo(
-    () => renderRightNode({ isFeed }),
-    [renderRightNode, isFeed],
-  )
-  const chatNode = useMemo(
-    () => renderChatNode({ isFeed }),
-    [renderChatNode, isFeed],
-  )
-
-  // useEffect(() => {
-  //   if (!isAuthenticationRequired) {
-  //     return
-  //   }
-  //
-  //   if (self.isLoading) {
-  //     return
-  //   }
-  //
-  //   if (!self.isLoggedIn) {
-  //     gotoLogin()
-  //   }
-  // }, [self.isLoading, self.isLoggedIn, isAuthenticationRequired])
-  //
-  // if (self.isLoading || (!self.isLoggedIn && isAuthenticationRequired)) {
-  //   return (
-  //     <Center>
-  //       <Spinner />
-  //     </Center>
-  //   )
-  // }
-
+export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <HStack
       spacing="4"
@@ -68,18 +19,16 @@ export const MainLayout: FC<MainLayoutProps> = ({
       divider={<StackDivider borderColor="neutral.3a" />}
     >
       <Flex id="left-side-node" h="full" w="layouts.main.left" flexGrow={0}>
-        {leftNode}
+        <LeftSideContent />
       </Flex>
       <Flex id="main-content" h="full" w="layouts.main.middle" flexGrow={0}>
         {children}
       </Flex>
       <HStack h="full" spacing="4">
         <Flex id="right-side-node" h="full" w="layouts.main.right" flexGrow={0}>
-          {rightNode}
+          <Navigation />
         </Flex>
-        <Flex id="chat-node" h="full" w="layouts.main.chat" flexGrow={0}>
-          {chatNode}
-        </Flex>
+        <Flex id="chat-node" h="full" w="layouts.main.chat" flexGrow={0}></Flex>
       </HStack>
     </HStack>
   )

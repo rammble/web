@@ -1,3 +1,5 @@
+'use client'
+
 import { GetMeQuery } from '@rammble/sdk'
 
 export const FakeFeedPosts: GetMeQuery['me']['posts'] = [

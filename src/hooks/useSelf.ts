@@ -1,3 +1,4 @@
+'use client'
 import {
   GetMeQueryResult,
   useGetMeQuery,
@@ -5,7 +6,7 @@ import {
   useSignupMutation,
 } from '@rammble/sdk'
 import { NotUndefined } from 'src/utils/types'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 
 export interface UseSelfOptions {
   redirectOnLogin?: string
@@ -16,6 +17,7 @@ export const useSelf = <
   TIsLoggedInOverride extends true | undefined = undefined,
 >({ redirectOnLogin, redirectOnRegister }: UseSelfOptions = {}) => {
   const router = useRouter()
+  const pathname = usePathname()
 
   const { data: me, loading: isLoadingMeQuery } = useGetMeQuery()
 
@@ -26,7 +28,7 @@ export const useSelf = <
   const gotoRegister = () => router.push('/register')
 
   const login = async (username: string, password: string) => {
-    if (!router.pathname.includes('login')) {
+    if (!pathname?.includes('login')) {
       await gotoLogin()
     }
 
@@ -45,7 +47,7 @@ export const useSelf = <
   }
 
   const signup = async (email: string, username: string, password: string) => {
-    if (!router.pathname.includes('register')) {
+    if (!pathname?.includes('register')) {
       await gotoRegister()
     }
 

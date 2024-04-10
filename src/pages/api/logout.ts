@@ -1,7 +1,10 @@
-import { NextApiHandler } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 import Cookies from 'cookies'
 
-const logout: NextApiHandler = async (req, res) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const cookies = new Cookies(req, res)
 
   cookies.set('jwt', '', {
@@ -12,5 +15,3 @@ const logout: NextApiHandler = async (req, res) => {
 
   res.redirect((req.query.ref as string) ?? req.headers.referer ?? '/')
 }
-
-export default logout

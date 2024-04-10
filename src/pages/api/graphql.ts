@@ -16,9 +16,9 @@ const proxy_request = (req: NextApiRequest, res: NextApiResponse) =>
     const cookie = new Cookies(req, res)
     const authToken = cookie.get('jwt')
 
-    req.url = req.url?.replace('/api/graphql', '/')
-
     req.headers.cookie = ''
+
+    req.url = req.url?.replace('/api/graphql', '/') ?? req.url
 
     if (authToken) {
       req.headers['Authorization'] = authToken
@@ -32,8 +32,9 @@ const proxy_request = (req: NextApiRequest, res: NextApiResponse) =>
     resolve(0)
   })
 
-const graphql: NextApiHandler = async (req, res) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   await proxy_request(req, res)
 }
-
-export default graphql

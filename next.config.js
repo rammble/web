@@ -16,6 +16,10 @@ const nextConfig = {
         source: '/logout',
         destination: '/api/logout',
       },
+      {
+        source: '/is_logged_in',
+        destination: '/api/isLoggedIn',
+      },
     ]
   },
   async redirects() {

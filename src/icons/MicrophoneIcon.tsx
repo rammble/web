@@ -1,3 +1,5 @@
+'use client'
+
 import { createIcon } from '@chakra-ui/icon'
 
 export const MicrophoneIcon = createIcon({

@@ -1,0 +1,20 @@
+import { FC } from 'react'
+import { Button } from '@chakra-ui/button'
+import { useBoolean } from '@chakra-ui/hooks'
+
+export interface FollowButtonProps {}
+
+export const FollowButton: FC<FollowButtonProps> = () => {
+  const [isFollowed, setFollowed] = useBoolean(false)
+
+  return (
+    <Button
+      size={'3'}
+      variant={'solid'}
+      colorScheme={isFollowed ? 'neutral' : 'accent'}
+      onClick={setFollowed.toggle}
+    >
+      {isFollowed ? 'Unfollow' : 'Follow'}
+    </Button>
+  )
+}
