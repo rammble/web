@@ -4,12 +4,11 @@ import { LogoIcon } from 'src/icons/LogoIcon'
 import { Link } from '@chakra-ui/next-js'
 import { Button, IconButton } from '@chakra-ui/button'
 import { DiscordIcon } from 'src/icons/DiscordIcon'
-import { Divider } from '@chakra-ui/react'
+import { Divider, Icon } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/input'
 import { GoogleIcon } from 'src/icons/GoogleIcon'
-import { CloseIcon } from 'src/icons/CloseIcon'
-import { SearchIcon } from 'src/icons/SearchIcon'
 import { AuthLayout } from 'src/layouts/AuthLayout'
+import { Cross1Icon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
 
 const SignUpPage: FC = () => {
   return (
@@ -64,7 +63,7 @@ const SignUpPage: FC = () => {
                 colorScheme="neutral"
                 size="3"
                 aria-label="Discord"
-                icon={<CloseIcon boxSize="18px" />}
+                icon={<Icon as={Cross1Icon} boxSize="18px" />}
               />
               <IconButton
                 w="full"
@@ -72,7 +71,7 @@ const SignUpPage: FC = () => {
                 colorScheme="neutral"
                 size="3"
                 aria-label="Discord"
-                icon={<SearchIcon boxSize="18px" />}
+                icon={<Icon as={MagnifyingGlassIcon} boxSize="18px" />}
               />
             </HStack>
             <HStack spacing={2} w="full">
