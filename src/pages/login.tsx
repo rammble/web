@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { LogoIcon } from 'src/icons/LogoIcon'
 import { Link } from '@chakra-ui/next-js'
@@ -7,17 +7,53 @@ import { DiscordIcon } from 'src/icons/DiscordIcon'
 import { Divider } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/input'
 import { GoogleIcon } from 'src/icons/GoogleIcon'
-import { CloseIcon } from 'src/icons/CloseIcon'
-import { SearchIcon } from 'src/icons/SearchIcon'
 import { AuthLayout } from 'src/layouts/AuthLayout'
+import { Cross1Icon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { z } from 'zod'
+import { useLoginMutation } from '@rammble/sdk'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/router'
 
-const SignUpPage: FC = () => {
+const LoginFormSchema = z.object({
+  username: z.string().min(3),
+  password: z.string().min(6),
+})
+
+type FormData = z.infer<typeof LoginFormSchema>
+
+const LoginPage: FC = () => {
+  const [login] = useLoginMutation()
+  const router = useRouter()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<FormData>({
+    resolver: zodResolver(LoginFormSchema),
+  })
+
+  const onSubmit = useCallback((data: FormData) => {
+    console.log('onSubmit')
+    login({
+      variables: {
+        input: data,
+      },
+    }).then((res) => {
+      if (res.data?.token) {
+        router.push('/')
+      }
+    })
+  }, [])
+
   return (
     <AuthLayout>
       <HStack boxSize="full" px="256px" py="96px" justify="space-between">
         <VStack spacing={6}>
           <LogoIcon h="60px" w="225px" />
           <VStack
+            as="form"
             w="340px"
             bg="rgba(29, 29, 33, 0.70)"
             backdropFilter="blur(20px)"
@@ -27,13 +63,14 @@ const SignUpPage: FC = () => {
             border="1px solid"
             borderColor="neutral.5a"
             spacing={6}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <HStack spacing={1}>
               <Text textStyle="2" fontWeight="regular" color="neutral.9a">
                 Don't have an account?
               </Text>
               <Link
-                href="/login"
+                href="/register"
                 textStyle="2"
                 fontWeight="regular"
                 color="accent.11a"
@@ -64,7 +101,7 @@ const SignUpPage: FC = () => {
                 colorScheme="neutral"
                 size="3"
                 aria-label="Discord"
-                icon={<CloseIcon boxSize="18px" />}
+                icon={<Cross1Icon />}
               />
               <IconButton
                 w="full"
@@ -72,7 +109,7 @@ const SignUpPage: FC = () => {
                 colorScheme="neutral"
                 size="3"
                 aria-label="Discord"
-                icon={<SearchIcon boxSize="18px" />}
+                icon={<MagnifyingGlassIcon />}
               />
             </HStack>
             <HStack spacing={2} w="full">
@@ -92,20 +129,32 @@ const SignUpPage: FC = () => {
                 orientation="horizontal"
               />
             </HStack>
-            <VStack as="form" w="full" spacing={4}>
-              <Input size="3" type="text" placeholder="Username" />
+            <VStack w="full" spacing={4} onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                size="3"
+                type="text"
+                placeholder="Username"
+                autoComplete="username"
+                {...register('username')}
+              />
               <Input
                 size="3"
                 type="password"
                 placeholder="Password"
                 autoComplete="current-password"
+                {...register('password')}
               />
             </VStack>
             <HStack justify="space-between" w="full">
               <Link href="/forgot-password" textStyle="2" color="accent.11a">
                 Forgot Password?
               </Link>
-              <Button colorScheme="accent" size="2" variant="solid">
+              <Button
+                type="submit"
+                colorScheme="accent"
+                size="2"
+                variant="solid"
+              >
                 Login
               </Button>
             </HStack>
@@ -116,4 +165,4 @@ const SignUpPage: FC = () => {
   )
 }
 
-export default SignUpPage
+export default LoginPage

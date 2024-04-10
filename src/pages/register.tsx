@@ -1,193 +1,172 @@
-import { FC } from 'react'
-import { AuthLayout } from 'src/components/AuthLayout'
-import { Box, Flex, Text } from '@chakra-ui/layout'
-import { InputField } from 'src/components/AuthLayout/InputField'
-import { Button } from '@chakra-ui/button'
-import {
-  SubmitHandler,
-  RegisterOptions,
-  useForm,
-  FieldValues,
-} from 'react-hook-form'
-import ConnectionFields from 'src/components/AuthLayout/Connections/ConnectionFields'
-import {
-  AbsoluteCenter,
-  Checkbox,
-  Divider,
-  useMediaQuery,
-} from '@chakra-ui/react'
-import { useSelf } from 'src/hooks/useSelf'
+import { FC, useCallback } from 'react'
+import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
+import { LogoIcon } from 'src/icons/LogoIcon'
+import { Link } from '@chakra-ui/next-js'
+import { Button, IconButton } from '@chakra-ui/button'
+import { DiscordIcon } from 'src/icons/DiscordIcon'
+import { Divider } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/input'
+import { GoogleIcon } from 'src/icons/GoogleIcon'
+import { AuthLayout } from 'src/layouts/AuthLayout'
+import { Cross1Icon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { useSignupMutation } from '@rammble/sdk'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from '@storybook/router'
+import { useRouter } from 'next/router'
 
-export interface ISignUpFieldOptions {
-  hasLengthCounter?: boolean
-  hasPasswordStrength?: boolean
-  hasForgotPassword?: boolean
-}
+const RegisterFormSchema = z.object({
+  email: z.string().email(),
+  username: z.string().min(3),
+  password: z.string().min(6),
+})
 
-export interface ISignUpField {
-  title: string
-  type: string
-  maxLength?: number
-  options?: ISignUpFieldOptions
-  validations: RegisterOptions
-}
+type FormData = z.infer<typeof RegisterFormSchema>
 
-const fields = [
-  {
-    title: 'email',
-    type: 'text',
-    validations: {
-      pattern: {
-        value: /\S+@\S+\.\S+/,
-        message: 'This field contains an invalid email',
-      },
-      required: 'This field is required',
-    },
-  },
-  {
-    title: 'username',
-    type: 'text',
-    maxLength: 32,
-    options: {
-      hasLengthCounter: true,
-    },
-    validations: {
-      pattern: {
-        value: /^\S*$/,
-        message: ' This field cannot include spaces.',
-      },
-      required: 'This field is required',
-      maxLength: { value: 32, message: 'Your username is too long' },
-    },
-  },
-  {
-    title: 'password',
-    type: 'password',
-    maxLength: 128,
-    options: {
-      hasPasswordStrength: true,
-    },
-    validations: {
-      pattern: {
-        value: /^\S*$/,
-        message: ' This field cannot include spaces.',
-      },
-      required: 'This field is required',
-      maxLength: { value: 32, message: 'Your password is too long' },
-    },
-  },
-]
-
-const SignUpPage: FC = () => {
-  const [, actions] = useSelf({
-    redirectOnRegister: '/',
-  })
-  const [isMobile] = useMediaQuery('(min-width: 1200px)')
-
+const RegisterPage: FC = () => {
+  const [signup] = useSignupMutation()
+  const router = useRouter()
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<FieldValues>()
+    setError,
+  } = useForm<FormData>({
+    resolver: zodResolver(RegisterFormSchema),
+  })
 
-  function getErrorByTitle(title: string) {
-    return errors[title as keyof typeof errors]
-  }
-
-  const onSubmit: SubmitHandler<FieldValues> = (data) =>
-    actions.signup(data.email, data.username, data.password)
+  const onSubmit = useCallback((data: FormData) => {
+    signup({
+      variables: {
+        input: data,
+      },
+    }).then((res) => {
+      if (res.data?.token) {
+        router.push('/login')
+      }
+    })
+  }, [])
 
   return (
-    <AuthLayout heading={'Create your account'} isMobile={isMobile}>
-      <Box gap={4} w={'350px'}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Flex
-            h={'full'}
-            w={'full'}
-            flexDir={'column'}
-            justifyContent={'space-evenly'}
-            gap={'20px'}
+    <AuthLayout>
+      <HStack boxSize="full" px="256px" py="96px" justify="space-between">
+        <VStack spacing={6}>
+          <LogoIcon h="60px" w="225px" />
+          <VStack
+            as="form"
+            w="340px"
+            bg="rgba(29, 29, 33, 0.70)"
+            backdropFilter="blur(20px)"
+            rounded={6}
+            p={6}
+            pt={5}
+            border="1px solid"
+            borderColor="neutral.5a"
+            spacing={6}
+            onSubmit={handleSubmit(onSubmit)}
           >
-            <Box>
-              {fields.map((f, i) => {
-                return (
-                  <InputField
-                    key={i}
-                    register={register}
-                    field={f}
-                    errors={getErrorByTitle(f.title)}
-                    watchValue={watch(f.title as any)}
-                  />
-                )
-              })}
-            </Box>
-            <Checkbox
-              borderColor={'blurp.lighter'}
-              _checked={{
-                '& .chakra-checkbox__control': {
-                  background: 'brand',
-                  border: 'brand',
-                },
-              }}
-              size={'lg'}
-              {...register('termsOfService', { required: true })}
-              gap={'12px'}
-            >
-              <Flex
-                fontWeight={400}
-                fontSize={'14px'}
-                color={'ui.40'}
-                flexWrap={'wrap'}
-                gap={1}
+            <HStack spacing={1}>
+              <Text textStyle="2" fontWeight="regular" color="neutral.9a">
+                Already have an account?
+              </Text>
+              <Link
+                href="/login"
+                textStyle="2"
+                fontWeight="regular"
+                color="accent.11a"
               >
-                <Text>I acknowledge and agree to Rammble's</Text>
-                <Text color={'brand'}>Terms and Conditions</Text>
-                <Text>and</Text>
-                <Text color={'brand'}>Privacy Policy</Text>
-              </Flex>
-            </Checkbox>
-            <Button
-              textTransform={'uppercase'}
-              variant={'filled'}
-              type={'submit'}
-              fontWeight={600}
-              fontSize={'20px'}
-              color={'brand'}
-              borderColor={'brand.darkest'}
-              border={'2px solid'}
-              borderRadius={'8px'}
-              bg={'brand.darkest'}
-              p={'16px'}
-            >
-              Get Started
-            </Button>
-            {isMobile && (
-              <Box
-                position="relative"
-                paddingTop="5"
-                paddingBottom="5"
-                bg={'bg.darker'}
+                Login
+              </Link>
+            </HStack>
+            <HStack w="full" spacing={1}>
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<DiscordIcon boxSize="18px" />}
+              />
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<GoogleIcon boxSize="18px" />}
+              />
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<Cross1Icon />}
+              />
+              <IconButton
+                w="full"
+                variant="soft"
+                colorScheme="neutral"
+                size="3"
+                aria-label="Discord"
+                icon={<MagnifyingGlassIcon />}
+              />
+            </HStack>
+            <HStack spacing={2} w="full">
+              <Divider
+                w="full"
+                h="px"
+                bg="neutral.3a"
+                orientation="horizontal"
+              />
+              <Text textStyle="1" fontWeight="bold" color="neutral.5a">
+                OR
+              </Text>
+              <Divider
+                w="full"
+                h="px"
+                bg="neutral.3a"
+                orientation="horizontal"
+              />
+            </HStack>
+            <VStack w="full" spacing={4}>
+              <Input
+                size="3"
+                type="email"
+                placeholder="Email"
+                {...register('email')}
+              />
+              <Input
+                size="3"
+                type="text"
+                placeholder="Username"
+                {...register('username')}
+              />
+              <Input
+                size="3"
+                type="password"
+                placeholder="Password"
+                autoComplete="current-password"
+                {...register('password')}
+              />
+            </VStack>
+            <HStack justify="space-between" w="full">
+              <Box />
+              <Button
+                type="submit"
+                colorScheme="accent"
+                size="2"
+                variant="solid"
               >
-                <Divider borderColor={'ui.20'} w={'full'} />
-                <AbsoluteCenter
-                  color={'ui.20'}
-                  flexDir={'row'}
-                  bg={'bg.darker'}
-                  px="4"
-                  fontWeight={500}
-                  fontSize={'14px'}
-                >
-                  or continue with
-                </AbsoluteCenter>
-              </Box>
-            )}
-            <ConnectionFields isSignUpPage={true} />
-          </Flex>
-        </form>
-      </Box>
+                Create Account
+              </Button>
+            </HStack>
+          </VStack>
+        </VStack>
+      </HStack>
     </AuthLayout>
   )
 }
 
-export default SignUpPage
+export default RegisterPage
