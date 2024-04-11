@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Flex, Text } from '@chakra-ui/layout'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { PagesObjectProps } from 'src/components/client/Navigation'
 import { Button } from '@chakra-ui/button'
 import { SettingsIconDisplayer } from 'src/components/client/Settings/SettingsIconDisplayer'
@@ -11,8 +11,9 @@ export interface NavigationButtonProps {
 
 export const SettingsButton: FC<NavigationButtonProps> = ({ page }) => {
   const router = useRouter()
+  const pathName = usePathname()
 
-  const isActive = router.asPath === page.path
+  const isActive = pathName === page.path
 
   return (
     <Button

@@ -32,7 +32,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
       rounded="4"
     >
       <Avatar
-        onClick={() => router.push(`/user/${data.poster.username}`)}
+        onClick={() => router.push(`/users/${data.poster.username}`)}
         cursor={'pointer'}
         src={`https://picsum.photos/40?n=${data.poster.username}`}
         size="4"
@@ -41,7 +41,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
         <VStack spacing="2" w="full" align="start">
           <HStack w={'full'} fontSize={16} justifyContent={'space-between'}>
             <HStack
-              onClick={() => router.push(`/user/${data.poster.username}`)}
+              onClick={() => router.push(`/users/${data.poster.username}`)}
               cursor={'pointer'}
               textStyle="3"
               fontWeight="bold"
