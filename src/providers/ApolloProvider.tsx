@@ -7,11 +7,10 @@ import {
   InMemoryCache,
 } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
-import { useToast } from '@chakra-ui/react'
-import { CrossCircledIcon } from '@radix-ui/react-icons'
+import { useNotification } from 'src/hooks/useNotification'
 
 export const AppApolloProvider: FC<PropsWithChildren> = ({ children }) => {
-  const toast = useToast()
+  const notification = useNotification()
   const httpLink = new HttpLink({
     uri: '/api/graphql',
   })
@@ -27,14 +26,11 @@ export const AppApolloProvider: FC<PropsWithChildren> = ({ children }) => {
           console.log(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
           )
-          toast({
-            icon: <CrossCircledIcon />,
-            isClosable: false,
-            colorScheme: 'error',
-            position: 'top-right',
+          notification({
             title: 'Error occurred',
             description: message,
-            duration: 9000,
+            status: 'warn',
+            colorScheme: 'error',
           })
         })
         // Only notify the user if absolutely no data came back
