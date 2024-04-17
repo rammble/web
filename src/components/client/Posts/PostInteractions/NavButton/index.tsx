@@ -31,7 +31,10 @@ export const NavButton: FC<FeedButtonProps> = ({
       colorScheme={isActive ? color : 'neutral'}
       aria-label={ariaLabel}
       pos="relative"
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation()
+        onClick()
+      }}
       zIndex={1}
       variant="ghost"
       size="2"

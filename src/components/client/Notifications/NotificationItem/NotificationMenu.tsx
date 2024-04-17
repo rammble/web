@@ -8,7 +8,7 @@ import {
   MenuList,
   useDisclosure,
 } from '@chakra-ui/react'
-import { NavButton } from 'src/components/client/NavButton'
+import { NavButton } from '../../Posts/PostInteractions/NavButton'
 import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
 import { TrashIcon } from 'src/icons/TrashIcon'
 
