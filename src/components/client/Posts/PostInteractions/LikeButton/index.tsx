@@ -26,7 +26,10 @@ export const LikeButton: FC<LikeButtonProps> = ({
       variant="ghost"
       pos="relative"
       zIndex={1}
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation()
+        onClick()
+      }}
       colorScheme={isActive ? 'error' : 'neutral'}
       onMouseEnter={setIsHovering.on}
       onMouseLeave={setIsHovering.off}
@@ -76,7 +79,7 @@ export const LikeButton: FC<LikeButtonProps> = ({
             fontSize={14}
             transition="all 0.22s cubic-bezier(0.04, 0.91, 0.6, 1)"
           >
-            {label}
+            {Number(label).toLocaleString()}
           </Text>
         )}
       </HStack>
