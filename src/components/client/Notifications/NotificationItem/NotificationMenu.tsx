@@ -9,8 +9,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { NavButton } from '../../Posts/PostInteractions/NavButton'
-import { ThreeDotsIcon } from 'src/icons/ThreeDotsIcon'
-import { TrashIcon } from 'src/icons/TrashIcon'
+import { TrashIcon, DropdownMenuIcon } from '@radix-ui/react-icons'
 
 const options = [
   {
@@ -28,9 +27,9 @@ export const NotificationMenu: FC = ({}) => {
     <Menu isLazy {...disclosure} offset={[-20, 8]}>
       <NavButton
         as={MenuButton}
-        icon={<ThreeDotsIcon boxSize={5} />}
+        icon={<Icon as={DropdownMenuIcon} boxSize={5} />}
         ariaLabel="Menu"
-        color="ui.100"
+        color="neutral"
         onClick={disclosure.onToggle}
         isActive={disclosure.isOpen}
       />

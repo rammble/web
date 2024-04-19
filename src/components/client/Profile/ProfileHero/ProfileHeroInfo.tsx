@@ -31,7 +31,12 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
       spacing={4}
     >
       <HStack borderRadius={6} p={1} bg={'panel.background'}>
-        <Avatar name={username} borderRadius={6} size={'7'} src={avatarUrl} />
+        <Avatar
+          name={username}
+          borderRadius={6}
+          size={'7'}
+          src={avatarUrl ?? undefined}
+        />
       </HStack>
       <VStack mt={1} w="full" align="start" spacing={2}>
         <VStack w="full" align="start" justify="start" spacing={1}>

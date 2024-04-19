@@ -3,10 +3,8 @@
 import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
 import React, { FC } from 'react'
 import { Navigation } from 'src/components/client/Navigation'
-import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { SettingsLayout } from 'src/layouts/SettingsLayout'
 import { SettingNavButtons } from 'src/components/client/Settings/SettingNavigationButtons'
-import { useSearchParams } from 'next/navigation'
 import { SettingsButton } from 'src/components/client/Settings/SettingsButton'
 import { SettingsPages } from 'src/utils/SettingsPages'
 import { Tag } from '@chakra-ui/react'
@@ -20,7 +18,6 @@ interface CategoryPageProps {
 const Page: FC<CategoryPageProps> = ({ params }) => {
   const category = params.category
 
-  const user = FakeFeedPosts[0].poster
   const pageData = SettingsPages[category as keyof typeof SettingsPages]
   const subPages = pageData?.subPages
 
@@ -36,7 +33,7 @@ const Page: FC<CategoryPageProps> = ({ params }) => {
         <Box>
           <Heading fontSize={'16px'}>{pageData?.page?.title}</Heading>
           <Text color={'ui.40'} fontWeight={500}>
-            @{user?.username}
+            {/* no placeholder data */}
           </Text>
           <Text color={'ui.40'} fontWeight={400}>
             {pageData?.page?.description}
