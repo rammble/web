@@ -1,18 +1,25 @@
+'use client'
+
 import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
 import React, { FC } from 'react'
 import { Navigation } from 'src/components/client/Navigation'
 import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { SettingsLayout } from 'src/layouts/SettingsLayout'
 import { SettingNavButtons } from 'src/components/client/Settings/SettingNavigationButtons'
-import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
 import { SettingsButton } from 'src/components/client/Settings/SettingsButton'
 import { SettingsPages } from 'src/utils/SettingsPages'
 import { Tag } from '@chakra-ui/react'
 
-const SettingsPage: FC = () => {
-  const router = useRouter()
+interface CategoryPageProps {
+  params: {
+    category: string
+  }
+}
 
-  const { category } = router.query
+const Page: FC<CategoryPageProps> = ({ params }) => {
+  const category = params.category
+
   const user = FakeFeedPosts[0].poster
   const pageData = SettingsPages[category as keyof typeof SettingsPages]
   const subPages = pageData?.subPages
@@ -52,4 +59,4 @@ const SettingsPage: FC = () => {
   )
 }
 
-export default SettingsPage
+export default Page

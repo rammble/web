@@ -1,7 +1,7 @@
 import { MainLayout } from 'src/layouts/MainLayout'
 import { Navigation } from 'src/components/client/Navigation'
 import { NextPage } from 'next'
-import React from 'react'
+import React, { FC } from 'react'
 import { Heading, Text, VStack } from '@chakra-ui/layout'
 import { Divider } from '@chakra-ui/react'
 import { ArticlesNavigation } from 'src/components/client/Articles/ArticlesNavigation'
@@ -32,29 +32,22 @@ These terms set forth our legal obligations to each other. They apply to your us
 
 ## Who we are
 `
-const ArticlePage: NextPage = () => {
+const Page: FC = () => {
   return (
-    <MainLayout
-      isFeed
-      renderLeftNode={() => <ArticlesNavigation />}
-      renderRightNode={() => <Navigation />}
-      renderChatNode={() => null}
-    >
-      <VStack w="full" spacing={2} py="6" alignItems={'flex-start'}>
-        <Heading textStyle={'7'} color={'accent.11'}>
-          Terms and Conditions
-        </Heading>
-        <Divider height={'1px'} mt={4} mb={2} bg="neutral.3a" />
-        <Callout variant={'neutral'} w={'full'} type={'outline'}>
-          <Text>Effective 2nd May 2022</Text>
-        </Callout>
-        <Callout variant={'info'} w={'full'} type={'outline'}>
-          <Text>Last updated on 31st October 2024 at 12:34:31 PM</Text>
-        </Callout>
-        <MarkdownField text={markdown} />
-      </VStack>
-    </MainLayout>
+    <VStack w="full" spacing={2} py="6" alignItems={'flex-start'}>
+      <Heading textStyle={'7'} color={'accent.11'}>
+        Terms and Conditions
+      </Heading>
+      <Divider height={'1px'} mt={4} mb={2} bg="neutral.3a" />
+      <Callout variant={'neutral'} w={'full'} type={'outline'}>
+        <Text>Effective 2nd May 2022</Text>
+      </Callout>
+      <Callout variant={'info'} w={'full'} type={'outline'}>
+        <Text>Last updated on 31st October 2024 at 12:34:31 PM</Text>
+      </Callout>
+      <MarkdownField text={markdown} />
+    </VStack>
   )
 }
 
-export default ArticlePage
+export default Page

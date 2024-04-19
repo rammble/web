@@ -61,8 +61,12 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
       ? Number(data.isLikedByUser ? 0 : 1)
       : Number(data.isLikedByUser ? -1 : 0))
 
+  const isFeedPost = true
+
   return (
     <HStack
+      onClick={() => isFeedPost && router.push(`/posts/${data.id}`)}
+      cursor={isFeedPost ? 'pointer' : 'auto'}
       align="start"
       w="full"
       spacing="4"
@@ -71,7 +75,10 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
       rounded="4"
     >
       <Avatar
-        onClick={() => router.push(`/user/${data.poster.username}`)}
+        onClick={(e) => {
+          e.stopPropagation()
+          router.push(`/users/${data.poster.username}`)
+        }}
         cursor={'pointer'}
         src={`https://picsum.photos/40?n=${data.poster.username}`}
         size="4"
@@ -80,12 +87,20 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
         <VStack spacing="2" w="full" align="start">
           <HStack w={'full'} fontSize={16} justifyContent={'space-between'}>
             <HStack
-              onClick={() => router.push(`/user/${data.poster.username}`)}
+              onClick={(e) => {
+                e.stopPropagation()
+                router.push(`/users/${data.poster.username}`)
+              }}
               cursor={'pointer'}
               textStyle="3"
               fontWeight="bold"
             >
-              <Text color="neutral.11a" isTruncated maxWidth="full">
+              <Text
+                _hover={{ textDecoration: 'underline' }}
+                color="neutral.11a"
+                isTruncated
+                maxWidth="full"
+              >
                 {data.poster.username}
               </Text>
               <Text

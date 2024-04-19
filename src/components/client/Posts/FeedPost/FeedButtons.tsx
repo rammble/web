@@ -2,7 +2,7 @@
 
 import { Flex, SimpleGrid } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { NavButton } from 'src/components/client/NavButton'
+import { NavButton } from '../PostInteractions/NavButton'
 import { LikeButton } from '../PostInteractions/LikeButton'
 import { ChatBubbleIcon, Share1Icon, UpdateIcon } from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'

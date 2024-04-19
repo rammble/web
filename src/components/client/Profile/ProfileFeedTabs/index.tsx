@@ -40,6 +40,9 @@ export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = ({ posts }) => {
           </VStack>
         </TabPanel>
         <ProfileMediaTab />
+        <TabPanel>
+          <VStack w="full" spacing="2"></VStack>
+        </TabPanel>
       </TabPanels>
     </Tabs>
   )

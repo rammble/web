@@ -5,6 +5,8 @@ import { buttonTheme } from 'src/theme/components/button-theme'
 import { popoverTheme } from 'src/theme/components/popover-theme'
 import { textareaTheme } from 'src/theme/components/textaerea-theme'
 import { tabsTheme } from 'src/theme/components/tabs-theme'
+import { toastTheme } from 'src/theme/components/toast-theme'
+import { skeletonTheme } from 'src/theme/components/skeleton-theme'
 
 export const components = {
   Tabs: tabsTheme,
@@ -13,4 +15,6 @@ export const components = {
   Button: buttonTheme,
   Popover: popoverTheme,
   Textarea: textareaTheme,
+  Alert: toastTheme,
+  Skeleton: skeletonTheme,
 } satisfies Partial<ChakraTheme>['components']

@@ -36,13 +36,13 @@ export const MediaPost: FC<MediaPostProps> = ({ data }) => {
             <HStack w={'full'} fontSize={16} justifyContent={'space-between'}>
               <HStack spacing={3}>
                 <Avatar
-                  onClick={() => router.push(`/user/${data.poster.username}`)}
+                  onClick={() => router.push(`/users/${data.poster.username}`)}
                   cursor={'pointer'}
                   src={`https://picsum.photos/40?n=${data.poster.username}`}
                   size="2"
                 />
                 <HStack
-                  onClick={() => router.push(`/user/${data.poster.username}`)}
+                  onClick={() => router.push(`/users/${data.poster.username}`)}
                   cursor={'pointer'}
                   textStyle="3"
                   fontWeight="bold"

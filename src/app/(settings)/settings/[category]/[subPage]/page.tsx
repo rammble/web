@@ -1,17 +1,25 @@
+'use client'
 import { Center, Flex, Heading } from '@chakra-ui/layout'
 import React, { FC } from 'react'
 import { Navigation } from 'src/components/client/Navigation'
 import { SettingsLayout } from 'src/layouts/SettingsLayout'
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { SettingNavButtons } from 'src/components/client/Settings/SettingNavigationButtons'
 import { IconButton } from '@chakra-ui/button'
 import { Divider, Icon } from '@chakra-ui/react'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 
-const SettingsPage: FC = () => {
+interface SubPageProps {
+  params: {
+    category: string
+    subPage: string
+  }
+}
+
+const Page: FC<SubPageProps> = ({ params }) => {
   const router = useRouter()
 
-  const { category, subPage } = router.query
+  const { category, subPage } = params
 
   return (
     <SettingsLayout
@@ -37,4 +45,4 @@ const SettingsPage: FC = () => {
   )
 }
 
-export default SettingsPage
+export default Page

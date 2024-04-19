@@ -1,5 +1,4 @@
 'use client'
-
 import { FC, PropsWithChildren, useMemo } from 'react'
 import { current } from 'src/theme'
 import {
@@ -9,18 +8,12 @@ import {
 } from '@chakra-ui/react'
 import { CacheProvider } from '@chakra-ui/next-js'
 import { setCookie } from 'cookies-next'
-import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
 import {
   createClient,
   GraphQlClientProvider,
   QueryClient,
   QueryClientProvider,
 } from '@rammble/sdk'
-
-if (process.env.NODE_ENV === 'development') {
-  loadDevMessages()
-  loadErrorMessages()
-}
 
 export const AppProvider: FC<
   PropsWithChildren<{
