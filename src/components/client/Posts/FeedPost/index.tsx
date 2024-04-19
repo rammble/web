@@ -16,6 +16,7 @@ import {
 } from '@rammble/sdk'
 import { Avatar } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/next-js'
+import {parseTimestampToDate} from "src/utils/parseTimestampToDate";
 
 export interface FeedPostProps {
   data: GetUserByUsernameQuery['user']['posts'][number] & {
@@ -28,7 +29,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
   const router = useRouter()
   const queryClient = useQueryClient()
 
-  const [isLiked, setIsLiked] = useBoolean(data.isLikedByUser)
+  const [isLiked, setIsLiked] = useBoolean(data?.isLikedByUser)
   const [isReposted, { toggle: toggleIsReposted }] = useBoolean(false)
 
   const onSuccess = () =>
@@ -77,10 +78,10 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
       <Avatar
         onClick={(e) => {
           e.stopPropagation()
-          router.push(`/users/${data.poster.username}`)
+          router.push(`/users/${data.poster?.username}`)
         }}
         cursor={'pointer'}
-        src={`https://picsum.photos/40?n=${data.poster.username}`}
+        src={`https://picsum.photos/40?n=${data.poster?.username}`}
         size="4"
       />
       <HStack w="full" align="start">
@@ -89,7 +90,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
             <HStack
               onClick={(e) => {
                 e.stopPropagation()
-                router.push(`/users/${data.poster.username}`)
+                router.push(`/users/${data.poster?.username}`)
               }}
               cursor={'pointer'}
               textStyle="3"
@@ -101,7 +102,7 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
                 isTruncated
                 maxWidth="full"
               >
-                {data.poster.username}
+                {data.poster?.displayName}
               </Text>
               <Text
                 textStyle="2"
@@ -110,11 +111,11 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
                 maxWidth="full"
                 color="neutral.8a"
               >
-                {data.poster.username}
+                {data.poster?.username}
               </Text>
               <Text color="neutral.8a">·</Text>
               <Text color="neutral.8a" fontWeight="medium">
-                32m
+                {parseTimestampToDate(data?.createdAt)}
               </Text>
             </HStack>
             <FeedMenu />
