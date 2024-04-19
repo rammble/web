@@ -43,7 +43,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
       <Flex justify="start">
         <LikeButton
           label={ifZeroLocaleStr(likeCount)}
-          ariaLabel="Like"
+          ariaLabel="Like post"
           onClick={onLike}
           isActive={isLiked}
         />
