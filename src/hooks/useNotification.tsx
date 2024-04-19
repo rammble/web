@@ -42,7 +42,7 @@ export const useNotification = () => {
       colorScheme,
       isClosable: false,
       position: 'top-right',
-      duration: 9000,
+      duration: 5000,
     })
   }
 }

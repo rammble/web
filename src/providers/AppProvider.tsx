@@ -1,19 +1,18 @@
 'use client'
-import { FC, PropsWithChildren, useMemo } from 'react'
-import { current } from 'src/theme'
-import {
-  ChakraBaseProvider,
-  ColorMode,
-  ColorModeScript,
-} from '@chakra-ui/react'
-import { CacheProvider } from '@chakra-ui/next-js'
-import { setCookie } from 'cookies-next'
+import {FC, PropsWithChildren, useMemo} from 'react'
+import {current} from 'src/theme'
+import {ChakraBaseProvider, ColorMode, ColorModeScript,} from '@chakra-ui/react'
+import {CacheProvider} from '@chakra-ui/next-js'
+import {setCookie} from 'cookies-next'
 import {
   createClient,
   GraphQlClientProvider,
+  MutationCache,
+  QueryCache,
   QueryClient,
   QueryClientProvider,
 } from '@rammble/sdk'
+import {useNotification} from "src/hooks/useNotification";
 
 export const AppProvider: FC<
   PropsWithChildren<{
@@ -21,6 +20,9 @@ export const AppProvider: FC<
     colorMode?: ColorMode
   }>
 > = ({ colorMode, children, overrideColorMode }) => {
+
+  const notification = useNotification()
+
   const client = useMemo(
     () =>
       createClient({
@@ -28,31 +30,63 @@ export const AppProvider: FC<
       }),
     [],
   )
-  const queryClient = useMemo(() => new QueryClient(), [])
+
+  const onErrorHandler = (error: Error) => {
+    const errorResponse = JSON.parse(JSON.stringify(error))
+    const errors = errorResponse.response?.errors
+
+
+    errors?.map((err: { message: string }) => {
+      notification({
+        colorScheme: 'error',
+        status: 'error',
+        title: 'Error occurred',
+        description: err?.message || "Something wrong"
+      })
+    })
+  }
+
+  const queryClient = useMemo(() => new QueryClient({
+    defaultOptions: {
+      // TODO: Retry delay is just so that the error handler receives the failed attempts (3) as soon as possible, will find a better way to fix this - Xig
+      queries: {
+        retryDelay: 1
+      },
+      mutations: {
+        retryDelay: 1
+      }
+    },
+    queryCache: new QueryCache({
+      onError: onErrorHandler
+    }),
+    mutationCache: new MutationCache({
+      onError: onErrorHandler
+    })
+  }), [])
 
   return (
-    <GraphQlClientProvider client={client}>
-      <QueryClientProvider client={queryClient}>
-        <CacheProvider>
-          <ChakraBaseProvider
-            theme={current}
-            colorModeManager={{
-              type: 'cookie',
-              ssr: true,
-              get: (init) => colorMode ?? init,
-              set: (value) => {
-                setCookie('chakra-ui-color-mode', value)
-              },
-            }}
-          >
+    <CacheProvider>
+      <ChakraBaseProvider
+        theme={current}
+        colorModeManager={{
+          type: 'cookie',
+          ssr: true,
+          get: (init) => colorMode ?? init,
+          set: (value) => {
+            setCookie('chakra-ui-color-mode', value)
+          },
+        }}
+      >
+        <GraphQlClientProvider client={client}>
+          <QueryClientProvider client={queryClient}>
             <ColorModeScript
               initialColorMode={current.config.initialColorMode}
               type="cookie"
             />
             {children}
-          </ChakraBaseProvider>
-        </CacheProvider>
-      </QueryClientProvider>
-    </GraphQlClientProvider>
+          </QueryClientProvider>
+        </GraphQlClientProvider>
+      </ChakraBaseProvider>
+    </CacheProvider>
   )
 }
