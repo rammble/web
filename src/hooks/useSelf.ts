@@ -1,5 +1,6 @@
 'use client'
 import {
+  GetMeQuery,
   useGetMeQuery,
   useLoginMutation,
   useSignupMutation,
@@ -17,7 +18,7 @@ export const useSelf = <
   const router = useRouter()
   const pathname = usePathname()
 
-  const { data: me, isPending: isLoadingMeQuery } = useGetMeQuery({})
+  const { data: me, isLoading: isLoadingMeQuery } = useGetMeQuery({})
 
   const { mutateAsync: loginMutation, isPending: isLoadingLogin } =
     useLoginMutation()
@@ -66,7 +67,7 @@ export const useSelf = <
     ? ({
         ...me.user,
         isLoggedIn: true,
-      } as any & {
+      } as GetMeQuery['user'] & {
         isLoggedIn: true
       })
     : ({
@@ -76,7 +77,7 @@ export const useSelf = <
       })
 
   const final = data as TIsLoggedInOverride extends true
-    ? any & {
+    ? GetMeQuery['user'] & {
         isLoggedIn: true
       }
     : typeof data

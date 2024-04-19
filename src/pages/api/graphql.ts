@@ -12,7 +12,7 @@ export const config = {
 }
 
 const proxy_request = (req: NextApiRequest, res: NextApiResponse) =>
-  new Promise((resolve, reject) => {
+  new Promise<void>((resolve, reject) => {
     const cookie = new Cookies(req, res)
     const authToken = cookie.get('jwt')
 
@@ -29,12 +29,12 @@ const proxy_request = (req: NextApiRequest, res: NextApiResponse) =>
       target: new URL(`${PROTOCOL}://api.${HOST}`),
     })
 
-    resolve(0)
+    proxy.once('end', () => resolve())
   })
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  await proxy_request(req, res)
+  return await proxy_request(req, res)
 }

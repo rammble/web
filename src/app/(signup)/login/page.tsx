@@ -40,7 +40,6 @@ const Page: FC = () => {
   })
 
   const onSubmit = useCallback((data: FormData) => {
-    console.log('onSubmit')
     login({
       input: data,
     }).then((res) => {
