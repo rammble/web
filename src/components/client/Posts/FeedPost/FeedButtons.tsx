@@ -23,7 +23,7 @@ export interface FeedButtonsProps {
 }
 
 const ifZeroLocaleStr = (count: number) =>
-  count === 0 ? undefined : count.toLocaleString()
+  count === 0 ? '0' : count.toLocaleString()
 
 export const FeedButtons: FC<FeedButtonsProps> = ({
   likeCount = 0,

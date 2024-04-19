@@ -7,13 +7,14 @@ import { ProfileHeroInfo } from 'src/components/client/Profile/ProfileHero/Profi
 
 export interface ProfileHeroProps {
   username: string
+  avatarUrl?: string | null
 }
 
-export const ProfileHero: FC<ProfileHeroProps> = ({ username }) => {
+export const ProfileHero: FC<ProfileHeroProps> = ({ username, avatarUrl }) => {
   return (
     <Box w={'full'}>
       <ProfileHeroBanner />
-      <ProfileHeroInfo username={username} />
+      <ProfileHeroInfo username={username} avatarUrl={avatarUrl} />
     </Box>
   )
 }

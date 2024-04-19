@@ -4,7 +4,11 @@ import { FC, PropsWithChildren, useState } from 'react'
 import { Button } from '@chakra-ui/button'
 import { PostOptionButtons } from 'src/components/client/Posts/CreatePost/PostOptionButtons'
 import { Flex, HStack, Text, VStack } from '@chakra-ui/layout'
-import { useCreatePostMutation } from '@rammble/sdk'
+import {
+  getGetMeQueryKey,
+  useCreatePostMutation,
+  useQueryClient,
+} from '@rammble/sdk'
 import { OverflowingTextarea } from 'src/components/client/OverflowingTextarea'
 import { Avatar } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/next-js'
@@ -28,8 +32,12 @@ const getTextColor = (count: number) => {
 }
 
 export const CreatePost: FC<CreatePostModalProps> = () => {
-  const [createPost] = useCreatePostMutation({
-    refetchQueries: ['GetMe'],
+  const queryClient = useQueryClient()
+  const { mutate: createPost } = useCreatePostMutation({
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: getGetMeQueryKey({}),
+      }),
   })
   const [content, setContent] = useState('')
   const count = content.length
@@ -70,12 +78,8 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
             colorScheme="accent"
             onClick={() =>
               createPost({
-                variables: {
-                  input: {
-                    body: content,
-                    private: false,
-                  },
-                },
+                body: content,
+                private: false,
               })
             }
           >

@@ -1,11 +1,9 @@
 'use client'
 import {
-  GetMeQueryResult,
   useGetMeQuery,
   useLoginMutation,
   useSignupMutation,
 } from '@rammble/sdk'
-import { NotUndefined } from 'src/utils/types'
 import { usePathname, useRouter } from 'next/navigation'
 
 export interface UseSelfOptions {
@@ -19,25 +17,25 @@ export const useSelf = <
   const router = useRouter()
   const pathname = usePathname()
 
-  const { data: me, loading: isLoadingMeQuery } = useGetMeQuery()
+  const { data: me, isPending: isLoadingMeQuery } = useGetMeQuery({})
 
-  const [loginMutation, { loading: isLoadingLogin }] = useLoginMutation()
-  const [signupMutation, { loading: isLoadingSignup }] = useSignupMutation()
+  const { mutateAsync: loginMutation, isPending: isLoadingLogin } =
+    useLoginMutation()
+  const { mutateAsync: signupMutation, isPending: isLoadingSignup } =
+    useSignupMutation()
 
   const gotoLogin = () => router.push('/login')
   const gotoRegister = () => router.push('/register')
 
   const login = async (username: string, password: string) => {
     if (!pathname?.includes('login')) {
-      await gotoLogin()
+      gotoLogin()
     }
 
     await loginMutation({
-      variables: {
-        input: {
-          username,
-          password,
-        },
+      input: {
+        username,
+        password,
       },
     })
 
@@ -48,16 +46,14 @@ export const useSelf = <
 
   const signup = async (email: string, username: string, password: string) => {
     if (!pathname?.includes('register')) {
-      await gotoRegister()
+      gotoRegister()
     }
 
     await signupMutation({
-      variables: {
-        input: {
-          email,
-          username,
-          password,
-        },
+      input: {
+        email,
+        username,
+        password,
       },
     })
 
@@ -66,11 +62,11 @@ export const useSelf = <
     }
   }
 
-  const data = me?.me
+  const data = me?.user
     ? ({
-        ...me.me,
+        ...me.user,
         isLoggedIn: true,
-      } as NotUndefined<GetMeQueryResult['data']>['me'] & {
+      } as any & {
         isLoggedIn: true
       })
     : ({
@@ -80,7 +76,7 @@ export const useSelf = <
       })
 
   const final = data as TIsLoggedInOverride extends true
-    ? NotUndefined<NotUndefined<GetMeQueryResult['data']>['me']> & {
+    ? any & {
         isLoggedIn: true
       }
     : typeof data

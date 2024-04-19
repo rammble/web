@@ -1,16 +1,6 @@
 import React, { FC } from 'react'
-import {
-  Avatar,
-  Grid,
-  Tab,
-  TabIndicator,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
-import { Image } from '@chakra-ui/image'
-import { Box, Flex, HStack, SimpleGrid, VStack } from '@chakra-ui/layout'
+import { TabPanel } from '@chakra-ui/react'
+import { VStack } from '@chakra-ui/layout'
 import { FakeMediaPosts } from 'src/utils/placeholder.data'
 import { MediaPost } from 'src/components/client/Posts/MediaPost'
 
@@ -22,7 +12,7 @@ export const ProfileMediaTab: FC<ProfileMediaTabProps> = () => {
     <TabPanel>
       <VStack w={'full'}>
         {FakeMediaPosts.map((post, index) => {
-          return <MediaPost data={post} />
+          return <MediaPost key={index} data={post} />
         })}
       </VStack>
     </TabPanel>

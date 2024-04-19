@@ -12,14 +12,14 @@ import {
 } from '@chakra-ui/react'
 import { VStack } from '@chakra-ui/layout'
 import { CreatePost } from 'src/components/client/Posts/CreatePost'
-import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { FeedPost } from 'src/components/client/Posts/FeedPost'
+import { useGetMeQuery } from '@rammble/sdk'
 
-export interface FeedProps {
-  posts?: typeof FakeFeedPosts
-}
+export interface FeedProps {}
 
-export const Feed: FC<FeedProps> = ({ posts = FakeFeedPosts }) => {
+export const Feed: FC<FeedProps> = ({}) => {
+  const { data } = useGetMeQuery({})
+
   return (
     <VStack w="full" spacing={2} py="6">
       <Tabs gap="8" size="2">
@@ -34,8 +34,15 @@ export const Feed: FC<FeedProps> = ({ posts = FakeFeedPosts }) => {
             <CreatePost />
             <Divider height={'1px'} mt={4} mb={2} bg="neutral.3a" />
             <VStack w="full" spacing="2">
-              {posts.map((post, index) => (
-                <FeedPost key={index} data={post} isLoading={false} />
+              {data?.user.posts.map((post) => (
+                <FeedPost
+                  key={post.id}
+                  data={{
+                    ...post,
+                    poster: data?.user,
+                  }}
+                  isLoading={false}
+                />
               ))}
             </VStack>
           </VStack>

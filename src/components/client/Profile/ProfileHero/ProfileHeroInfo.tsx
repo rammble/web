@@ -14,9 +14,13 @@ import { ProfileBadge } from 'src/components/client/Profile/ProfileHero/ProfileB
 
 export interface ProfileHeroInfoProps {
   username: string
+  avatarUrl?: string | null
 }
 
-export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
+export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
+  username,
+  avatarUrl,
+}) => {
   return (
     <HStack
       position={'relative'}
@@ -27,12 +31,7 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({ username }) => {
       spacing={4}
     >
       <HStack borderRadius={6} p={1} bg={'panel.background'}>
-        <Avatar
-          name={username}
-          borderRadius={6}
-          size={'7'}
-          // src="https://cdn.rammble.net/test/sweaty-speedrunner.gif"
-        />
+        <Avatar name={username} borderRadius={6} size={'7'} src={avatarUrl} />
       </HStack>
       <VStack mt={1} w="full" align="start" spacing={2}>
         <VStack w="full" align="start" justify="start" spacing={1}>

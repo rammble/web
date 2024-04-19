@@ -3,24 +3,63 @@
 import { useBoolean } from '@chakra-ui/hooks'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { useRouter } from 'next/navigation'
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { FeedButtons } from 'src/components/client/Posts/FeedPost/FeedButtons'
 import { FeedMenu } from 'src/components/client/Posts/FeedPost/FeedMenu'
 import { FeedText } from 'src/components/client/Posts/FeedPost/FeedText'
-import { GetMeQuery } from '@rammble/sdk'
+import {
+  getGetMeQueryKey,
+  GetUserByUsernameQuery,
+  useLikePostMutation,
+  useQueryClient,
+  useUnlikePostMutation,
+} from '@rammble/sdk'
 import { Avatar } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/next-js'
 
 export interface FeedPostProps {
-  data: GetMeQuery['me']['posts'][number]
+  data: GetUserByUsernameQuery['user']['posts'][number] & {
+    poster: Omit<GetUserByUsernameQuery['user'], 'posts'>
+  }
   isLoading?: boolean
 }
 
 export const FeedPost: FC<FeedPostProps> = ({ data }) => {
   const router = useRouter()
+  const queryClient = useQueryClient()
 
-  const [isLiked, { toggle: toggleIsLiked }] = useBoolean(false)
+  const [isLiked, setIsLiked] = useBoolean(data.isLikedByUser)
   const [isReposted, { toggle: toggleIsReposted }] = useBoolean(false)
+
+  const onSuccess = () =>
+    queryClient.invalidateQueries({
+      queryKey: [getGetMeQueryKey({})],
+    })
+
+  const { mutateAsync: likePost } = useLikePostMutation({
+    onSuccess,
+  })
+
+  const { mutateAsync: unlikePost } = useUnlikePostMutation({
+    onSuccess,
+  })
+
+  const toggleLike = useCallback(async () => {
+    if (isLiked) {
+      setIsLiked.off()
+      await unlikePost(data)
+    } else {
+      setIsLiked.on()
+      await likePost(data)
+    }
+  }, [isLiked])
+
+  // this is totally necessary and absolutely cannot be made any better - professional progamer
+  const likeCount =
+    data.likes +
+    (isLiked
+      ? Number(data.isLikedByUser ? 0 : 1)
+      : Number(data.isLikedByUser ? -1 : 0))
 
   return (
     <HStack
@@ -81,11 +120,11 @@ export const FeedPost: FC<FeedPostProps> = ({ data }) => {
             </HStack>
           </VStack>
           <FeedButtons
-            likeCount={69}
-            commentCount={420}
-            repostCount={1124122}
-            shareCount={4120}
-            onLike={toggleIsLiked}
+            likeCount={likeCount}
+            commentCount={0}
+            repostCount={0}
+            shareCount={0}
+            onLike={toggleLike}
             onRepost={toggleIsReposted}
             onComment={() => console.log('comment')}
             onShare={() => console.log('share')}

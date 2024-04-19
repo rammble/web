@@ -27,7 +27,7 @@ const LoginFormSchema = z.object({
 type FormData = z.infer<typeof LoginFormSchema>
 
 const Page: FC = () => {
-  const [login] = useLoginMutation()
+  const { mutateAsync: login } = useLoginMutation()
   const router = useRouter()
   const [self] = useSelf()
   const {
@@ -42,11 +42,9 @@ const Page: FC = () => {
   const onSubmit = useCallback((data: FormData) => {
     console.log('onSubmit')
     login({
-      variables: {
-        input: data,
-      },
+      input: data,
     }).then((res) => {
-      if (res.data?.token) {
+      if (res.token) {
         router.push('/')
       }
     })

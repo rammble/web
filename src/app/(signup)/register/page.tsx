@@ -26,7 +26,7 @@ const RegisterFormSchema = z.object({
 type FormData = z.infer<typeof RegisterFormSchema>
 
 const Page: FC = () => {
-  const [signup] = useSignupMutation()
+  const { mutateAsync: signup } = useSignupMutation()
   const router = useRouter()
   const {
     register,
@@ -39,11 +39,9 @@ const Page: FC = () => {
 
   const onSubmit = useCallback((data: FormData) => {
     signup({
-      variables: {
-        input: data,
-      },
+      input: data,
     }).then((res) => {
-      if (res.data?.token) {
+      if (res.token) {
         router.push('/login')
       }
     })

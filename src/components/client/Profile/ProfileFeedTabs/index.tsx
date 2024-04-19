@@ -11,25 +11,30 @@ import {
 } from '@chakra-ui/react'
 import { ProfileMediaTab } from 'src/components/client/Profile/ProfileFeedTabs/ProfileMediaTab'
 import { VStack } from '@chakra-ui/layout'
-import { FakeFeedPosts } from 'src/utils/placeholder.data'
 import { FeedPost } from '../../Posts/FeedPost'
+import { GetUserByUsernameQuery } from '@rammble/sdk'
 
-export interface ProfileFeedTabsProps {}
+export interface ProfileFeedTabsProps {
+  posts?: Array<
+    GetUserByUsernameQuery['user']['posts'][number] & {
+      poster: Omit<GetUserByUsernameQuery['user'], 'posts'>
+    }
+  >
+}
 
-export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = () => {
+export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = ({ posts }) => {
   return (
     <Tabs gap="8" size="2">
       <TabList>
         <Tab>Rammbles</Tab>
         <Tab>Media</Tab>
         <Tab>Likes</Tab>
-        <Tab>Commissions</Tab>
       </TabList>
       <TabIndicator />
       <TabPanels>
         <TabPanel>
           <VStack w="full" spacing="2">
-            {FakeFeedPosts.map((post, index) => (
+            {posts?.map((post, index) => (
               <FeedPost key={index} data={post} isLoading={false} />
             ))}
           </VStack>
