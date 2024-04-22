@@ -33,7 +33,7 @@ const getTextColor = (count: number) => {
   return 'error.9a'
 }
 
-export const CreatePost: FC<CreatePostModalProps> = ({ guidelineOptions, mutation }) => {
+export const CreatePost: FC<CreatePostModalProps> = ({ buttonLabel, guidelineOptions, mutation }) => {
 
   const [content, setContent] = useState('')
   const count = content.length
