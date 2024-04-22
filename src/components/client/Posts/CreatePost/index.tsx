@@ -1,19 +1,21 @@
 'use client'
 
-import { FC, PropsWithChildren, useState } from 'react'
-import { Button } from '@chakra-ui/button'
-import { PostOptionButtons } from 'src/components/client/Posts/CreatePost/PostOptionButtons'
-import { Flex, HStack, Text, VStack } from '@chakra-ui/layout'
-import {
-  getGetMeQueryKey,
-  useCreatePostMutation,
-  useQueryClient,
-} from '@rammble/sdk'
-import { OverflowingTextarea } from 'src/components/client/OverflowingTextarea'
-import { Avatar } from '@chakra-ui/react'
-import { Link } from '@chakra-ui/next-js'
+import {FC, PropsWithChildren, useState} from 'react'
+import {Button} from '@chakra-ui/button'
+import {PostOptionButtons} from 'src/components/client/Posts/CreatePost/PostOptionButtons'
+import {Flex, HStack, Text, VStack} from '@chakra-ui/layout'
+import {OverflowingTextarea} from 'src/components/client/OverflowingTextarea'
+import {Avatar} from '@chakra-ui/react'
+import {Link} from '@chakra-ui/next-js'
 
-export interface CreatePostModalProps extends PropsWithChildren {}
+export interface CreatePostModalProps extends PropsWithChildren {
+  buttonLabel: string
+  mutation: (body: string) => void
+  guidelineOptions: {
+    path: string
+    label: string
+  }
+}
 
 const getTextColor = (count: number) => {
   if (count <= 399) {
@@ -31,14 +33,8 @@ const getTextColor = (count: number) => {
   return 'error.9a'
 }
 
-export const CreatePost: FC<CreatePostModalProps> = () => {
-  const queryClient = useQueryClient()
-  const { mutate: createPost } = useCreatePostMutation({
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: getGetMeQueryKey({}),
-      }),
-  })
+export const CreatePost: FC<CreatePostModalProps> = ({ guidelineOptions, mutation }) => {
+
   const [content, setContent] = useState('')
   const count = content.length
 
@@ -57,7 +53,7 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
         />
         <HStack w="full" justifyContent="space-between">
           <Link
-            href="/guidelines"
+            href={`/${guidelineOptions.path}`}
             textStyle="2"
             fontWeight="regular"
             color="accent.11a"
@@ -65,7 +61,7 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
               color: 'accent.10a',
             }}
           >
-            Guidelines
+            {guidelineOptions.label}
           </Link>
           <Text textStyle="1" fontWeight="regular" color={getTextColor(count)}>
             {count}/480
@@ -77,13 +73,10 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
             size="3"
             colorScheme="accent"
             onClick={() =>
-              createPost({
-                body: content,
-                private: false,
-              })
+              mutation(content)
             }
           >
-            Post
+            {buttonLabel}
           </Button>
         </HStack>
       </VStack>
