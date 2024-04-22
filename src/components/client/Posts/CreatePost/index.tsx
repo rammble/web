@@ -1,9 +1,9 @@
 'use client'
 
-import { FC, PropsWithChildren, useState } from 'react'
+import {FC, PropsWithChildren, useRef, useState} from 'react'
 import { Button } from '@chakra-ui/button'
 import { PostOptionButtons } from 'src/components/client/Posts/CreatePost/PostOptionButtons'
-import { Flex, HStack, Text, VStack } from '@chakra-ui/layout'
+import {Box, Flex, HStack, Text, VStack} from '@chakra-ui/layout'
 import {
   getGetMeQueryKey,
   useCreatePostMutation,
@@ -12,6 +12,7 @@ import {
 import { OverflowingTextarea } from 'src/components/client/OverflowingTextarea'
 import { Avatar } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/next-js'
+import EmojiPicker from "emoji-picker-react";
 
 export interface CreatePostModalProps extends PropsWithChildren {}
 
@@ -51,6 +52,7 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
           maxAdjustedHeight={240}
           placeholder="Ramble about anything..."
           maxLength={480}
+          value={content}
           onChange={(e) => {
             setContent(e.target.value)
           }}
@@ -72,7 +74,8 @@ export const CreatePost: FC<CreatePostModalProps> = () => {
           </Text>
         </HStack>
         <HStack w="full" justifyContent="space-between">
-          <PostOptionButtons />
+          <PostOptionButtons setContent={setContent} />
+
           <Button
             size="3"
             colorScheme="accent"

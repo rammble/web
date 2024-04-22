@@ -1,14 +1,18 @@
 'use client'
 
-import { IconButton } from '@chakra-ui/button'
-import { HStack } from '@chakra-ui/layout'
-import { FC } from 'react'
-import { FaceIcon, ImageIcon } from '@radix-ui/react-icons'
-import { Icon } from '@chakra-ui/react'
+import {IconButton} from '@chakra-ui/button'
+import {HStack} from '@chakra-ui/layout'
+import {FC} from 'react'
+import {ImageIcon} from '@radix-ui/react-icons'
+import {Icon} from '@chakra-ui/react'
+import {EmojiPopup} from "src/components/client/Posts/CreatePost/EmojiPicker";
 
-export interface PostOptionButtonsProps {}
+export interface PostOptionButtonsProps {
+  setContent: (val: (val: string) => string) => any
+}
 
-export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
+export const PostOptionButtons: FC<PostOptionButtonsProps> = ({setContent}) => {
+
   return (
     <HStack spacing="0">
       <IconButton
@@ -18,13 +22,7 @@ export const PostOptionButtons: FC<PostOptionButtonsProps> = () => {
         icon={<Icon as={ImageIcon} boxSize="18px" />}
         aria-label="Media"
       />
-      <IconButton
-        variant="ghost"
-        colorScheme="accent"
-        size="3"
-        icon={<Icon as={FaceIcon} boxSize="18px" />}
-        aria-label="Emotes"
-      />
+      <EmojiPopup setContent={setContent}/>
     </HStack>
   )
 }

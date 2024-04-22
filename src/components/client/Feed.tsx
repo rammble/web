@@ -22,6 +22,7 @@ export const Feed: FC<FeedProps> = ({}) => {
 
   return (
     <VStack w="full" spacing={2} py="6">
+
       <Tabs gap="8" size="2">
         <TabList>
           <Tab>Feed</Tab>

@@ -10259,6 +10259,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"emoji-picker-react@npm:^4.9.2":
+  version: 4.9.2
+  resolution: "emoji-picker-react@npm:4.9.2"
+  dependencies:
+    flairup: "npm:0.0.38"
+  peerDependencies:
+    react: ">=16"
+  checksum: f0294a8c8444bf26bceb1dc9fca45bfeb2be07aa5ede36e43efe79fc0cfebca798d08242b3c310f2704cb275803de82c70ddf1c4227922eca5011e4622e04a8c
+  languageName: node
+  linkType: hard
+
 "emoji-regex@npm:^8.0.0":
   version: 8.0.0
   resolution: "emoji-regex@npm:8.0.0"
@@ -11373,6 +11384,13 @@ __metadata:
     locate-path: "npm:^7.1.0"
     path-exists: "npm:^5.0.0"
   checksum: 07e0314362d316b2b13f7f11ea4692d5191e718ca3f7264110127520f3347996349bf9e16805abae3e196805814bc66ef4bff2b8904dc4a6476085fc9b0eba07
+  languageName: node
+  linkType: hard
+
+"flairup@npm:0.0.38":
+  version: 0.0.38
+  resolution: "flairup@npm:0.0.38"
+  checksum: 3b293a4ec394b76fe21461c5c9a8b258f169f0ce2424798ed31cf0cee7b7825bff7263e6578880cca37d4430b3cc17e93e6adb7ded0de493950f3f581da2f5d0
   languageName: node
   linkType: hard
 
@@ -16092,6 +16110,7 @@ __metadata:
     cookies-next: "npm:^4.1.1"
     cross-env: "npm:^7.0.3"
     dayjs: "npm:^1.11.10"
+    emoji-picker-react: "npm:^4.9.2"
     eslint-config-next: "npm:^14.1.4"
     framer-motion: "npm:^10.16.4"
     graphql: "npm:^16.8.1"

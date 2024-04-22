@@ -48,13 +48,6 @@ export const AppProvider: FC<
 
   const queryClient = useMemo(() => new QueryClient({
     defaultOptions: {
-      // TODO: Retry delay is just so that the error handler receives the failed attempts (3) as soon as possible, will find a better way to fix this - Xig
-      queries: {
-        retryDelay: 1
-      },
-      mutations: {
-        retryDelay: 1
-      }
     },
     queryCache: new QueryCache({
       onError: onErrorHandler
