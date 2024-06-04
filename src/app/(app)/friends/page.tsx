@@ -1,17 +1,29 @@
-import { Heading, VStack } from '@chakra-ui/layout'
-import { FC } from 'react'
-import { ContentCategory } from 'src/components/client/ContentCategory'
+import {VStack} from '@chakra-ui/layout'
+import {FC} from 'react'
+import {ExploreCard} from "src/components/client/Explore/ExploreCard";
+import {TabsLayout} from "src/components/TabsLayout/TabsLayout";
 
-const Page: FC = () => (
-  <VStack px={4} pt={2} pb={4} w="full" align="start" spacing={6}>
-    <Heading as="h2" color="brand" fontSize={24} fontWeight={500}>
-      Friends
-    </Heading>
-    <ContentCategory title="Suggestions"></ContentCategory>
-    <ContentCategory title="Recent Activity">
-      <VStack w="full" spacing={1} overflow="hidden"></VStack>
-    </ContentCategory>
-  </VStack>
-)
+const Page: FC = () => {
+
+  const panels =  [[
+    <ExploreCard displayName={'Xig'} name={'Xignotic'} description={'this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out'} count={'12.4k followers'}  imageUrl={'asd'}/>,
+    <ExploreCard displayName={'Lizard'} name={'Lizard'} description={'asd'} count={'184.4k followers'} imageUrl={'asd'}/>,
+    <ExploreCard displayName={'Xig'} name={'Xignotic'} description={'this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out'} count={'12.4k followers'}  imageUrl={'asd'}/>,,
+    <ExploreCard displayName={'Xig'} name={'Xignotic'} description={'this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out, this is my epic bio, check me out'} count={'12.4k followers'}  imageUrl={'asd'}/>,
+
+  ]]
+
+  return (
+    <VStack w="full" spacing={2} py="6">
+      <TabsLayout
+        heading={'Friends'}
+        tabs={['Mutuals', 'Following', 'Followers']}
+        panels={panels}
+        search={{
+          placeholder: 'Search for friends'
+      }}/>
+    </VStack>
+  )
+}
 
 export default Page
