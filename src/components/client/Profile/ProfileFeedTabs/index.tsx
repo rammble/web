@@ -15,6 +15,7 @@ import { FeedPost } from '../../Posts/FeedPost'
 import { GetUserByUsernameQuery } from '@rammble/sdk'
 
 export interface ProfileFeedTabsProps {
+  isLoading?: boolean
   posts?: Array<
     GetUserByUsernameQuery['user']['posts'][number] & {
       poster: Omit<GetUserByUsernameQuery['user'], 'posts'>
@@ -22,7 +23,10 @@ export interface ProfileFeedTabsProps {
   >
 }
 
-export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = ({ posts }) => {
+export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = ({
+  posts,
+  isLoading,
+}) => {
   return (
     <Tabs gap="8" size="2">
       <TabList>
@@ -35,7 +39,7 @@ export const ProfileFeedTabs: FC<ProfileFeedTabsProps> = ({ posts }) => {
         <TabPanel>
           <VStack w="full" spacing="2">
             {posts?.map((post, index) => (
-              <FeedPost key={index} data={post} isLoading={false} />
+              <FeedPost key={index} data={post} isLoading={isLoading} />
             ))}
           </VStack>
         </TabPanel>

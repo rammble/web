@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 import { Center } from '@chakra-ui/layout'
+import { useIsLoggedIn } from 'src/hooks/useIsLoggedIn'
 
 interface AuthLayoutProps extends PropsWithChildren {}
 

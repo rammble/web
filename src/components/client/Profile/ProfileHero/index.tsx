@@ -6,15 +6,27 @@ import { ProfileHeroBanner } from 'src/components/client/Profile/ProfileHero/Pro
 import { ProfileHeroInfo } from 'src/components/client/Profile/ProfileHero/ProfileHeroInfo'
 
 export interface ProfileHeroProps {
-  username: string
+  username?: string
+  displayName?: string
   avatarUrl?: string | null
+  isLoading?: boolean
 }
 
-export const ProfileHero: FC<ProfileHeroProps> = ({ username, avatarUrl }) => {
+export const ProfileHero: FC<ProfileHeroProps> = ({
+  isLoading,
+  username,
+  avatarUrl,
+  displayName,
+}) => {
   return (
     <Box w={'full'}>
-      <ProfileHeroBanner />
-      <ProfileHeroInfo username={username} avatarUrl={avatarUrl} />
+      <ProfileHeroBanner isLoading={isLoading} />
+      <ProfileHeroInfo
+        isLoading={isLoading}
+        username={username}
+        displayName={displayName}
+        avatarUrl={avatarUrl}
+      />
     </Box>
   )
 }

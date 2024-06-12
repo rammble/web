@@ -16,8 +16,7 @@ import { useLoginMutation } from '@rammble/sdk'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import { useSelf } from 'src/hooks/useSelf'
-import { Spinner } from '@chakra-ui/spinner'
+import { useIsLoggedIn } from 'src/hooks/useIsLoggedIn'
 
 const LoginFormSchema = z.object({
   username: z.string().min(3),
@@ -29,7 +28,6 @@ type FormData = z.infer<typeof LoginFormSchema>
 const Page: FC = () => {
   const { mutateAsync: login } = useLoginMutation()
   const router = useRouter()
-  const [self] = useSelf()
   const {
     register,
     handleSubmit,
@@ -48,10 +46,6 @@ const Page: FC = () => {
       }
     })
   }, [])
-
-  if (self.isLoading) {
-    return <Spinner />
-  }
 
   return (
     <AuthLayout>

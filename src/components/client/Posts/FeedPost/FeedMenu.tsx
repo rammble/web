@@ -7,7 +7,7 @@ import {
   MenuList,
   useDisclosure,
 } from '@chakra-ui/react'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { AddUserIcon } from 'src/icons/AddUserIcon'
 import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
 import { IconButton } from '@chakra-ui/button'
@@ -18,55 +18,84 @@ import {
   StarIcon,
   TrashIcon,
 } from '@radix-ui/react-icons'
+import { Center } from '@chakra-ui/layout'
+import {
+  getGetMeQueryKey,
+  useDeletePostMutation,
+  useQueryClient,
+} from '@rammble/sdk'
 
-const options = [
-  {
-    type: 'stateful',
-    title: 'Pin to profile',
-    icon: StarIcon,
-    color: 'brand',
-    active: {
-      title: 'Unpin from profile',
-      icon: StarFilledIcon,
-    },
-  },
-  {
-    type: 'splitter',
-  },
-  {
-    type: 'item',
-    title: 'Not Interested in this ramble',
-    icon: ThumbsDownIcon,
-  },
-  {
-    type: 'item',
-    title: 'Follow @user',
-    icon: AddUserIcon,
-  },
-  {
-    type: 'item',
-    title: 'Report ramble',
-    icon: ExclamationTriangleIcon,
-  },
-  {
-    type: 'splitter',
-  },
-  {
-    type: 'dangerous',
-    title: 'Delete ramble',
-    icon: TrashIcon,
-  },
-]
+export interface FeedMenuProps {
+  postId: string
+}
 
-export const FeedMenu: FC = ({}) => {
+export const FeedMenu: FC<FeedMenuProps> = ({ postId }) => {
   const disclosure = useDisclosure()
+  const queryClient = useQueryClient()
+  const { mutateAsync: deletePost } = useDeletePostMutation({
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: getGetMeQueryKey({}),
+      }),
+  })
+
+  const options = useMemo(
+    () => [
+      {
+        type: 'stateful',
+        title: 'Pin to profile',
+        icon: StarIcon,
+        color: 'brand',
+        active: {
+          title: 'Unpin from profile',
+          icon: StarFilledIcon,
+        },
+        onClick: () => {},
+      },
+      {
+        type: 'splitter',
+      },
+      {
+        type: 'item',
+        title: 'Not Interested in this ramble',
+        icon: ThumbsDownIcon,
+        onClick: () => {},
+      },
+      {
+        type: 'item',
+        title: 'Follow @user',
+        icon: AddUserIcon,
+        onClick: () => {},
+      },
+      {
+        type: 'item',
+        title: 'Report ramble',
+        icon: ExclamationTriangleIcon,
+        onClick: () => {},
+      },
+      {
+        type: 'splitter',
+      },
+      {
+        type: 'dangerous',
+        title: 'Delete ramble',
+        icon: TrashIcon,
+        onClick: () => deletePost({ id: postId }),
+      },
+    ],
+    [],
+  )
 
   return (
     <Menu isLazy {...disclosure} offset={[-20, 8]}>
       <IconButton
         size="1"
         as={MenuButton}
-        icon={<Icon as={DotsHorizontalIcon} boxSize="4" />}
+        icon={
+          <Center boxSize="full">
+            <Icon as={DotsHorizontalIcon} boxSize="4" />
+          </Center>
+        }
         aria-label="Menu"
         variant="ghost"
         colorScheme="neutral"
@@ -100,6 +129,7 @@ export const FeedMenu: FC = ({}) => {
                 pl={3}
                 pr={4}
                 borderRadius={8}
+                onClick={item.onClick}
               >
                 {item.title}
               </MenuItem>

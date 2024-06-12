@@ -5,8 +5,11 @@ import { FC } from 'react'
 import { CalendarIcon, Link1Icon } from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import { SkeletonText } from '@chakra-ui/skeleton'
 
-export interface ProfileDetailsProps {}
+export interface ProfileDetailsProps {
+  isLoading?: boolean
+}
 
 const details = [
   {
@@ -20,8 +23,8 @@ const details = [
   },
 ]
 
-export const ProfileDetails: FC<ProfileDetailsProps> = () => {
-  return (
+export const ProfileDetails: FC<ProfileDetailsProps> = ({ isLoading }) => (
+  <SkeletonText w="full" noOfLines={1} isLoaded={!isLoading}>
     <HStack w={'full'} spacing={4}>
       {details.map((detail, index) => (
         <HStack key={index} alignItems={'center'}>
@@ -38,5 +41,5 @@ export const ProfileDetails: FC<ProfileDetailsProps> = () => {
         </HStack>
       ))}
     </HStack>
-  )
-}
+  </SkeletonText>
+)

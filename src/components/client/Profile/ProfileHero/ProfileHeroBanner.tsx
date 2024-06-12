@@ -5,9 +5,13 @@ import { IconButton } from '@chakra-ui/button'
 import { FC } from 'react'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 
-export interface ProfileHeroBannerProps {}
+export interface ProfileHeroBannerProps {
+  isLoading?: boolean
+}
 
-export const ProfileHeroBanner: FC<ProfileHeroBannerProps> = () => {
+export const ProfileHeroBanner: FC<ProfileHeroBannerProps> = ({
+  isLoading,
+}) => {
   return (
     <Box position={'relative'}>
       <Box
