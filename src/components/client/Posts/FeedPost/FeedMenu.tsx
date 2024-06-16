@@ -1,29 +1,16 @@
-import {
-  Icon,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  useDisclosure,
-} from '@chakra-ui/react'
-import { FC, useMemo } from 'react'
-import { AddUserIcon } from 'src/icons/AddUserIcon'
-import { ThumbsDownIcon } from 'src/icons/ThumbsDownIcon'
-import { IconButton } from '@chakra-ui/button'
+import {Icon, Menu, MenuButton, MenuDivider, MenuItem, MenuList, useDisclosure,} from '@chakra-ui/react'
+import {FC, useMemo} from 'react'
+import {AddUserIcon} from 'src/icons/AddUserIcon'
+import {ThumbsDownIcon} from 'src/icons/ThumbsDownIcon'
+import {IconButton} from '@chakra-ui/button'
 import {
   DotsHorizontalIcon,
-  ExclamationTriangleIcon,
-  StarFilledIcon,
-  StarIcon,
+  ExclamationTriangleIcon, HeartFilledIcon, HeartIcon,
+  Pencil2Icon,
   TrashIcon,
 } from '@radix-ui/react-icons'
-import { Center } from '@chakra-ui/layout'
-import {
-  getGetMeQueryKey,
-  useDeletePostMutation,
-  useQueryClient,
-} from '@rammble/sdk'
+import {Center} from '@chakra-ui/layout'
+import {getGetMeQueryKey, useDeletePostMutation, useQueryClient,} from '@rammble/sdk'
 
 export interface FeedMenuProps {
   postId: string
@@ -42,13 +29,20 @@ export const FeedMenu: FC<FeedMenuProps> = ({ postId }) => {
   const options = useMemo(
     () => [
       {
+        type: 'item',
+        title: 'Edit',
+        icon: Pencil2Icon,
+        color: 'brand',
+        onClick: () => {},
+      },
+      {
         type: 'stateful',
-        title: 'Pin to profile',
-        icon: StarIcon,
+        title: 'Add to favourites',
+        icon: HeartIcon,
         color: 'brand',
         active: {
-          title: 'Unpin from profile',
-          icon: StarFilledIcon,
+          title: 'Remove from favourites',
+          icon: HeartFilledIcon,
         },
         onClick: () => {},
       },
@@ -99,19 +93,22 @@ export const FeedMenu: FC<FeedMenuProps> = ({ postId }) => {
         aria-label="Menu"
         variant="ghost"
         colorScheme="neutral"
-        onClick={disclosure.onToggle}
+        onClick={(e) => {
+          e.stopPropagation()
+          disclosure.onToggle
+        }}
         isActive={disclosure.isOpen}
       />
       <MenuList
-        borderRadius={16}
-        bg="blurp.darker"
-        p={2}
+        borderRadius={'8px'}
+        bg={'panel.solid'}
         zIndex={20}
-        border="none"
+        border="1px solid"
+        borderColor={'neutral.3'}
       >
         {options.map((item, i) => {
           if (item.type === 'splitter') {
-            return <MenuDivider key={i} borderColor="ui.5" borderWidth={2} />
+            return <MenuDivider key={i} w={'full'} borderColor="neutral.4a" />
           }
 
           if (item.type === 'item' || item.type === 'dangerous') {
@@ -124,7 +121,7 @@ export const FeedMenu: FC<FeedMenuProps> = ({ postId }) => {
                   bg: 'ui.3',
                   color: item.type === 'dangerous' ? 'accent.red' : 'ui.100',
                 }}
-                icon={<Icon as={item.icon} boxSize={5} color="inherit" />}
+                icon={<Icon as={item.icon} boxSize={4} color="inherit" />}
                 py={2}
                 pl={3}
                 pr={4}
