@@ -1,34 +1,44 @@
 'use client'
 
-import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
-import {FC, useCallback} from 'react'
+import { HStack, Text, VStack } from '@chakra-ui/layout'
+import { FC, useCallback } from 'react'
 import { CommentHeader } from 'src/components/client/Posts/Comments/CommentHeader'
 import { LikeButton } from 'src/components/client/Posts/PostInteractions/LikeButton'
 import { ReplyButton } from 'src/components/client/Posts/Comments/ReplyButton'
-import { AvatarReadMore } from 'src/components/client/Posts/Comments/AvatarReadMore'
 import {
-  getGetMeQueryKey, getGetPostRepliesQueryKey,
   GetPostRepliesQuery,
-  GetUserByUsernameQuery,
+  useGetPostRepliesQuery,
   useLikePostMutation,
-  useUnlikePostMutation
-} from "@rammble/sdk";
-import {useBoolean} from "@chakra-ui/hooks";
-
+  useUnlikePostMutation,
+} from '@rammble/sdk'
+import { useBoolean } from '@chakra-ui/hooks'
+import {
+  PostingModule,
+  PostingModuleType,
+} from 'src/components/client/Posts/PostingModule'
 
 export interface CommentProps {
+  depth: number
+  distanceToParentComment?: number
   comment: GetPostRepliesQuery['replies'][number]
 }
-export const Comment: FC<CommentProps> = ({ comment }) => {
-  // const replies = comment.replies
-  // const hasReplies = comment.replies != null && comment.replies?.length > 0
-  const [isLiked, setIsLiked] = useBoolean(comment?.isLikedByUser)
+
+export const Comment: FC<CommentProps> = ({
+  depth,
+  distanceToParentComment = 0,
+  comment,
+}) => {
+  // const replies = useGetPostRepliesQuery({
+  //   postId: comment.id,
+  // })
+  const [isLiked, setIsLiked] = useBoolean(comment?.isLikedBySelf)
+  const [isReplying, setIsReplying] = useBoolean(false)
 
   const likeCount =
-    comment.likes +
+    comment.likeCount +
     (isLiked
-      ? Number(comment.isLikedByUser ? 0 : 1)
-      : Number(comment.isLikedByUser ? -1 : 0))
+      ? Number(comment.isLikedBySelf ? 0 : 1)
+      : Number(comment.isLikedBySelf ? -1 : 0))
 
   const onSuccess = () => {}
 
@@ -53,42 +63,84 @@ export const Comment: FC<CommentProps> = ({ comment }) => {
   return (
     <VStack
       w="full"
+      spacing={2}
       align="start"
-      spacing="4"
-      position={'relative'}
-      _before={{
-        content: "''",
-        position: 'absolute',
-        top: 'calc(0px + 32px)',
-        left: '-24px',
-        width: '40px',
-        height: '110px',
-        borderLeft: '2px solid',
-        borderBottom: '2px solid',
-        borderColor: 'neutral.5',
-        borderBottomLeftRadius: '12px',
-      }}
+      position="relative"
+      // _before={
+      //   depth === 0
+      //     ? {
+      //         content: "''",
+      //         position: 'absolute',
+      //         top: '-108px',
+      //         left: '11px',
+      //         width: '2px',
+      //         height: '104px',
+      //         zIndex: 0,
+      //         borderLeft: '2px solid',
+      //         borderColor: 'neutral.5',
+      //       }
+      //     : {
+      //         content: "''",
+      //         position: 'absolute',
+      //         top: `calc(calc(-90px - ${distanceToParentComment}px) + 12px)`,
+      //         left: '-21px',
+      //         width: '12px',
+      //         height: `calc(90px + ${distanceToParentComment}px)`,
+      //         borderLeft: '2px solid',
+      //         borderBottom: '2px solid',
+      //         borderColor: 'neutral.5',
+      //         borderBottomLeftRadius: '12px',
+      //       }
+      // }
     >
-      <CommentHeader user={comment?.poster} createdAt={comment?.createdAt} />
-      <Text fontStyle={'3'} color={'neutral.11a'}>
-        {comment?.body}
-      </Text>
-      <HStack>
-        <LikeButton ariaLabel={'Like comment'}
-                    label={likeCount.toLocaleString()}
-                    onClick={toggleLike}
-                    isActive={isLiked}/>
-        <ReplyButton ariaLabel={'Reply to post'} />
-      </HStack>
-      {
-        /*<VStack w={'full'} pl={7}>
-        {replies?.map((reply: CommentProps) => {
-          return <Comment comment={reply} />
+      <VStack spacing={2} align="start" w="full">
+        <CommentHeader
+          user={comment.poster}
+          commentId={comment.id}
+          createdAt={comment.createdAt}
+        />
+        <VStack spacing={2} pl={7} align="start" w="full">
+          <Text fontStyle="3" color="neutral.11a">
+            {comment?.body}
+          </Text>
+          <VStack w="full" spacing={4} align="start">
+            <HStack>
+              <LikeButton
+                ariaLabel={'Like comment'}
+                label={likeCount.toLocaleString()}
+                onClick={toggleLike}
+                isActive={isLiked}
+              />
+              {/*<ReplyButton
+                ariaLabel={'Reply to post'}
+                onClick={setIsReplying.toggle}
+              />*/}
+            </HStack>
+            {isReplying && (
+              <PostingModule
+                type={PostingModuleType.REPLY_TO_COMMENT}
+                replyToPostId={comment.id}
+              />
+            )}
+          </VStack>
+        </VStack>
+      </VStack>
+      {/*<VStack w="full" align="start" pl={6} spacing={2}>
+        {replies?.data?.replies?.map((reply, index) => {
+          return (
+            <Comment
+              key={reply.id}
+              depth={depth + 1}
+              comment={reply}
+              distanceToParentComment={
+                (replies?.data?.replies?.slice(0, index).reduce((acc, curr) => {
+                  return acc + curr.body.length
+                }, 0) || 0) * 52
+              }
+            />
+          )
         })}
-        {hasReplies && <AvatarReadMore replies={replies} />}
-      </VStack>*/
-      }
-
+      </VStack>*/}
     </VStack>
   )
 }

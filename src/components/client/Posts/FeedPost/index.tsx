@@ -19,7 +19,10 @@ import { parseTimestampToDate } from 'src/utils/parseTimestampToDate'
 
 export interface FeedPostProps {
   data?: GetUserByUsernameQuery['user']['posts'][number] & {
-    poster: Omit<GetUserByUsernameQuery['user'], 'posts'>
+    poster: Omit<
+      GetUserByUsernameQuery['user'],
+      'posts' | 'mutuals' | 'followers' | 'followed'
+    >
   }
   shouldLink?: boolean
   isLoading?: boolean
@@ -47,7 +50,7 @@ export const FeedPost: FC<FeedPostProps> = ({ shouldLink = true, data }) => {
 
     await toggleLikePost({
       id: postId,
-    }).then((res) => setIsLiked.toggle())
+    }).then(() => setIsLiked.toggle())
   }, [isLiked, data?.id])
 
   const likeCount = useMemo(
@@ -142,14 +145,15 @@ export const FeedPost: FC<FeedPostProps> = ({ shouldLink = true, data }) => {
           </VStack>
           <FeedButtons
             likeCount={likeCount}
-            commentCount={0}
+            commentCount={data?.replyCount ?? 0}
             repostCount={0}
             shareCount={0}
             onLike={toggleLike}
             onRepost={toggleIsReposted}
-            onComment={() => console.log('comment')}
+            onComment={() => router.push(`/posts/${data?.id}`)}
             onShare={() => console.log('share')}
             isLiked={isLiked}
+            isCommented={false}
             isReposted={isReposted}
           />
         </VStack>

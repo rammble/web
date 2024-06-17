@@ -5586,9 +5586,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rammble/sdk@npm:1.2.5":
-  version: 1.2.5
-  resolution: "@rammble/sdk@npm:1.2.5::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40rammble%2Fsdk%2F1.2.5%2F27d8cc9773df902afe2b3f0713cf04ae091aac3d"
+"@rammble/sdk@npm:1.2.6":
+  version: 1.2.6
+  resolution: "@rammble/sdk@npm:1.2.6::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40rammble%2Fsdk%2F1.2.6%2Fcb7120bc9e2deb3c90303cc971183f998044fa51"
   dependencies:
     "@apollo/client": "npm:^3.8.8"
     "@graphql-codegen/add": "npm:^5.0.2"
@@ -5600,7 +5600,7 @@ __metadata:
     "@tanstack/react-query": "npm:^5.29.2"
     graphql: "npm:^16.8.1"
     graphql-request: "npm:^6.1.0"
-  checksum: 6c5644a613ece3b5e486f052a3a56a31b994f07ce4e9a868a411cc3e53cb47bcfc3b701d512065c129e0f140cb82128041d6c29b375d28661a996becfe12f495
+  checksum: 5d355bf1a85300bbdadcf81fb6ba3a15b610086ef91ad5960ea59c9482f7d93e8618b1b4624b5fa3c2dc1943e3d9084ae156b7aac4fe37f4093ad82f16aefa81
   languageName: node
   linkType: hard
 
@@ -16035,7 +16035,7 @@ __metadata:
     "@emotion/styled": "npm:^11.11.5"
     "@hookform/resolvers": "npm:^3.6.0"
     "@radix-ui/react-icons": "npm:^1.3.0"
-    "@rammble/sdk": "npm:1.2.5"
+    "@rammble/sdk": "npm:1.2.6"
     "@storybook/addon-essentials": "npm:^8.1.7"
     "@storybook/addon-interactions": "npm:^8.1.7"
     "@storybook/addon-links": "npm:^8.1.7"

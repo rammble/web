@@ -11,9 +11,17 @@ import {
   Tabs,
 } from '@chakra-ui/react'
 import { VStack } from '@chakra-ui/layout'
-import { CreatePost } from 'src/components/client/Posts/CreatePost'
 import { FeedPost } from 'src/components/client/Posts/FeedPost'
-import {getGetMeQueryKey, useCreatePostMutation, useGetMeQuery, useQueryClient} from '@rammble/sdk'
+import {
+  getGetMeQueryKey,
+  useCreatePostMutation,
+  useGetMeQuery,
+  useQueryClient,
+} from '@rammble/sdk'
+import {
+  PostingModule,
+  PostingModuleType,
+} from 'src/components/client/Posts/PostingModule'
 
 export interface FeedProps {}
 
@@ -29,16 +37,8 @@ export const Feed: FC<FeedProps> = ({}) => {
       }),
   })
 
-  const postMutation = (body: string) => {
-    createPost({
-      body,
-      private: false
-    })
-  }
-
   return (
     <VStack w="full" spacing={2} py="6">
-
       <Tabs gap="8" size="2">
         <TabList>
           <Tab>Feed</Tab>
@@ -48,12 +48,7 @@ export const Feed: FC<FeedProps> = ({}) => {
         <TabIndicator />
         <TabPanels>
           <VStack as={TabPanel} spacing="4">
-            <CreatePost
-              buttonLabel={'Post'}
-              guidelineOptions={{
-              path: 'guidelines/posting',
-              label: 'Posting Guidelines'
-            }} mutation={postMutation} />
+            <PostingModule type={PostingModuleType.CREATE_POST} />
             <Divider height={'1px'} mt={4} mb={2} bg="neutral.3a" />
             <VStack w="full" spacing="2">
               {data?.user.posts.map((post) => (

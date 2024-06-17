@@ -19,6 +19,7 @@ export interface FeedButtonsProps {
   onShare: () => void
 
   isLiked?: boolean
+  isCommented?: boolean
   isReposted?: boolean
 }
 
@@ -36,6 +37,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
   onShare,
 
   isLiked,
+  isCommented,
   isReposted,
 }) => {
   return (
@@ -53,8 +55,9 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
           icon={<Icon as={ChatBubbleIcon} boxSize={4} />}
           label={ifZeroLocaleStr(commentCount)}
           ariaLabel="Comment"
-          color="neutral"
+          color="info"
           onClick={onComment}
+          isActive={isCommented}
         />
       </Flex>
       <Flex justify="start">
@@ -72,7 +75,7 @@ export const FeedButtons: FC<FeedButtonsProps> = ({
           icon={<Icon as={Share1Icon} boxSize={4} />}
           label={ifZeroLocaleStr(shareCount)}
           ariaLabel="Repost"
-          color="neutral"
+          color="warn"
           onClick={onShare}
         />
       </Flex>
