@@ -7,7 +7,7 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const baseStyle = definePartsStyle(({ colorScheme: scheme }) => {
   return {
     container: {
-      bg: `${scheme}.2a`,
+      bg: `${scheme}.2`,
       color: `${scheme}.11a`,
       border: '1px solid',
       borderColor: `${scheme}.6`,
@@ -17,13 +17,14 @@ const baseStyle = definePartsStyle(({ colorScheme: scheme }) => {
       padding: '4',
     },
     title: {
+      color: `${scheme}.7a`,
       fontWeight: 'bold',
     },
     description: {
-      //.... description styles
+      color: `${scheme}.12a`,
     },
     icon: {
-      marginTop: '2px',
+      marginTop: '1',
       padding: '0',
       boxSize: '4',
     },

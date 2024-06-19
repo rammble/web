@@ -1,6 +1,7 @@
 import { ChakraTheme } from '@chakra-ui/theme'
 
 export const sizes = {
+  px: '1px',
   full: '100%',
   half: '50%',
   avatars: {

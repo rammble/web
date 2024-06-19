@@ -1,4 +1,6 @@
 import 'src/theme/colors/generated-colors.styles.css'
+import 'src/theme/emoji-picker.styles.css'
+
 import { ReactNode } from 'react'
 import { AppProvider } from 'src/providers/AppProvider'
 import { Metadata } from 'next'

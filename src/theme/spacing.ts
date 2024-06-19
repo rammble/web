@@ -1,6 +1,7 @@
 import { ChakraTheme } from '@chakra-ui/theme'
 
 export const spacing = {
+  px: '1px',
   0: '0px',
   1: '4px',
   2: '8px',

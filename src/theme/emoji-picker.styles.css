@@ -1,0 +1,49 @@
+:root .EmojiPickerReact {
+    --epr-emoji-size: 36px;
+    --epr-emoji-gap: 8px;
+    --epr-hover-bg-color: var(--color-background);
+    --epr-bg-color: var(--panel-solid);
+    --epr-text-color: var(--gray-12);
+    --epr-header-padding: 4px;
+    --epr-search-input-bg-color: var(--panel-default);
+    --epr-search-input-bg-color-active: var(--panel-default);
+    --epr-search-border-color: transparent;
+    --epr-search-input-padding: 8px 32px 8px 36px;
+    --epr-search-bar-inner-padding: 8px;
+    --epr-skin-tone-picker-menu-color: var(--panel-solid);
+
+    .epr-emoji-category-label {
+        background-color: var(--panel-default);
+        backdrop-filter: blur(12px);
+    }
+}
+
+.epr-main {
+    width: 100%;
+}
+
+.epr-main .epr-header .epr-category-nav {
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.epr-main .epr-header .epr-category-nav .epr-btn:focus {
+    border-radius: 0px;
+}
+
+.epr-main .epr-header div:first-child {
+    padding-inline-end: 12px;
+}
+
+.epr-search-container {
+    background-color: transparent;
+}
+
+.epr-search-container input::placeholder {
+    color: var(--gray-a9);
+}
+
+.epr-search-container input {
+    color: var(--gray-a12);
+}
+

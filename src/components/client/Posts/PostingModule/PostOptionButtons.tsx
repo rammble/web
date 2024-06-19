@@ -3,9 +3,10 @@
 import { IconButton } from '@chakra-ui/button'
 import { HStack } from '@chakra-ui/layout'
 import { FC } from 'react'
-import { ImageIcon } from '@radix-ui/react-icons'
+import { FaceIcon, ImageIcon } from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'
 import { EmojiPopup } from 'src/components/client/Posts/PostingModule/EmojiPicker'
+import { EmojiPicker } from 'src/components/client/EmojiPicker'
 
 export interface PostOptionButtonsProps {
   setContent: (val: (val: string) => string) => any
@@ -23,7 +24,15 @@ export const PostOptionButtons: FC<PostOptionButtonsProps> = ({
         icon={<Icon as={ImageIcon} boxSize="18px" />}
         aria-label="Media"
       />
-      <EmojiPopup setContent={setContent} />
+      <EmojiPicker>
+        <IconButton
+          variant="ghost"
+          colorScheme="accent"
+          size="3"
+          icon={<Icon as={FaceIcon} boxSize="18px" />}
+          aria-label="Emotes"
+        />
+      </EmojiPicker>
     </HStack>
   )
 }
