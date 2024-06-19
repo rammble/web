@@ -52,17 +52,21 @@ export const themeRaw = {
         WebkitTapHighlightColor: 'transparent',
       },
       html: {
+        minH: 'full',
+        h: 'full',
+        w: 'full',
         bg: 'panel.background',
         p: 0,
         m: 0,
         scrollbarGutter: 'stable both-edges',
       },
       body: {
+        h: 'full',
+        p: 0,
+        m: 0,
         bg: 'panel.background',
         color: 'neutral.12',
         fontFamily: 'body',
-        p: 0,
-        m: 0,
         '&::-webkit-scrollbar': {
           width: '3',
           height: '3',
