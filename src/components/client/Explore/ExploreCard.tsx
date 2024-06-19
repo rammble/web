@@ -1,8 +1,8 @@
 'use client'
-import {Box, HStack, Text, VStack} from "@chakra-ui/layout";
-import {Avatar} from "@chakra-ui/react";
-import {FC} from "react";
-import {Button} from "@chakra-ui/button";
+import { HStack, Text, VStack } from '@chakra-ui/layout'
+import { Avatar } from '@chakra-ui/react'
+import { FC } from 'react'
+import { Button } from '@chakra-ui/button'
 
 export interface ExploreCardProps {
   path?: string
@@ -29,7 +29,10 @@ export const ExploreCard: FC<ExploreCardProps> = ({
   lastActive
 }) => {
   return (
-    <HStack borderRadius={'4'} p={3} bg={'panel.default'} border={'1px solid'} borderColor={'neutral.6a'} w={'full'} cursor={path ? 'cursor' : 'auto'}>
+    <HStack borderRadius={'4'} p={3} bg={'panel.default'} border={'1px solid'} borderColor={'neutral.6a'} w={'full'}  cursor={path ? 'cursor' : 'auto'}
+            onClick={() => {
+
+        }}>
       <HStack w={'full'}>
         <Avatar
           name={displayName}

@@ -12,18 +12,15 @@ import {
 } from '@radix-ui/react-icons'
 import { ProfileBadge } from 'src/components/client/Profile/ProfileHero/ProfileBadge'
 import { SkeletonText } from '@chakra-ui/skeleton'
+import { User } from '@rammble/sdk'
 
 export interface ProfileHeroInfoProps {
-  username?: string
-  displayName?: string
-  avatarUrl?: string | null
+  user?: User
   isLoading?: boolean
 }
 
 export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
-  username,
-  displayName,
-  avatarUrl,
+  user,
   isLoading,
 }) => {
   return (
@@ -37,12 +34,7 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
     >
       <HStack borderRadius={6} p={1} bg={'panel.background'}>
         <Skeleton isLoaded={!isLoading} boxSize="96px" borderRadius={6}>
-          <Avatar
-            name={username}
-            borderRadius={6}
-            size={'7'}
-            src={avatarUrl ?? undefined}
-          />
+          <Avatar name={user?.username} borderRadius={6} size={'7'} src={''} />
         </Skeleton>
       </HStack>
       <VStack mt={1} w="full" align="start" spacing={2}>
@@ -57,7 +49,7 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
               color="ui.100"
               lineHeight="normal"
             >
-              {displayName}
+              {user?.displayName}
             </SkeletonText>
             <Skeleton isLoaded={!isLoading}>
               <HStack spacing={1}>
@@ -76,7 +68,7 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
             textStyle={'2'}
             color={'neutral.8a'}
           >
-            @{username}
+            @{user?.username}
           </SkeletonText>
         </VStack>
       </VStack>
@@ -89,7 +81,11 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
             aria-label="Go Back"
             icon={<EnvelopeClosedIcon />}
           />
-          <FollowButton />
+          <FollowButton
+            isFollowing={user?.isFollowed}
+            username={user?.username}
+            userId={user?.id}
+          />
         </HStack>
       </Skeleton>
     </HStack>

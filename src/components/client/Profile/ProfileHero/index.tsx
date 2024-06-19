@@ -4,29 +4,18 @@ import React, { FC } from 'react'
 import { Box } from '@chakra-ui/layout'
 import { ProfileHeroBanner } from 'src/components/client/Profile/ProfileHero/ProfileHeroBanner'
 import { ProfileHeroInfo } from 'src/components/client/Profile/ProfileHero/ProfileHeroInfo'
+import { User } from '@rammble/sdk'
 
 export interface ProfileHeroProps {
-  username?: string
-  displayName?: string
-  avatarUrl?: string | null
+  user?: User
   isLoading?: boolean
 }
 
-export const ProfileHero: FC<ProfileHeroProps> = ({
-  isLoading,
-  username,
-  avatarUrl,
-  displayName,
-}) => {
+export const ProfileHero: FC<ProfileHeroProps> = ({ isLoading, user }) => {
   return (
     <Box w={'full'}>
       <ProfileHeroBanner isLoading={isLoading} />
-      <ProfileHeroInfo
-        isLoading={isLoading}
-        username={username}
-        displayName={displayName}
-        avatarUrl={avatarUrl}
-      />
+      <ProfileHeroInfo user={user} isLoading={isLoading} />
     </Box>
   )
 }
