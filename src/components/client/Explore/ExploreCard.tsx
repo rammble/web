@@ -1,21 +1,18 @@
 'use client'
 import { HStack, Text, VStack } from '@chakra-ui/layout'
 import { Avatar } from '@chakra-ui/react'
-import { FC } from 'react'
-import { Button } from '@chakra-ui/button'
+import { FC, ReactNode } from 'react'
+import { useRouter } from 'next/navigation'
 
 export interface ExploreCardProps {
   path?: string
   displayName: string
   name: string
-  description: string
-  imageUrl: string
+  description?: string
+  imageUrl?: string
   count?: string
   lastActive?: string
-  interaction?: {
-    label: string
-    onClick: () => void
-  }
+  interaction?: ReactNode
 }
 
 export const ExploreCard: FC<ExploreCardProps> = ({
@@ -28,13 +25,19 @@ export const ExploreCard: FC<ExploreCardProps> = ({
   interaction,
   lastActive
 }) => {
-  return (
-    <HStack borderRadius={'4'} p={3} bg={'panel.default'} border={'1px solid'} borderColor={'neutral.6a'} w={'full'}  cursor={path ? 'cursor' : 'auto'}
-            onClick={() => {
+  const router = useRouter()
 
-        }}>
+  return (
+    <HStack borderRadius={'4'} p={3} bg={'panel.default'} border={'1px solid'} borderColor={'neutral.6a'} w={'full'}  cursor={path ? 'pointer' : 'auto'}
+            onClick={(e) => {
+              if (path) {
+                e.stopPropagation()
+                router.push(path)
+              }
+            }}>
       <HStack w={'full'}>
         <Avatar
+          src={imageUrl}
           name={displayName}
           size={'5'}
         />
@@ -58,12 +61,7 @@ export const ExploreCard: FC<ExploreCardProps> = ({
           </Text>}
         </VStack>
       </HStack>
-      <Button size={'2'} variant={'soft'} color={'accent.11a'} cursor={'pointer'} onClick={(e) => {
-        e.stopPropagation()
-        interaction?.onClick()
-      }}>
-        Follow
-      </Button>
+      {interaction}
     </HStack>
   )
 }

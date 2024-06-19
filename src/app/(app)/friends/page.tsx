@@ -3,62 +3,56 @@ import { Text, VStack } from '@chakra-ui/layout'
 import { FC, useEffect, useMemo, useState } from 'react'
 import { ExploreCard } from 'src/components/client/Explore/ExploreCard'
 import { TabsLayout } from 'src/components/TabsLayout/TabsLayout'
-import { useGetMeQuery, User } from '@rammble/sdk'
+import { useGetMeQuery, User, useToggleFollowMutation } from '@rammble/sdk'
+import { useBoolean } from '@chakra-ui/hooks'
+import { Button } from '@chakra-ui/button'
 
 const Page: FC = () => {
-  const { data, isLoading, isSuccess } = useGetMeQuery({})
 
-  const [mutuals, setMututals] = useState<User[]>([])
-  const [following, setFollowing] = useState<User[]>([])
-  const [followers, setFollowers] = useState<User[]>([])
+  const {mutateAsync: followUser} = useToggleFollowMutation({})
 
-  useEffect(() => {
-    setMututals(data?.user?.mutuals)
-    setFollowing(data?.user?.followed)
-    setFollowers(data?.user?.followers)
-  }, [data])
+  const { data  } = useGetMeQuery({}, {})
+
+  const FollowInteraction = ({userId , isFollowed}: {userId: string, isFollowed: boolean}) => {
+    const [isFollowing, {toggle}] = useBoolean(isFollowed)
+
+    return <Button size={'2'} variant={'soft'} color={'accent.11a'} cursor={'pointer'} onClick={(e) => {
+      e.stopPropagation()
+      followUser({userId})
+      toggle()
+    }}>
+      {isFollowing ? 'Unfollow': 'Follow'}
+    </Button>
+  }
+
+  const Card = ({user}: {user: User}) => {
+    return <ExploreCard
+      path={`/users/${user.username}`}
+      displayName={user.displayName}
+      name={user?.username}
+      description={user.profile.bio || "Some weird bio"}
+      imageUrl={user.profile.avatarUrl as string}
+      interaction={<FollowInteraction userId={user.id} isFollowed={user.isFollowed}/>}
+    />
+  }
 
   const mutualCards = useMemo(() => {
-    return mutuals?.map((u) => {
-      return (
-        <ExploreCard
-          path={`/users/${u.username}`}
-          displayName={u?.displayName}
-          name={u?.username}
-          description={''}
-          imageUrl={''}
-        />
-      )
+    return data?.user?.mutuals?.map((user) => {
+      return <Card user={user as User}/>
     })
-  }, [])
+  }, [data])
 
   const followingCards = useMemo(() => {
-    return following?.map((u) => {
-      return (
-        <ExploreCard
-          path={`/users/${u.username}`}
-          displayName={u.displayName}
-          name={u.username}
-          description={'some profile'}
-          imageUrl={''}
-        />
-      )
+    return data?.user?.followed?.map((user) => {
+      return <Card user={user as User}/>
     })
-  }, [])
+  }, [data])
 
   const followersCards = useMemo(() => {
-    return followers?.map((u) => {
-      return (
-        <ExploreCard
-          path={`/users/${u.username}`}
-          displayName={u.displayName}
-          name={u.username}
-          description={''}
-          imageUrl={''}
-        />
-      )
+    return data?.user?.followers?.map((user) => {
+      return <Card user={user as User}/>
     })
-  }, [])
+  }, [data])
 
   const panels = [mutualCards, followingCards, followersCards]
 

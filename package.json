@@ -22,7 +22,7 @@
     "@emotion/styled": "^11.11.5",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-icons": "^1.3.0",
-    "@rammble/sdk": "^0.0.5",
+    "@rammble/sdk": "^0.0.8",
     "@tanstack/react-query": "^5.45.0",
     "@tiptap/core": "^2.4.0",
     "@tiptap/pm": "^2.4.0",

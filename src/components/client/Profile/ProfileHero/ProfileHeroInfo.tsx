@@ -83,8 +83,8 @@ export const ProfileHeroInfo: FC<ProfileHeroInfoProps> = ({
           />
           <FollowButton
             isFollowing={user?.isFollowed}
-            username={user?.username}
-            userId={user?.id}
+            username={user?.username as string}
+            userId={user?.id as string}
           />
         </HStack>
       </Skeleton>

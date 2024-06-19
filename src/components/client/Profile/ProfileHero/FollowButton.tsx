@@ -1,18 +1,10 @@
 import { FC } from 'react'
 import { Button } from '@chakra-ui/button'
-import { useBoolean } from '@chakra-ui/hooks'
-import {
-  getGetMeQueryKey,
-  getGetUserByUsernameQueryKey,
-  useFollowMutation,
-  useGetMeQuery,
-  useQueryClient,
-  useToggleFollowMutation,
-} from '@rammble/sdk'
+import { getGetUserByUsernameQueryKey, useQueryClient, useToggleFollowMutation } from '@rammble/sdk'
 
 export interface FollowButtonProps {
-  userId?: string
-  username?: string
+  userId: string
+  username: string
   isFollowing?: boolean
 }
 

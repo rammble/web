@@ -7,7 +7,7 @@ import { FC } from 'react'
 import { ProfileHero } from 'src/components/client/Profile/ProfileHero'
 import { Divider } from '@chakra-ui/react'
 import { ProfileDetails } from 'src/components/client/Profile/ProfileHero/ProfileDetails'
-import { useGetMeQuery, useGetUserByUsernameQuery } from '@rammble/sdk'
+import { useGetMeQuery, useGetUserByUsernameQuery, User } from '@rammble/sdk'
 import { omit } from '@chakra-ui/object-utils'
 
 const Page: FC<{ params: { username: string } }> = ({ params }) => {
@@ -24,10 +24,7 @@ const Page: FC<{ params: { username: string } }> = ({ params }) => {
       <VStack p={0} m={0} w={'full'} spacing={4}>
         <ProfileHero
           isLoading={isLoading}
-          user={data?.user}
-          displayName={data?.user.displayName ?? data?.user.username}
-          username={data?.user.username}
-          avatarUrl={data?.user.profile.avatarUrl}
+          user={data?.user as User}
         />
         <ProfileHeroBioAndInfo isLoading={isLoading} />
         <ProfileDetails isLoading={isLoading} />
