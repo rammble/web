@@ -17,6 +17,7 @@ import {
   QueryClientProvider,
 } from '@rammble/sdk'
 import { useNotification } from 'src/hooks/useNotification'
+import { Box } from '@chakra-ui/layout'
 
 export const AppProvider: FC<
   PropsWithChildren<{
@@ -82,6 +83,16 @@ export const AppProvider: FC<
             <ColorModeScript
               initialColorMode={current.config.initialColorMode}
               type="cookie"
+            />
+            <Box
+              pos="fixed"
+              inset={0}
+              top={0}
+              left={0}
+              boxSize="full"
+              margin={0}
+              opacity={0.4}
+              bgGradient="linear(to-bl, accent.2a, transparent)"
             />
             {children}
           </QueryClientProvider>

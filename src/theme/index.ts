@@ -47,36 +47,35 @@ export const themeRaw = {
   semanticTokens: {},
   styles: {
     global: {
-      ':root': {
-        // '--rammble-font': montserrat.style,
-      },
       '*': {
         tapHighlightColor: 'transparent',
         WebkitTapHighlightColor: 'transparent',
       },
       html: {
-        minH: 'full',
-        h: 'full',
-        w: 'full',
         bg: 'panel.background',
         p: 0,
         m: 0,
+        scrollbarGutter: 'stable both-edges',
       },
       body: {
         bg: 'panel.background',
-        color: 'var(--gray-12)',
+        color: 'neutral.12',
         fontFamily: 'body',
-        minH: 'full',
-        h: 'full',
         p: 0,
         m: 0,
-      },
-      '#__next': {
-        minH: 'full',
-        h: 'full',
-        w: 'full',
-        p: 0,
-        m: 0,
+        '&::-webkit-scrollbar': {
+          width: '3',
+          height: '3',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: 'var(--blue-track)',
+          border: '3px solid',
+          borderColor: 'panel.background',
+          borderRadius: '99px',
+        },
+        '&::-webkit-scrollbar-track': {
+          background: 'panel.background',
+        },
       },
     },
   },

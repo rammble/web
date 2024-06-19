@@ -420,8 +420,8 @@
 
 :root[data-theme=dark], [data-theme][data-theme=dark], :is(:root[data-theme=dark], [data-theme][data-theme=dark]) :where(.radix-themes:not(:root[data-theme=light], [data-theme][data-theme=light])) {
     --color-background: #16181d;
-    --panel-solid: #1C1E24;
-    --panel-default: rgba(30, 33, 41, 0.70);
+    --panel-solid: #191c24;
+    --panel-default: #191c24b3;
 }
 
 :root, :root[data-theme=light], [data-theme][data-theme=light] {
@@ -846,6 +846,6 @@
 
 :root, :root[data-theme=light], [data-theme][data-theme=light], .radix-themes {
     --color-background: #f5f7fa;
-    --panel-solid: #f5f7fa;
-    --panel-default: #f5f7fa60;
+    --panel-solid: #eef0f3;
+    --panel-default: #00000004;
 }

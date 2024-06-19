@@ -13,7 +13,8 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <HStack
       spacing="4"
-      boxSize="full"
+      w="full"
+      minH="100vh"
       align="stretch"
       justify="center"
       divider={<StackDivider borderColor="neutral.3a" />}
