@@ -43,17 +43,11 @@ export const EditorRenderer = forwardRef<
   })
 
   return (
-    <Twemoji
-      options={{
-        className: 'emoji emoji__post',
-      }}
-    >
-      <EditorContentChakra
-        ref={ref}
-        {...props}
-        editor={editor}
-        readOnly={!editable}
-      />
-    </Twemoji>
+    <EditorContentChakra
+      ref={ref}
+      {...props}
+      editor={editor}
+      readOnly={!editable}
+    />
   )
 }) as EditorContentChakraComponent

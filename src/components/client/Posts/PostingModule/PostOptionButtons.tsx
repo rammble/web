@@ -5,15 +5,15 @@ import { HStack } from '@chakra-ui/layout'
 import { FC } from 'react'
 import { FaceIcon, ImageIcon } from '@radix-ui/react-icons'
 import { Icon } from '@chakra-ui/react'
-import { EmojiPopup } from 'src/components/client/Posts/PostingModule/EmojiPicker'
 import { EmojiPicker } from 'src/components/client/EmojiPicker'
+import { EmojiClickData } from 'emoji-picker-react'
 
 export interface PostOptionButtonsProps {
-  setContent: (val: (val: string) => string) => any
+  onAddEmoji: (emoji: EmojiClickData) => void
 }
 
 export const PostOptionButtons: FC<PostOptionButtonsProps> = ({
-  setContent,
+  onAddEmoji,
 }) => {
   return (
     <HStack spacing="0">
@@ -24,7 +24,7 @@ export const PostOptionButtons: FC<PostOptionButtonsProps> = ({
         icon={<Icon as={ImageIcon} boxSize="18px" />}
         aria-label="Media"
       />
-      <EmojiPicker>
+      <EmojiPicker onEmojiClick={onAddEmoji}>
         <IconButton
           variant="ghost"
           colorScheme="accent"

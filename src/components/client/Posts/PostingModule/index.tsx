@@ -16,6 +16,7 @@ import {
   useQueryClient,
   useReplyToPostMutation,
 } from '@rammble/sdk'
+import { EmojiClickData } from 'emoji-picker-react'
 
 export enum PostingModuleType {
   CREATE_POST,
@@ -182,6 +183,9 @@ export const PostingModule: FC<PostingModuleProps> = ({ type, ...props }) => {
   )
   const avatarSize = useMemo(() => getAvatarSize(type), [type])
 
+  const onAddEmoji = ({ emoji }: EmojiClickData) =>
+    setContent((prev) => prev + emoji)
+
   return (
     <Flex w="full" gap="4">
       <Avatar src="https://picsum.photos/48" size={avatarSize} />
@@ -213,7 +217,7 @@ export const PostingModule: FC<PostingModuleProps> = ({ type, ...props }) => {
           </Text>
         </HStack>
         <HStack w="full" justifyContent="space-between">
-          <PostOptionButtons setContent={setContent} />
+          <PostOptionButtons onAddEmoji={onAddEmoji} />
 
           <Button size="3" colorScheme="accent" onClick={() => mutate(content)}>
             {submitButtonLabel}

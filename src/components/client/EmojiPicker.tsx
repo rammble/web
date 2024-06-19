@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@chakra-ui/react'
-import { EmojiStyle, Theme } from 'emoji-picker-react'
+import { EmojiClickData, EmojiStyle, Theme } from 'emoji-picker-react'
 import dynamic from 'next/dynamic'
 
 const Picker = dynamic(
@@ -16,7 +16,11 @@ const Picker = dynamic(
   { ssr: false },
 )
 
-export const EmojiPicker: FC<PropsWithChildren> = ({ children }) => {
+export const EmojiPicker: FC<
+  PropsWithChildren<{
+    onEmojiClick?: (emoji: EmojiClickData) => void
+  }>
+> = ({ children, onEmojiClick }) => {
   return (
     <Popover placement="bottom-start" closeOnEsc closeOnBlur>
       <PopoverTrigger>{children}</PopoverTrigger>
@@ -36,6 +40,7 @@ export const EmojiPicker: FC<PropsWithChildren> = ({ children }) => {
             width="100%"
             theme={Theme.AUTO}
             emojiStyle={EmojiStyle.TWITTER}
+            onEmojiClick={onEmojiClick}
           />
         </PopoverBody>
       </PopoverContent>
