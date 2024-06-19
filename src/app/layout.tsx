@@ -1,3 +1,4 @@
+import 'src/theme/colors/generated-colors.styles.css'
 import { ReactNode } from 'react'
 import { AppProvider } from 'src/providers/AppProvider'
 import { Metadata } from 'next'

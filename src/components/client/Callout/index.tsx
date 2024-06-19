@@ -12,13 +12,13 @@ import { Icon } from '@chakra-ui/react'
 
 export interface CalloutProps {
   type?: 'filled' | 'outline'
-  variant: 'info' | 'warning' | 'error' | 'neutral' | 'success'
+  variant: 'accent' | 'info' | 'warning' | 'error' | 'neutral' | 'success'
 }
 
 // TODO: change the icons at a later date
 const VariantIcon: FC<{ variant: CalloutProps['variant'] }> = memo(
   ({ variant }) => {
-    if (variant === 'info' || variant === 'neutral')
+    if (variant === 'info' || variant === 'neutral' || variant === 'accent')
       return <Icon as={QuestionMarkCircledIcon} w="4" h="4" />
     if (variant === 'warning')
       return <Icon as={QuestionMarkCircledIcon} w="4" h="4" />

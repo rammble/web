@@ -8,7 +8,7 @@ export interface LeftSideContentProps {}
 export const LeftSideContent: FC<LeftSideContentProps> = () => {
   return (
     <VStack w="full" spacing="2" py="6">
-      <Callout w="full" variant="info">
+      <Callout w="full" variant="accent">
         <VStack textStyle="2" fontWeight="regular">
           <Text>
             Hi welcome to Rammble! We value your feedback as we grow into a

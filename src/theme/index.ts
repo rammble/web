@@ -1,7 +1,4 @@
-import {
-  colors,
-  semanticTokens as colorsSemanticTokens,
-} from 'src/theme/colors'
+import { colors } from 'src/theme/colors'
 import { components } from 'src/theme/components'
 import { sizes } from 'src/theme/sizes'
 import { spacing } from 'src/theme/spacing'
@@ -47,9 +44,7 @@ export const themeRaw = {
     6: '16px',
     max: '9999px',
   },
-  semanticTokens: {
-    colors: colorsSemanticTokens.colors,
-  },
+  semanticTokens: {},
   styles: {
     global: {
       ':root': {
@@ -69,7 +64,7 @@ export const themeRaw = {
       },
       body: {
         bg: 'panel.background',
-        color: 'text',
+        color: 'var(--gray-12)',
         fontFamily: 'body',
         minH: 'full',
         h: 'full',
