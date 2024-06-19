@@ -15,7 +15,6 @@ import { MotionStack } from 'src/components/client/motion'
 import { NavigationButton } from 'src/components/client/Navigation/NavigationButton'
 import { NavigationSubButtons } from 'src/components/client/Navigation/NavigationSubButtons'
 import { Image } from '@chakra-ui/image'
-import { useColorMode } from '@chakra-ui/react'
 
 export interface NavigationProps {}
 
@@ -66,7 +65,6 @@ const pages = [
 
 export const Navigation: FC<NavigationProps> = ({}) => {
   const router = useRouter()
-  const { toggleColorMode } = useColorMode()
 
   return (
     <MotionStack
@@ -92,7 +90,6 @@ export const Navigation: FC<NavigationProps> = ({}) => {
             return <NavigationButton key={i} page={p} />
           })}
         </Box>
-        <button onClick={() => toggleColorMode()}>switch color mode</button>
       </VStack>
 
       <Box>
